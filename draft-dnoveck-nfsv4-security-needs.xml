@@ -19,12 +19,15 @@
  xmlns:xi="http://www.w3.org/2001/XInclude">
 
 <front>
+
 <title abbrev="NFSv4 Security Needs">
 Security Needs for the NFSv4 Protocols
 </title>
+
 <seriesInfo name="Internet-Draft" value="draft-dnoveck-nfsv4-security-needs-01"/>
+
 <author initials="D." surname="Noveck" fullname="David Noveck">
-<organization>
+<organization showOnFrontPage="true">
 NetApp
 </organization>
 <address>
@@ -39,8 +42,9 @@ NetApp
 <email>davenoveck@gmail.com</email>
 </address>
 </author>
+
 <author initials="C." surname="Lever" fullname="Charles Lever">
-<organization abbrev="Oracle">
+<organization abbrev="Oracle" showOnFrontPage="true">
 Oracle Corporation
 </organization>
 <address>
@@ -54,9 +58,12 @@ Oracle Corporation
 <email>chuck.lever@oracle.com</email>
 </address>
 </author>
-<date year="2020"/>
+
+<date/>
+
 <area>Transport</area>
-<workgroup>NFSv4</workgroup>
+<workgroup>Network File System Version 4</workgroup>
+
 <abstract>
 <t>
 This document discusses the existing inadequacies in the handling
@@ -66,12 +73,30 @@ preparation of new standards-track documents updating existing
 treatments of NFSv4 security. Because the security
 approach has been and should remain the same for all minor versions,
 it is expected that the basics of security for all the NFSv4
-protocols will
-be addressed
-together in a single NFSv4-wide standards-track document.
+protocols will be addressed together in a single NFSv4-wide
+standards-track document.
 </t>
 </abstract>
+
+<note removeInRFC="true">
+<t>
+Discussion of this draft takes place
+on the NFSv4 working group mailing list (nfsv4@ietf.org),
+which is archived at
+<eref target="https://mailarchive.ietf.org/arch/browse/nfsv4/"/>.
+Working Group information can be found at
+<eref target="https://datatracker.ietf.org/wg/nfsv4/about/"/>.
+</t>
+<t>
+The source for this draft is maintained in GitHub.
+Suggested changes should be submitted as pull requests at
+<eref target="https://github.com/chucklever/i-d-security-needs"/>.
+Instructions are on that page as well.
+</t>
+</note>
+
 </front>
+
 <middle>
 <section anchor="INTRO" numbered="true" toc="default">
 <name>Introduction</name>
