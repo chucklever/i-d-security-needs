@@ -143,13 +143,17 @@ in <xref target="SITU-env" format="default"/>.
 <section anchor="TERM" numbered="true" toc="default">
 <name>Requirements Language</name>
 <t>
-The key words "MUST", "MUST NOT",
-"REQUIRED", "SHALL", "SHALL NOT",
-"SHOULD", "SHOULD NOT", "RECOMMENDED",
-"MAY", and "OPTIONAL" in this document are to be
-interpreted as BCP 14 <xref target="RFC2119" format="default"/>
-<xref target="RFC8174" format="default"/> when, and only when,
-they appear in all capitals, as shown here.
+The key words "<bcp14>MUST</bcp14>", "<bcp14>MUST NOT</bcp14>",
+"<bcp14>REQUIRED</bcp14>", "<bcp14>SHALL</bcp14>",
+"<bcp14>SHALL NOT</bcp14>", "<bcp14>SHOULD</bcp14>",
+"<bcp14>SHOULD NOT</bcp14>",
+"<bcp14>RECOMMENDED</bcp14>", "<bcp14>NOT RECOMMENDED</bcp14>",
+"<bcp14>MAY</bcp14>", and "<bcp14>OPTIONAL</bcp14>"
+in this document are to be interpreted
+as described in BCP&nbsp;14
+<xref target="RFC2119" format="default"/>
+<xref target="RFC8174" format="default"/>
+when, and only when, they appear in all capitals, as shown here.
 </t>
 </section>
 <section anchor="TERM-usage" numbered="true" toc="default">
@@ -211,7 +215,10 @@ implementations.
 <li>
 There is a possibility of creating interoperability problems
 when a client is written assuming that a particular server
-behavior is foreclosed (e.g. by a "MUST NOT" or "SHOULD NOT")
+behavior is foreclosed (e.g. by a
+"<bcp14>MUST NOT</bcp14>"
+or
+"<bcp14>SHOULD NOT</bcp14>")
 and a later change allows that behavior.
 </li>
 </ul>
@@ -414,7 +421,9 @@ While it is possible to interpret the treatment of the matter in
 and AUTH_SYS) were equivalent and to find fault with that implication,
 it is not clear how different choices would have led to a
 better result.  In particular, attempts to deprecate AUTH_SYS (e.g.
-by using the phrase "SHOULD NOT") would have been problematic
+by using the phrase
+"<bcp14>SHOULD NOT</bcp14>")
+would have been problematic
 in that they  might have retarded adoption of NFSv4 rather than
 enhancing adoption of RPCSEC_GSS.
 </t>
@@ -442,7 +451,9 @@ an essentially new protocol, on the order of NFSv4.1, and there
 was little interest in doing that.
 Within the
 framework established by <xref target="RFC8178" format="default"/>, there was
-provision for the addition of OPTIONAL features, while addressing
+provision for the addition of
+<bcp14>OPTIONAL</bcp14>
+features, while addressing
 lingering security issues for existing minor versions
 did not fit in that framework.
 </li>
@@ -626,7 +637,8 @@ The implementation of sessions in NFSv4.1 <xref target="RFC5661" format="default
 created a requirement to protect clients from one another, even
 when they were making requests on behalf of the same user.
 Although adequate means of dealing with this issue were
-described in <xref target="RFC5661" format="default"/>, they were OPTIONAL
+described in <xref target="RFC5661" format="default"/>, they were
+<bcp14>OPTIONAL</bcp14>
 features and implementation has been very limited.
 </t>
 <t>
@@ -780,7 +792,9 @@ the Security Considerations section of
 safe model", most likely alluding to this possibility.  This
 recognition is not followed up on to call into question the
 use of AUTH_SYS as an optional security flavor (stated earlier in
-the form "MAY be implemented").  Instead, it is used as
+the form
+"<bcp14>MAY</bcp14>
+be implemented").  Instead, it is used as
 justification for the mandatory nature of RPCSEC_GSS
 implementation,
 with the lack of security when AUTH_SYS is used
@@ -852,7 +866,8 @@ analysis, even if one were to be attempted.
 <t>
 The Security Considerations section of <xref target="RFC5531" format="default"/>
 states that AUTH_SYS is "known to be insecure" and further states
-"AUTH_SYS SHOULD NOT be used for services that permit clients to
+"AUTH_SYS
+<bcp14>SHOULD NOT</bcp14> be used for services that permit clients to
 modify data.   Nevertheless, AUTH_SYS has been commonly used by
 NFSv4
 clients modifying data since NFSv4 was first implemented, while
@@ -914,8 +929,11 @@ for reasons similar to those that have prevented such a step
 being attempted earlier, either as part of the transition to
 NFSv4 or to NFSv4.1.  The use of AUTH_SYS has continued despite
 the fact that alternatives were made available, and there is
-no reason to expect that the use of the words "SHOULD NOT" or "MUST
-NOT" would prevent implementers from continuing to support it, or
+no reason to expect that the use of the words
+"<bcp14>SHOULD NOT</bcp14>"
+or
+"<bcp14>MUST NOT</bcp14>"
+would prevent implementers from continuing to support it, or
 administrators depending on such support, despite
 the negative effect on the security of NFSv4 implementations
 </t>
@@ -1042,7 +1060,8 @@ difficulties due to uncertainty about whether client encryption
 support is available.  For example, <xref target="RFC7530" format="default"/>
 specifies that privacy support is required (although only for
 krb5), while <xref target="RFC8881" format="default"/> says only that clients
-"SHOULD" support privacy.  The document give no guidance regarding
+"<bcp14>SHOULD</bcp14>"
+support privacy.  The document give no guidance regarding
 what might be considered valid reasons to not support privacy,
 leaving servers without any reliable way of demanding
 confidentiality on certain portions of the server namespace.
@@ -1216,7 +1235,10 @@ implementations
 as non-conformant, but the ability of any such designation to affect
 implementer behavior is strongly affected by circumstances,
 particularly when the
-term is a hard one to pin down such as "SHOULD" or "SHOULD NOT".
+term is a hard one to pin down such as
+"<bcp14>SHOULD</bcp14>"
+or
+"<bcp14>SHOULD NOT</bcp14>".
 </t>
 <t>
 The ability of such term choices to affect implementer behavior is
@@ -1239,8 +1261,11 @@ choice
 is likely to be similarly reduced.
 </t>
 <t>
-Although <xref target="RFC2119" format="default"/> provides definitions of "SHOULD"
-and "SHOULD NOT", it is difficult to determine the proper interpretation
+Although <xref target="RFC2119" format="default"/> provides definitions of
+"<bcp14>SHOULD</bcp14>"
+and
+"<bcp14>SHOULD NOT</bcp14>",
+it is difficult to determine the proper interpretation
 unless it is clear what the "valid reasons" that might supersede
 the recommendation or the expected consequences of doing so.  For
 this reason, when these terms are used in proposed text, we will make such
@@ -1447,7 +1472,8 @@ server (as opposed to the metadata server).
 <t>
 The use of TLS-based encryption, which we expect to be
 recommended (see <xref target="ISSUES-tlse-res" format="default"/>, may limit
-the need for this feature, but it will remain REQUIRED,
+the need for this feature, but it will remain
+<bcp14>REQUIRED</bcp14>,
 when file-based pNFS is implemented.
 </t>
 </li>
@@ -1491,12 +1517,15 @@ AUTH_SYS despite its security problems:
 </t>
 <ul spacing="normal">
 <li>
-It was stated that AUTH_SYS "SHOULD NOT" be used for
+It was stated that AUTH_SYS
+"<bcp14>SHOULD NOT</bcp14>"
+be used for
 services capable of modifying data.   Given that its further
 use was still anticipated, in some circumstances,
 a security analysis would still be
-required.  In addition, use within the purview of the "SHOULD
-NOT" would make such analysis even more important, since that
+required.  In addition, use within the purview of the
+"<bcp14>SHOULD NOT</bcp14>"
+would make such analysis even more important, since that
 recommendation would allow use presumably based on balancing
 of possible benefits and corresponding problems.  Without an
 understanding of
@@ -1619,7 +1648,9 @@ need is to change the handling of existing minor versions
 to improve security.  This create the possibility of
 interoperability issues since there is neither a new
 minor version nor a means of distinguishing
-a consistent set of OPTIONAL features supported by the
+a consistent set of
+<bcp14>OPTIONAL</bcp14>
+features supported by the
 server and known to the client.
 </li>
 <li>
@@ -1631,7 +1662,9 @@ recommendations were in effect, clients and server have to
 be aware of the possibility that these recommendations might not
 be followed.   As a result, the effect of these recommendations,
 made to limit security issues, is, from an interoperability point
-of view, similar to those that might arise from OPTIONAL features.
+of view, similar to those that might arise from
+<bcp14>OPTIONAL</bcp14>
+features.
 With regard to the NFSv4 extension framework,
 </t>
 <ul spacing="normal">
@@ -1683,11 +1716,13 @@ These change do potentially raise interoperability issues
 which need to be dealt with by giving sufficient scope, within
 the framework of new recommendations, to accommodate existing
 behavior.  As a result, from an interoperability standpoint,
-these changes are compatible with the previous designation
-of OPTIONAL use, even though the security consequences make
-it necessary that the use of these previously OPTIONAL facilities
-(e.g. transferring data in the
-clear, use of AUTH_SYS without client host authentication)
+these changes are compatible with the previous designation of
+<bcp14>OPTIONAL</bcp14>
+use, even though the security consequences make
+it necessary that the use of these previously
+<bcp14>OPTIONAL</bcp14>
+facilities (e.g. transferring data in the clear,
+use of AUTH_SYS without client host authentication)
 be something to be warned against.
 </t>
 </li>
@@ -1713,9 +1748,11 @@ and integrity services unnecessary.
 </t>
 <t>
 If we were defining a new protocol, such transport-level encryption
-could be REQUIRED without difficulty.  However, given that we are
+could be
+<bcp14>REQUIRED</bcp14> without difficulty.  However, given that we are
 upgrading the security for an existing protocol, it might not be
-possible to designate this encryption as "REQUIRED", since
+possible to designate this encryption as
+"<bcp14>REQUIRED</bcp14>", since
 this might give rise to extensive interoperability problems
 between new and old implementations.  In any case,
 existing implementers of the existing protocol would not have
@@ -1767,7 +1804,8 @@ encryption might not be provided, we will try to restrict them
 to the degree we can reasonably do so.  Further, we will try to
 clearly state the security consequences which implementers and
 those configuring clients and server need to be aware of when
-choosing to not provide the RECOMMENDED encryption.
+choosing to not provide the
+<bcp14>RECOMMENDED</bcp14> encryption.
 </t>
 </section>
 <section anchor="ISSUES-tlse-res" numbered="true" toc="default">
@@ -1781,7 +1819,8 @@ for example, by the following paragraphs.
 <li>
 Data sent over connections used to connect an NFSv4 client
 and server
-SHOULD be encrypted, whether this uses TLS encryption,
+<bcp14>SHOULD</bcp14>
+be encrypted, whether this uses TLS encryption,
 as described in <xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/> (to
 be used for TCP connections) or another form of encryption.
 For example, <xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/> does
@@ -1830,7 +1869,8 @@ will reduce performance dramatically.
 <li>
 Support for confidentiality via encryption is not required
 by <xref target="RFC8881" format="default"/> but only recommended, saying it
-"SHOULD be supported"&gt;
+"<bcp14>SHOULD</bcp14>
+be supported.
 Unfortunately, the document does not specify what might be
 valid reasons not to provide such support. Also, although
 <xref target="RFC2119" format="default"/> states the one choosing not to
@@ -1926,7 +1966,9 @@ still needs to accept such requests.
 </li>
 <li>
 Within NFSv4.1 <xref target="RFC8881" format="default"/>, support for
-SECINFO_NONAME is still REQUIRED when pNFS is
+SECINFO_NONAME is still
+<bcp14>REQUIRED</bcp14>
+when pNFS is
 supported, even if the server only accepts connection
 on which encryption is used, making generation of
 NFS4ERR_WRONGSEC on a connection to the metadata server
@@ -2259,7 +2301,9 @@ While it is sometimes the case that such a task can be accomplished
 by substituting one of the terms defined in <xref target="RFC2119" format="default"/>
 by another, that is not the case here  While the designation of
 AUTH_SYS as optional (to implement) with <xref target="RFC7530" format="default"/>
-and <xref target="RFC8881" format="default"/> using the language "MAY be implemented",
+and <xref target="RFC8881" format="default"/> using the language
+"<bcp14>MAY</bcp14>
+be implemented",
 is wrong and probably needs to be fixed, the situation is more complex
 than generally recognized.  It should be kept in mind that
 these terms are,
@@ -2282,12 +2326,15 @@ NFSv4.0 <xref target="RFC3530" format="default"/>.
 </li>
 <li>
 The Security Considerations Section of
-states "AUTH_SYS SHOULD NOT be used for services that permit
+states "AUTH_SYS
+<bcp14>SHOULD NOT</bcp14>
+be used for services that permit
 clients to modify data", which all versions of NFS clearly are.
 </li>
 <li>
 Section 10 of <xref target="RFC5531" format="default"/> states "Implementors
-MAY include AUTH_SYS in their implementations to support existing
+<bcp14>MAY</bcp14>
+include AUTH_SYS in their implementations to support existing
 applications."  Although this statement was probably intended
 to authorize continued use of AUTH_SYS, the contradiction between
 this statement and the Security Consideration section is not
@@ -2303,7 +2350,9 @@ presumably not be an "existing application".
 <li>
 Turning from <xref target="RFC5531" format="default"/> to
 <xref target="RFC8881" format="default"/> and <xref target="RFC7530" format="default"/>, we find
-AUTH_SYS described  as an OPTIONAL means of authentication, with
+AUTH_SYS described as an
+<bcp14>OPTIONAL</bcp14>
+means of authentication, with
 its security weaknesses not being discussed or treated as a
 significant concern.
 </li>
@@ -2320,7 +2369,9 @@ While we may need to adjust the normative language, the effect of
 doing so is limited for reasons that have already been discussed.
 As a result, we need to put substantial emphasis on clearly
 stating the
-consequences of doing what "SHOULD NOT" (or "should not") be done,
+consequences of doing what
+"<bcp14>SHOULD NOT</bcp14>"
+(or "should not") be done,
 as is
 suggested by <xref target="RFC2119" format="default"/>, at least for the former case.
 </t>
@@ -2331,7 +2382,8 @@ The following text is one way to present the situation:
 <li>
 The use of AUTH_SYS,  as described (incompletely) in
 Appendix A of <xref target="RFC5531" format="default"/> is quite detrimental
-to security and so SHOULD NOT be used.
+to security and so
+<bcp14>SHOULD NOT</bcp14> be used.
 </li>
 <li>
 This is so because it involves accepting requests from clients
@@ -2368,8 +2420,9 @@ if it could not be used.
 Although, as a result of these previous approaches to
 AUTH_SYS without client host authentication,
 it might be used extensively despite the
-security issues that cause us to specify that it "SHOULD
-NOT" be used are sufficient to justify this shift.
+security issues that cause us to specify that it
+"<bcp14>SHOULD NOT</bcp14>"
+be used are sufficient to justify this shift.
 However, due to the difficulty of making such a shift,
 the need to maintain continuity of support is a valid
 reason to continue to use it in this way, as long as
@@ -2489,7 +2542,8 @@ I am assuming that AUTH_SYS with client-host authentication needs
 to be considered inferior to RPCSEC_GSS but sufficiently superior
 to AUTH_SYS without client authentication, to make it desirable
 to encourage its use, given that it is impossible to eliminate
-use of AUTH_SYS, even with a "MUST NOT".
+use of AUTH_SYS, even with a
+"<bcp14>MUST NOT</bcp14>".
 A number of potential introductions to the topic, of varying tone
 are explored below:
 </t>
@@ -2578,7 +2632,8 @@ running as root to successfully masquerade as a previously
 active kernel-based client on that machine, user-level clients
 even privileged ones, will present distinct authentication
 material from a kernel-based client and from each other.   Servers
-SHOULD maintain, persistently, sufficient information so to be
+<bcp14>SHOULD</bcp14>
+maintain, persistently, sufficient information so to be
 able to detect a situation in which process with root privileges
 on a trusted server masquerades as a client previously recognized
 on that and judged secure.
@@ -2602,7 +2657,9 @@ successfully addressed:
 </t>
 <ul spacing="normal">
 <li>
-Server SHOULD provide a means by which specific sets of sensitive
+Server
+<bcp14>SHOULD</bcp14>
+provide a means by which specific sets of sensitive
 files are made inaccessible or unmodifiable by use of
 AUTH_SYS requests, in order to limit the damage that could occur
 in the event that a client compromise allows unauthenticated
@@ -2623,8 +2680,9 @@ or "if-not-#x:".
 </t>
 <ul spacing="normal">
 <li>
-The ability to make AUTH_SYS requests of a server SHOULD be
-limited to those cases in which the client host making those
+The ability to make AUTH_SYS requests of a server
+<bcp14>SHOULD</bcp14>
+be limited to those cases in which the client host making those
 requests can be trusted to appropriately verify a user's credentials
 (e.g. passwords) before issuing RPC requests on that user's
 behalf. [if-#3:  This limitation should be applied even when
@@ -2756,7 +2814,9 @@ This is so however the issues discussed in
 <xref target="ISSUES-asys-resnew" format="default"/> are addressed, and
 independent of the decision made regarding the choice discussed
 in <xref target="ISSUES-asys-rescore" format="default"/> unless it is decided that
-AUTH_SYS MUST NOT be used.   Issues regarding the impersonation
+AUTH_SYS
+<bcp14>MUST NOT</bcp14>
+be used.   Issues regarding the impersonation
 of a large set of users are not relevant because user ids are
 not referenced.   Furthermore, the possibility of a privileged
 user-level client implementing a denial-of-service attach (if
@@ -2933,8 +2993,14 @@ service, particularly those that allow clients to modify data.
 </li>
 <li>
 Similarly, in specifications of Standards track RPC services,
-it is inappropriate to make such use REQUIRED or RECOMMENDED.
-Where such use is allowed at all (whether by "MAY" or "SHOULD NOT"
+it is inappropriate to make such use
+<bcp14>REQUIRED</bcp14>
+or
+<bcp14>RECOMMENDED</bcp14>.
+Where such use is allowed at all (whether by
+"<bcp14>MAY</bcp14>"
+or
+"<bcp14>SHOULD NOT</bcp14>"
 is used), viable non-disruptive alternatives need to provided
 and the associated Security Consideration sections need to clearly
 explain the security consequences of use.
@@ -2956,7 +3022,8 @@ section was
 drafted without consideration of reverse direction operation and
 without consideration the possibility that either TLs encryption
 or client host authentication might be available (and potentially
-REQUIRED), redrafting it to be more appropriate for the
+<bcp14>REQUIRED</bcp14>),
+redrafting it to be more appropriate for the
 environment made possible by <xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/>
 is likely.
 </t>
