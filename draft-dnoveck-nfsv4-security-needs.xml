@@ -698,9 +698,10 @@ existing security weaknesses and make plans to address them.
 <name>Problems with treatment of AUTH_SYS</name>
 <t>
 While <xref target="RFC3530" format="default"/>,
-<xref target="RFC7530" format="default"/>, and <xref target="RFC8881" format="default"/> provide
-for the MANDATORY implementation of RPCSEC_GSS, they do not
-require its use, allowing an opportunity for unauthenticated
+<xref target="RFC7530" format="default"/>, and <xref target="RFC8881" format="default"/>
+state that implementation of RPCSEC_GSS is
+<bcp14>REQUIRED</bcp14>,
+they do not also require its use, allowing an opportunity for unauthenticated
 requests to be issued by attackers targeting the many NFSv4 servers
 in which RPCSEC_GSS is not the only form of authentication provided,
 which appears to
@@ -1797,9 +1798,11 @@ the former.
 </ul>
 <t>
 As we consider how to discuss the need for encryption in
-<xref target="ISSUES-tlse-res" format="default"/>, we will be mindful of the
-above.   Since it not possible to REQUIRE encryption, we will
-RECOMMEND it.  However, in discussing the valid reasons that
+<xref target="ISSUES-tlse-res" format="default"/>,
+we will be mindful of the above.
+Since it not possible to mandate the use of encryption, we will make it
+<bcp14>RECOMMENDED</bcp14>.
+However, in discussing the valid reasons that
 encryption might not be provided, we will try to restrict them
 to the degree we can reasonably do so.  Further, we will try to
 clearly state the security consequences which implementers and
@@ -2069,7 +2072,7 @@ standpoint.
 <name>Background for Existing AUTH_SYS in NFSv4</name>
 <t>
 When NFSv4 was first defined (in <xref target="RFC3530" format="default"/>),
-RPCSEC_GSS was added as a MANDATORY to implement means of
+RPCSEC_GSS was added as a mandatory-to-implement means of
 authentication which was optional to use, presumably under
 the assumption that other optional-to-implement authentication
 flavors, such as AUTH_SYS would be used by some clients
