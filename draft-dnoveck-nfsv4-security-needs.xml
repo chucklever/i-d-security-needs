@@ -117,18 +117,25 @@ resource for the working group, as it creates new standards-track
 documents to address the security issues that exist within NFSv4.
 These potential documents are listed and the likely processes
 expected to be used in producing them are
-discussed in <xref target="STEPS" format="default"/>.
+discussed in
+<xref target="STEPS" format="default" sectionFormat="of"/>.
 </t>
 <t>
 Needed  changes are expected to involve use of new
 transport-level security facilities provided within the RPC layer
-(See <xref target="OPP" format="default"/>).  These will involve the encryption of
+(See
+<xref target="OPP" format="default" sectionFormat="of"/>).
+These will involve the encryption of
 NFSv4 traffic and the probable use of client host authentication
 to improve
 security when AUTH_SYS is used, replacing the security approach
-specified in <xref target="RFC7530" format="default"/> and <xref target="RFC8881" format="default"/>.
+specified in
+<xref target="RFC7530" format="default" sectionFormat="of"/>
+and
+<xref target="RFC8881" format="default" sectionFormat="of"/>.
 For a discussion of issues connected to shifting the security approach
-for existing protocols, see <xref target="SITU-emcorr" format="default"/>.
+for existing protocols, see
+<xref target="SITU-emcorr" format="default" sectionFormat="of"/>.
 </t>
 <t>
 Although most use of NFSv4 is not within the internet, but
@@ -141,8 +148,8 @@ restricting physical access to the network on which the client
 and server interact can result in limiting access to users associated
 with a particular organization, this step does not eliminate the
 need for protocol support for secure operation.  The specific
-environments and the corresponding security needs are discussed
-in <xref target="SITU-env" format="default"/>.
+environments and the corresponding security needs are discussed in
+<xref target="SITU-env" format="default" sectionFormat="of"/>.
 </t>
 </section>
 
@@ -161,8 +168,8 @@ The key words "<bcp14>MUST</bcp14>", "<bcp14>MUST NOT</bcp14>",
 "<bcp14>MAY</bcp14>", and "<bcp14>OPTIONAL</bcp14>"
 in this document are to be interpreted
 as described in BCP&nbsp;14
-<xref target="RFC2119" format="default"/>
-<xref target="RFC8174" format="default"/>
+<xref target="RFC2119" format="default" sectionFormat="of"/>
+<xref target="RFC8174" format="default" sectionFormat="of"/>
 when, and only when, they appear in all capitals, as shown here.
 </t>
 </section>
@@ -176,13 +183,16 @@ when, and only when, they appear in all capitals, as shown here.
 <t>
 Because this is an informational document, it will generally not
 make normative statements including the keywords discussed in
-<xref target="TERM" format="default"/>.   However, in discussing the existing
+<xref target="TERM" format="default" sectionFormat="of"/>.
+However, in discussing the existing
 treatment of security in the NFSv4 protocols, there will be
 occasions in which we include quotations (most often
 direct but sometimes
 indirect) from existing standards-track documents that use these
 keywords.  In such cases, the definitions
-within BCP 14 <xref target="RFC2119" format="default"/> <xref target="RFC8174" format="default"/>
+within BCP&nbsp;14
+<xref target="RFC2119" format="default" sectionFormat="of"/>
+<xref target="RFC8174" format="default" sectionFormat="of"/>
 are to be adhered to when the terms appear in all-capitals.
 </t>
 <t>
@@ -378,7 +388,10 @@ for an explanation and we will attempt to provide one.
 </t>
 <t>
 One possible form this might take would be to
-explain why <xref target="RFC7530" format="default"/> and <xref target="RFC5661" format="default"/>
+explain why
+<xref target="RFC7530" format="default" sectionFormat="of"/>
+and
+<xref target="RFC5661" format="default" sectionFormat="of"/>
 made erroneous choices, with accompanying commentary explaining
 the choices that should have been made instead.
 </t>
@@ -388,8 +401,11 @@ it would not have been possible for the authors and approvers of these
 documents to reach the conclusions we have adopted without an
 implausible level of foresight on their part.
 This is so even though we would not adopt the choices made
-in  <xref target="RFC7530" format="default"/>
-and <xref target="RFC5661" format="default"/> today.  Knowing what was known then,
+in
+<xref target="RFC7530" format="default" sectionFormat="of"/>
+and
+<xref target="RFC5661" format="default" sectionFormat="of"/>
+today.  Knowing what was known then,
 we might well have made the same choices, although it is hard not to
 fault the lack of attention, in the relevant documents, to the
 security consequences of the decisions made.
@@ -411,7 +427,8 @@ history of NFS and take note of the context in which assumptions were
 established with regard to security or changes in security guidance
 occurred.  In understanding this history and the choices of
 RFC2119-defined keywords, the constraints on the working group need
-to be understood, as described in <xref target="CORR-norm" format="default"/>
+to be understood, as described in
+<xref target="CORR-norm" format="default" sectionFormat="of"/>
 </t>
 <ul spacing="normal">
 <li>
@@ -447,7 +464,8 @@ as use of AUTH_SYS remained quite common.
 </t>
 <t>
 While it is possible to interpret the treatment of the matter in
-<xref target="RFC3530" format="default"/> as implying that these two (i.e. RPCSEC_GSS
+<xref target="RFC3530" format="default" sectionFormat="of"/>
+as implying that these two (i.e. RPCSEC_GSS
 and AUTH_SYS) were equivalent and to find fault with that implication,
 it is not clear how different choices would have led to a
 better result.  In particular, attempts to deprecate AUTH_SYS (e.g.
@@ -475,12 +493,16 @@ users on whose behalf requests were being made.
 </t>
 </li>
 <li>
-In the ten years since <xref target="RFC5661" format="default"/> was published,
+In the ten years since
+<xref target="RFC5661" format="default" sectionFormat="of"/>
+was published,
 there was no way to address new security needs without creating
 an essentially new protocol, on the order of NFSv4.1, and there
 was little interest in doing that.
 Within the
-framework established by <xref target="RFC8178" format="default"/>, there was
+framework established by
+<xref target="RFC8178" format="default" sectionFormat="of"/>,
+there was
 provision for the addition of
 <bcp14>OPTIONAL</bcp14>
 features, while addressing
@@ -512,14 +534,17 @@ on the client and server.
 <li>
 We have the option of providing state protection (to prevent
 clients interfering with one another) without the special
-implementation work specified in <xref target="RFC8881" format="default"/>
+implementation work specified in
+<xref target="RFC8881" format="default" sectionFormat="of"/>.
 </li>
 </ul>
 <t>
 These options have been made available by the work at the RPC layer
-described in <xref target="OPP" format="default"/> while the specifics of
+described in
+<xref target="OPP" format="default" sectionFormat="of"/>
+while the specifics of
 having NFSv4 take advantage of these options are described in
-<xref target="ISSUES" format="default"/>.
+<xref target="ISSUES" format="default" sectionFormat="of"/>.
 </t>
 <t>
 Providing a new security approach for multiple existing protocols
@@ -530,8 +555,11 @@ security inadequacies need to be addressed, requires that
 significant changes be made.
 It is our expectation that the situation
 will be resolved by the eventual publication of a Standards-track
-document updating <xref target="RFC7530" format="default"/> and
-<xref target="RFC8881" format="default"/> and much of this document will concern
+document updating
+<xref target="RFC7530" format="default" sectionFormat="of"/>
+and
+<xref target="RFC8881" format="default" sectionFormat="of"/>
+and much of this document will concern
 itself with determining how the needed changes can resolve existing
 security issues without undue disruption.
 </t>
@@ -547,11 +575,13 @@ security issues without undue disruption.
 <name>Major Problems to Address</name>
 <t>
 The problems to be addressed concern the way that security
-information has been conveyed in earlier specifications (discussed
-in <xref target="PROB-pres" format="default"/>) as well as
+information has been conveyed in earlier specifications (discussed in
+<xref target="PROB-pres" format="default" sectionFormat="of"/>)
+as well as
 two sets of substantive security weaknesses discussed in Sections
-<xref target="PROB-authsys" format="counter"/> and
-<xref target="PROB-conf" format="counter"/>.
+<xref target="PROB-authsys" format="counter" sectionFormat="of"/>
+and
+<xref target="PROB-conf" format="counter" sectionFormat="of"/>.
 </t>
 <t>
 Although the inadequacies in the presentation of security issues
@@ -583,13 +613,13 @@ addressed.
 Problems with the overall presentation of NFSv4 security,
 particularly the discussion
 of the security architecture will be dealt with in
-<xref target="PROB-pres-sa" format="default"/>.
+<xref target="PROB-pres-sa" format="default" sectionFormat="of"/>.
 </t>
 <t>
 Problems with the evaluation of NFSv4 security including
 the lack of a threat analysis and the contents of the
 Security considerations sections will be dealt with in
-<xref target="PROB-pres-sc" format="default"/>.
+<xref target="PROB-pres-sc" format="default" sectionFormat="of"/>.
 </t>
 
 <section
@@ -655,7 +685,9 @@ be exploited by monitoring attacks.
 </li>
 <li>
 <t>
-The addition of pNFS to NFSv4.1 <xref target="RFC5661" format="default"/> required
+The addition of pNFS to NFSv4.1
+<xref target="RFC5661" format="default" sectionFormat="of"/>
+required
 that there be a means of providing that the proper quality of
 protection by provided by the a pNFS data server implementing the
 files mapping type.   Given that SECINFO is namespace-oriented,
@@ -664,7 +696,8 @@ data server, to provide this functionality.
 </t>
 <t>
 This security-related change, while explained adequately in
-<xref target="RFC8881" format="default"/>, is not mentioned in the description
+<xref target="RFC8881" format="default" sectionFormat="of"/>,
+is not mentioned in the description
 of the security architecture or the Security
 Considerations section.   As this feature does create new threats,
 it should have been mentioned in the
@@ -679,11 +712,14 @@ overview of the NFSv4 security architecture.
 </li>
 <li>
 <t>
-The implementation of sessions in NFSv4.1 <xref target="RFC5661" format="default"/>
+The implementation of sessions in NFSv4.1
+<xref target="RFC5661" format="default" sectionFormat="of"/>
 created a requirement to protect clients from one another, even
 when they were making requests on behalf of the same user.
 Although adequate means of dealing with this issue were
-described in <xref target="RFC5661" format="default"/>, they were
+described in
+<xref target="RFC5661" format="default" sectionFormat="of"/>,
+they were
 <bcp14>OPTIONAL</bcp14>
 features and implementation has been very limited.
 </t>
@@ -700,8 +736,9 @@ as opposed to the client users on whose behalf it is acting,
 although no work has been undertaken to make this a basic element
 of NFSv4 security.  Despite the delay, the issue now seems on its
 way to effective resolution, using the work done in
-<xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/>, as described in
-<xref target="ISSUES-stp" format="default"/>.
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>,
+as described in
+<xref target="ISSUES-stp" format="default" sectionFormat="of"/>.
 </t>
 </li>
 </ul>
@@ -721,9 +758,11 @@ some gaps to fill.
 <t>
 The principal difficulty in the overall approach to security taken
 in the Security Considerations section of
-<xref target="RFC7530" format="default"/> and <xref target="RFC8881" format="default"/> concerns
-the absence of a threat analysis within these documents.  The absence of such an analysis has
-meant that:
+<xref target="RFC7530" format="default" sectionFormat="of"/>
+and
+<xref target="RFC8881" format="default" sectionFormat="of"/>
+concerns the absence of a threat analysis within these documents.
+The absence of such an analysis has meant that:
 </t>
 <ul spacing="normal">
 <li>
@@ -754,8 +793,11 @@ existing security weaknesses and make plans to address them.
  toc="default">
 <name>Problems with treatment of AUTH_SYS</name>
 <t>
-While <xref target="RFC3530" format="default"/>,
-<xref target="RFC7530" format="default"/>, and <xref target="RFC8881" format="default"/>
+While
+<xref target="RFC3530" format="default" sectionFormat="of"/>,
+<xref target="RFC7530" format="default" sectionFormat="of"/>,
+and
+<xref target="RFC8881" format="default" sectionFormat="of"/>
 state that implementation of RPCSEC_GSS is
 <bcp14>REQUIRED</bcp14>,
 they do not also require its use, allowing an opportunity for unauthenticated
@@ -787,7 +829,8 @@ the question of what is being authenticated, and by whom.
 The substance of the server and client implementations
 are not clearly described in standards-track documents,
 although there is some
-incomplete information on the topic in <xref target="RFC5531" format="default"/>.
+incomplete information on the topic in
+<xref target="RFC5531" format="default" sectionFormat="of"/>.
 </li>
 <li>
 There is no clear and complete description of the security
@@ -795,7 +838,8 @@ consequences of implementing it and using it.
 </li>
 <li>
 Despite the fact that it was designated "insecure" in
-<xref target="RFC5531" format="default"/>, it continued to be used heavily
+<xref target="RFC5531" format="default" sectionFormat="of"/>,
+it continued to be used heavily
 by implementations of all NFSv4 minor versions.
 </li>
 </ul>
@@ -803,9 +847,11 @@ by implementations of all NFSv4 minor versions.
 The common use of AUTH_SYS, which has continued until now, arose
 from the early history
 of NFS and its development, as part of the RPC authentication
-function, together with NFSv2 <xref target="RFC1094" format="default"/> and
-NFSv3 <xref target="RFC1813" format="default"/>.  That
-approach, in which security was
+function, together with NFSv2
+<xref target="RFC1094" format="default" sectionFormat="of"/>
+and NFSv3
+<xref target="RFC1813" format="default" sectionFormat="of"/>.
+That approach, in which security was
 made the responsibility of large multi-user clients trusted by the
 servers, might have made sense when it was developed, but, as things
 changed, became less relevant to NFSv4 security needs.
@@ -822,9 +868,10 @@ A number of common practices which servers have typically used in
 determining whether AUTH_SYS requests would be accepted are
 mentioned
 in associated standards-track documents (i.e. in
-<xref target="RFC5531" format="default"/>, <xref target="RFC7530" format="default"/>,
-RFC8881 <xref target="RFC8881" format="default"/>) often without clear
-discussion of their obvious security weaknesses.
+<xref target="RFC5531" format="default" sectionFormat="of"/>,
+<xref target="RFC7530" format="default" sectionFormat="of"/>,
+<xref target="RFC8881" format="default" sectionFormat="of"/>)
+often without clear discussion of their obvious security weaknesses.
 </t>
 <t>
 As a result of the lack of attention to AUTH_SYS, there is no
@@ -846,7 +893,8 @@ of the request.
 <t>
 The possibility of address spoofing is not discussed, although
 the Security Considerations section of
-<xref target="RFC7530" format="default"/> does state that this is "certainly not a
+<xref target="RFC7530" format="default" sectionFormat="of"/>
+does state that this is "certainly not a
 safe model", most likely alluding to this possibility.  This
 recognition is not followed up on to call into question the
 use of AUTH_SYS as an optional security flavor (stated earlier in
@@ -871,7 +919,9 @@ reasonableness of continued use of
 AUTH_SYS or other effective action to address the issue.
 </t>
 <t>
-Appendix A of <xref target="RFC5531" format="default"/> refers to this
+Appendix A of
+<xref target="RFC5531" format="default" sectionFormat="of"/>
+refers to this
 practice as follows:
 </t>
 <blockquote>
@@ -920,7 +970,8 @@ could be developed using these documents or subjected to a threat
 analysis, even if one were to be attempted.
 </t>
 <t>
-The Security Considerations section of <xref target="RFC5531" format="default"/>
+The Security Considerations section of
+<xref target="RFC5531" format="default" sectionFormat="of"/>
 states that AUTH_SYS is "known to be insecure" and further states
 "AUTH_SYS
 <bcp14>SHOULD NOT</bcp14> be used for services that permit clients to
@@ -940,7 +991,8 @@ Take steps to eliminate or otherwise minimize
 use of AUTH_SYS as a valid
 authentication flavor, either for NFSv4 as a whole or
 for minor versions based on NFSv4.1, whose description was
-published as a Proposed Standard after <xref target="RFC5531" format="default"/>,
+published as a Proposed Standard after
+<xref target="RFC5531" format="default" sectionFormat="of"/>,
 which stated that AUTH_SYS was "known to be insecure".
 </t>
 <t>
@@ -969,12 +1021,15 @@ the user ids to be used for each request sent.
 <t>
 To do this we would authenticate client hosts issuing
 AUTH_SYS requests taking advantage of the authentication
-provided by <xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/> as
-described in <xref target="OPP-auth" format="default"/>.   There is also a
+provided by
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>
+as described in
+<xref target="OPP-auth" format="default" sectionFormat="of"/>.
+There is also a
 more detailed discussion of issues to be addressed
 in establishing
 the rules for this form of authentication in
-<xref target="ISSUES-asys-resnew" format="default"/>.
+<xref target="ISSUES-asys-resnew" format="default" sectionFormat="of"/>.
 </t>
 </li>
 </ul>
@@ -997,12 +1052,15 @@ the negative effect on the security of NFSv4 implementations
 Because of the current predominant role of AUTH_SYS in existing
 NFSv4 implementations, providing better security while remaining
 within the AUTH_SYS framework will also be difficult because of
-the issues discussed in <xref target="CORR-norm" format="default"/>.  Nevertheless,
+the issues discussed in
+<xref target="CORR-norm" format="default" sectionFormat="of"/>.
+Nevertheless,
 we feel it needs to be attempted, as a new security framework
 cannot address AUTH_SYS without clearly discussing its security
 weaknesses.  Once that is done, we need to take advantage of the
 ability to effect client host authentication provided by
-<xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/> to provide a modicum
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>
+to provide a modicum
 of security while allowing administrators to delegate credential
 checking to trusted clients as they are now accustomed to doing.
 </t>
@@ -1034,9 +1092,11 @@ far-from-ideal, alternative
 Despite this summary of the author's views on this matter, this
 question is ultimately a matter for working group decision.
 For a further
-discussion of related issues, see <xref target="ISSUES-asys-rescore" format="default"/>.
+discussion of related issues, see
+<xref target="ISSUES-asys-rescore" format="default" sectionFormat="of"/>.
 Although the rest of this document is written assuming that the
-author's choice will be selected, <xref target="ISSUES-asys-rescore" format="default"/>
+author's choice will be selected,
+<xref target="ISSUES-asys-rescore" format="default" sectionFormat="of"/>
 explains the changes to the eventual standards-track document that
 would be required if different choices were to be made.
 </t>
@@ -1118,9 +1178,12 @@ most often because of performance concerns.
 <li>
 Implementation of confidentiality requirements may face
 difficulties due to uncertainty about whether client encryption
-support is available.  For example, <xref target="RFC7530" format="default"/>
+support is available.  For example,
+<xref target="RFC7530" format="default" sectionFormat="of"/>
 specifies that privacy support is required (although only for
-krb5), while <xref target="RFC8881" format="default"/> says only that clients
+krb5), while
+<xref target="RFC8881" format="default" sectionFormat="of"/>
+says only that clients
 "<bcp14>SHOULD</bcp14>"
 support privacy.  The document give no guidance regarding
 what might be considered valid reasons to not support privacy,
@@ -1197,11 +1260,12 @@ Given these weaknesses with regard to encryption,
 those needing to use NFSv4 outside
 local area networks often implemented NFSv4 over secure tunnels.
 As this work proceeded, it served as an inspiration for the
-work done in <xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/> that
-provided the opportunity to provide encryption uniformly and
+work done in
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>
+that provided the opportunity to provide encryption uniformly and
 potentially with high performance.   An overview of steps
 necessary to address these issues appears in
-<xref target="OPP-enc" format="default"/>
+<xref target="OPP-enc" format="default" sectionFormat="of"/>.
 </t>
 </section>
 
@@ -1217,7 +1281,8 @@ necessary to address these issues appears in
 This section addresses the fundamental issues of the organization and
 presentation of a new security framework.  The complementary issues
 involved in making substantive improvements in NFSv4 security will be
-dealt with in <xref target="OPP" format="default"/>.
+dealt with in
+<xref target="OPP" format="default" sectionFormat="of"/>.
 </t>
 
 <section
@@ -1228,54 +1293,61 @@ dealt with in <xref target="OPP" format="default"/>.
 <name>Correcting Problems with Regard to Threat Analyses</name>
 <t>
 Of prime importance is the inclusion of appropriate threat analyses,
-even apart from the requirement (in BCP72
-<xref target="RFC3552" format="default"/>) that such analyses appear in Security
-Considerations sections.  As we have already seen, without such an
+even apart from the requirement (in BCP&nbsp;72
+<xref target="RFC3552" format="default" sectionFormat="of"/>)
+that such analyses appear in Security Considerations sections.
+As we have already seen, without such an
 analysis, there is no way to determine whether any security changes
 adopted are adequate to address NFSv4's security difficulties.  In
 the case of NFSv4, because of its complicated history and the
 conflict
 between the status of AUTH_SYS as specified by the NFSv4
 specification
-documents (<xref target="RFC7530" format="default"/>, <xref target="RFC8881" format="default"/>)
+documents
+(<xref target="RFC7530" format="default" sectionFormat="of"/>,
+<xref target="RFC8881" format="default" sectionFormat="of"/>)
 and that in
-<xref target="RFC5531" format="default"/>, there might be multiple analyses,
-located in
-different places:
+<xref target="RFC5531" format="default" sectionFormat="of"/>,
+there might be multiple analyses, located in different places:
 </t>
 <ul spacing="normal">
 <li>
 Because the security needs of the various minor versions are so
 similar, the bulk of the analysis could appear in an NFSv4-wide
-standards-track document
-updating <xref target="RFC7530" format="default"/> and
-<xref target="RFC8881" format="default"/>.
+standards-track document updating
+<xref target="RFC7530" format="default" sectionFormat="of"/> and
+<xref target="RFC8881" format="default" sectionFormat="of"/>.
 </li>
 <li>
 The case of a threat analysis for AUTH_SYS raises a special set
 of issues.  Currently, AUTH_SYS is discussed and
-declared "insecure"
-within <xref target="RFC5531" format="default"/> with no threat analysis appearing
+declared "insecure" within
+<xref target="RFC5531" format="default" sectionFormat="of"/>
+with no threat analysis appearing
 within the document.  A new threat analysis could
 appear in the NFSv4-wide security document referred to above
 but the fact that AUTH_SYS might be considered as part of
 RPC rather than of NFSv4, might dictate otherwise.
 Such an analysis might appear in
-a document updating <xref target="RFC5531" format="default"/>, or in a new
+a document updating
+<xref target="RFC5531" format="default" sectionFormat="of"/>,
+or in a new
 document devoted to that specific purpose.   Whichever choice is
 made, there will be a need for a document updating
-<xref target="RFC5531" format="default"/>.
+<xref target="RFC5531" format="default" sectionFormat="of"/>.
 </li>
 </ul>
 <t>
 The appropriate location of a threat analysis for AUTH_SYS as
 currently used depends on the question of whether to consider
 AUTH_SYS as part of RPC, as it formally is, or to transfer
-responsibility to NFSv4, since it was deprecated as insecure
-in <xref target="RFC5531" format="default"/>, while at the same time embedded
+responsibility to NFSv4, since it was deprecated as insecure in
+<xref target="RFC5531" format="default" sectionFormat="of"/>,
+while at the same time embedded
 as a heavily used optional feature for all minor versions of
 NFSv4, including a new protocol, NFSv4.1 published as a Proposed
-Standard subsequently, in <xref target="RFC5661" format="default"/>.
+Standard subsequently, in
+<xref target="RFC5661" format="default" sectionFormat="of"/>.
 </t>
 <t>
 Also relevant to the question of the appropriate location for
@@ -1284,7 +1356,7 @@ need for a revised treatment of AUTH_SYS including client host
 authentication.  The possible existence of such a revised
 treatment,  together with issues related to a threat analysis
 necessary for its inclusion is discussed in
-<xref target="ISSUES-asys-doc" format="default"/>.
+<xref target="ISSUES-asys-doc" format="default" sectionFormat="of"/>.
 </t>
 </section>
 
@@ -1296,7 +1368,8 @@ necessary for its inclusion is discussed in
 <name>Correcting Problems with Regard to Use of Normative Terms</name>
 <t>
 Another important issue concerns the potential need for adjustment of
-inappropriate use of terms defined by RFC2119 <xref target="RFC2119" format="default"/>,
+inappropriate use of terms defined by
+<xref target="RFC2119" format="default" sectionFormat="of"/>,
 particularly any suggestion that use of AUTH_SYS may be validly used
 without important security consequences, as suggested by the current
 understanding that its use is optional.
@@ -1305,7 +1378,8 @@ understanding that its use is optional.
 However, as desirable as such clarifications might be, it is
 necessary
 that we be realistic about what such changes can accomplish, even if
-the particular issues cited in <xref target="TERM-usage" format="default"/>
+the particular issues cited in
+<xref target="TERM-usage" format="default" sectionFormat="of"/>
 are properly
 attended to.  Documents can be written to define certain
 implementations
@@ -1338,7 +1412,9 @@ choice
 is likely to be similarly reduced.
 </t>
 <t>
-Although <xref target="RFC2119" format="default"/> provides definitions of
+Although
+<xref target="RFC2119" format="default" sectionFormat="of"/>
+provides definitions of
 "<bcp14>SHOULD</bcp14>"
 and
 "<bcp14>SHOULD NOT</bcp14>",
@@ -1346,8 +1422,8 @@ it is difficult to determine the proper interpretation
 unless it is clear what the "valid reasons" that might supersede
 the recommendation or the expected consequences of doing so.  For
 this reason, when these terms are used in proposed text, we will make such
-matters explicit, where they are not otherwise clear, as suggested
-by Section 7 of <xref target="RFC2119" format="default"/>.
+matters explicit, where they are not otherwise clear, as suggested by 
+<xref target="RFC2119" section="7" format="default" sectionFormat="of"/>.
 </t>
 </section>
 
@@ -1361,25 +1437,33 @@ by Section 7 of <xref target="RFC2119" format="default"/>.
 <name>Opportunities for Improvement Provided by Recent Work within the RPC Layer</name>
 <t>
 The work done to provide TLS support for RPC
-(in <xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/>) presents an important
+(in
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>)
+presents an important
 opportunity to address the substantive security problems described in
-Sections <xref target="PROB-authsys" format="counter"/> and
-<xref target="PROB-conf" format="counter"/>.   While there will be
+Sections
+<xref target="PROB-authsys" format="counter" sectionFormat="of"/>
+and
+<xref target="PROB-conf" format="counter" sectionFormat="of"/>.
+While there will be
 a need to specify appropriate policies for its use by NFSv4 as a
 ULP (see
-Sections <xref target="ISSUES-tlse-res" format="counter"/> and
-<xref target="ISSUES-asys-resnew" format="counter"/>
+Sections
+<xref target="ISSUES-tlse-res" format="counter" sectionFormat="of"/>
+and
+<xref target="ISSUES-asys-resnew" format="counter" sectionFormat="of"/>
 for details), the following opportunities present themselves
 and are likely to be taken advantage of:
 </t>
 <ul spacing="normal">
 <li>
 The use of transport-level encryption is a good way of dealing
-with the inadequacies discussed in <xref target="PROB-conf" format="default"/>.
+with the inadequacies discussed in
+<xref target="PROB-conf" format="default" sectionFormat="of"/>.
 The use of a single key per connection makes offloaded
 implementations possible allowing use for all requests including
 those currently not encrypted.  This is discussed in more
-detail in <xref target="OPP-enc" format="default"/>
+detail in <xref target="OPP-enc" format="default" sectionFormat="of"/>
 </li>
 <li>
 Authentication of the client host, as provided by the
@@ -1388,11 +1472,13 @@ material presented at connection initialization might be used
 to authenticate the client host, to avoid acceptance of
 AUTH_SYS requests from unauthenticated clients.
 This is discussed in more
-detail in <xref target="OPP-auth" format="default"/>
+detail in <xref target="OPP-auth" format="default" sectionFormat="of"/>
 </li>
 </ul>
 <t>
-Although <xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/>) does not provide
+Although
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>)
+does not provide
 support for RDMA transports, parallel services to provide encryption
 and authentication are expected to be available, as discussed in
 <xref target="OPP-rdma" format="default"/>.
@@ -1405,18 +1491,20 @@ and authentication are expected to be available, as discussed in
  toc="default">
 <name>Opportunities for Improvement in Encryption</name>
 <t>
-<xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/> provides the ability
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>
+provides the ability
 to encrypt all traffic on the connection used between an NFSv4
 client and server.   This requires that that both the client and
 server provide support for RPC-over-TLS.  Appropriate
 requirements/recommendations are discussed in
-<xref target="ISSUES-tlse-res" format="default"/>.
+<xref target="ISSUES-tlse-res" format="default" sectionFormat="of"/>.
 </t>
 <t>
 Because this facility is based on an opportunistic use of TLS,
 there is a need for ULP-defined policies to deal with situations
 in which the server rejected the request for a TLS connection.
-These matters are discussed in <xref target="ISSUES-tlse-res" format="default"/>
+These matters are discussed in
+<xref target="ISSUES-tlse-res" format="default" sectionFormat="of"/>
 as well, as is the policy that servers are to adopt when dealing
 with a connection on which RPC-over-TLS is not requested.
 </t>
@@ -1439,19 +1527,21 @@ that might be present for a given client and server.
 <name>Opportunities for Improvement in Authentication</name>
 <t>
 When establishing a connection, as provided for by
-<xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/>, authentication
-material is provided by the client and could be used to
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>,
+authentication material is provided by the client and could be used to
 authenticate the client host to the server.
 </t>
 <t>
 By using this authentication material to authenticate the
 client host, it would be possible
 to correct some of the issues discussed in
-<xref target="PROB-authsys" format="default"/>.  This would involve
+<xref target="PROB-authsys" format="default" sectionFormat="of"/>.
+This would involve
 clearly specifying how that material is to be used,
 in contrast to the situation for the existing AUTH_SYS,
 for which current documentation (in Appendix A of
-<xref target="RFC5531" format="default"/>) is quite limited.
+<xref target="RFC5531" format="default" sectionFormat="of"/>)
+is quite limited.
 Any such respecification would need to be acceptable to those
 used to using AUTH_SYS while avoiding the security issues
 that make its further use, in the old form,
@@ -1480,7 +1570,8 @@ limitations of "root squashing".
 </ul>
 <t>
 The details of how the authentication material could be
-used are discussed <xref target="ISSUES-asys-resnew" format="default"/>.
+used are discussed
+<xref target="ISSUES-asys-resnew" format="default" sectionFormat="of"/>.
 </t>
 </section>
 
@@ -1491,7 +1582,9 @@ used are discussed <xref target="ISSUES-asys-resnew" format="default"/>.
  toc="default">
 <name>Opportunities for Improvement when Using RDMA Transports</name>
 <t>
-As noted above, <xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/>) is not
+As noted above,
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>)
+is not
 supported on RDMA transports, making it necessary to provide
 appropriate support for encryption and client host authentication
 in other ways.
@@ -1506,21 +1599,26 @@ from our point of view.   However, the client and server could
 be configured to take advantage of this encryption, when it is
 judged appropriate to do so by those responsible. In addition,
 the transport characteristics mechanism defined in
-<xref target="I-D.ietf-nfsv4-rpcrdma-version-two" format="default"/> could allow
+<xref target="I-D.ietf-nfsv4-rpcrdma-version-two" format="default" sectionFormat="of"/>
+could allow
 those configuring the client and server to make independent
 judgments on encryption adequacy, with RPCSEC_GSS integrity and
 encryption only superseded, when both agree.
-(See <xref target="ISSUES-tlse-res" format="default"/> for details).
+(See
+<xref target="ISSUES-tlse-res" format="default" sectionFormat="of"/>
+for details).
 </li>
 <li>
 Authentication material to support client host authentication
 can be provided by using the transport properties mechanism
-provided for in <xref target="I-D.ietf-nfsv4-rpcrdma-version-two" format="default"/>.
+provided for in
+<xref target="I-D.ietf-nfsv4-rpcrdma-version-two" format="default" sectionFormat="of"/>.
 </li>
 </ul>
 <t>
 It should be noted that our need to normatively reference
-<xref target="I-D.ietf-nfsv4-rpcrdma-version-two" format="default"/> would affect the
+<xref target="I-D.ietf-nfsv4-rpcrdma-version-two" format="default" sectionFormat="of"/>
+would affect the
 schedule of a standards-track document dealing with NFSv4 security.
 Given that the current milestone for requesting publication is
 December 2020, this not expected to pose an obstacle.
@@ -1539,10 +1637,14 @@ December 2020, this not expected to pose an obstacle.
 These sections discuss the issues that need to be addressed by
 new standards-track documents including both issues of the
 presentation/evaluation of NFSv4
-(discussed in <xref target="PROB-pres" format="default"/>) and the substantive security
+(discussed in
+<xref target="PROB-pres" format="default" sectionFormat="of"/>)
+and the substantive security
 weaknesses discussed in Sections
-<xref target="PROB-authsys" format="counter"/> and
-<xref target="PROB-conf" format="counter"/>.   For each issue
+<xref target="PROB-authsys" format="counter" sectionFormat="of"/>
+and
+<xref target="PROB-conf" format="counter" sectionFormat="of"/>.
+For each issue
 there is a section providing background followed by information
 suggesting how the issue would be addressed or issues that would need
 to be resolved before the issue could be addressed.
@@ -1565,7 +1667,8 @@ to be resolved before the issue could be addressed.
 For reasons that remain unclear, none of the specification
 documents for the existing NFSv4 minor versions contain a
 threat analysis.   As a result, for the reasons discussed in
-<xref target="PROB-pres" format="default"/>, we need to provide an appropriate
+<xref target="PROB-pres" format="default" sectionFormat="of"/>,
+we need to provide an appropriate
 threat analysis for all NFSv4 minor versions.  Because of the
 high degree of overlap between pairs of NFSv4 minor versions,
 most of the analysis will be common to all versions.  However,
@@ -1575,8 +1678,9 @@ have significant security implications:
 <ul spacing="normal">
 <li>
 <t>
-In NFSv4.1 <xref target="RFC5661" format="default"/>, SECINFO_NO_NAME was
-added, in large part because it would be necessary to allow
+In NFSv4.1
+<xref target="RFC5661" format="default" sectionFormat="of"/>,
+SECINFO_NO_NAME was added, in large part because it would be necessary to allow
 the data server, when the pNFS file mapping type is used, to
 communicate to the client that either integrity or encryption
 would be required when access to file data was provided
@@ -1585,22 +1689,26 @@ server (as opposed to the metadata server).
 </t>
 <t>
 The use of TLS-based encryption, which we expect to be
-recommended (see <xref target="ISSUES-tlse-res" format="default"/>, may limit
-the need for this feature, but it will remain
+recommended (see
+<xref target="ISSUES-tlse-res" format="default" sectionFormat="of"/>,
+may limit the need for this feature, but it will remain
 <bcp14>REQUIRED</bcp14>,
 when file-based pNFS is implemented.
 </t>
 </li>
 <li>
 <t>
-NFSv4.1 <xref target="RFC5661" format="default"/> facilities were added to
+NFSv4.1
+<xref target="RFC5661" format="default" sectionFormat="of"/>
+facilities were added to
 protect locking and session-related state from modification
 by other servers (i.e. SP4_MACHCRED and SP4_SSV).
 </t>
 <t>
 These features have had very limited implementation work, so
 it would be desirable to provide alternative means to achieve
-the goal, as described in <xref target="ISSUES-stp" format="default"/>.
+the goal, as described in
+<xref target="ISSUES-stp" format="default" sectionFormat="of"/>.
 </t>
 </li>
 </ul>
@@ -1608,13 +1716,15 @@ the goal, as described in <xref target="ISSUES-stp" format="default"/>.
 While the bulk of the threat analysis would be minor-version-
 independent, differences between minor version will have to be
 noted, as will differences that reflect uses of the facilities
-discussed in <xref target="OPP" format="default"/>.
+discussed in
+<xref target="OPP" format="default" sectionFormat="of"/>.
 </t>
 <t>
 Beyond the lack of NFsv4 threat analyses, there is a further
 problem in that there is no threat analysis dealing with the
-AUTH_SYS case in the existing RPC specification, RFC5531
-<xref target="RFC5531" format="default"/>.  In this case,
+AUTH_SYS case in the existing RPC specification
+<xref target="RFC5531" format="default" sectionFormat="of"/>.
+In this case,
 the gap is easier to understand since RPC deals with security on
 a per-flavor basis and declares AUTH_SYS as "insecure".
 It may well
@@ -1667,7 +1777,7 @@ accepted and potentially acted upon.   The difficulty is further
 compounded by the fact that the client validation checks made
 by actual implementations are
 not fully described within RFC (They are described above in
-<xref target="PROB-authsys" format="default"/>)
+<xref target="PROB-authsys" format="default" sectionFormat="of"/>).
 </li>
 </ul>
 </section>
@@ -1683,16 +1793,18 @@ It is expected that a threat analysis dealing with all NFSv4 minor
 will be dealt with in new standards-track document dealing
 with NFSv4 security.  Because this document will address
 security for all minor versions, it will update
-<xref target="RFC7530" format="default"/>,
-<xref target="RFC8881" format="default"/>, and <xref target="RFC7862" format="default"/>.
+<xref target="RFC7530" format="default" sectionFormat="of"/>,
+<xref target="RFC8881" format="default" sectionFormat="of"/>,
+and
+<xref target="RFC7862" format="default" sectionFormat="of"/>.
 </t>
 <t>
 There will, in addition, be a need for a threat analysis
 dealing with AUTH_SYS, which might or might not appear
-in the NFSv4-wide security document for reasons explained
-in <xref target="CORR-threat" format="default"/>. The question of
-where this best be done
-is discussed in <xref target="ISSUES-asys-doc" format="default"/>.
+in the NFSv4-wide security document for reasons explained in
+<xref target="CORR-threat" format="default" sectionFormat="of"/>.
+The question of where this best be done is discussed in
+<xref target="ISSUES-asys-doc" format="default" sectionFormat="of"/>.
 </t>
 </section>
 
@@ -1713,13 +1825,15 @@ is discussed in <xref target="ISSUES-asys-doc" format="default"/>.
 <name>Background</name>
 <t>
 The basic framework for the extension of NFSv4 was
-established by <xref target="RFC8178" format="default"/>.  Given that the
+established by
+<xref target="RFC8178" format="default" sectionFormat="of"/>.
+Given that the
 anticipated standards-track document dealing with NFSv4
 security will, in a sense, extend NFSv4, there might
 be some uncertainty about whether the changes anticipated are in line
 with that extension framework and whether there might be
-a need for
-that document to update <xref target="RFC8178" format="default"/>.
+a need for that document to update
+<xref target="RFC8178" format="default" sectionFormat="of"/>.
 </t>
 <t>
 The following questions need to be addressed:
@@ -1727,14 +1841,14 @@ The following questions need to be addressed:
 <ul spacing="normal">
 <li>
 Whether the changes in policies anticipated here, with
-regard to encryption and use of AUTH_SYS, are consistent
-with <xref target="RFC8178" format="default"/>.
+regard to encryption and use of AUTH_SYS, are consistent with
+<xref target="RFC8178" format="default" sectionFormat="of"/>.
 </li>
 <li>
 How the use of new security-related facilities provided
 at the RPC level
 relates to the extension framework established by
-<xref target="RFC8178" format="default"/>.
+<xref target="RFC8178" format="default" sectionFormat="of"/>.
 </li>
 <li>
 How further extensions might relate to use of such new
@@ -1759,8 +1873,9 @@ The following introductory material seems appropriate:
 <ul spacing="normal">
 <li>
 The security-related changes recommended in this document
-are outside the scope of the extension model presented
-in <xref target="RFC8178" format="default"/>.  However, they do not
+are outside the scope of the extension model presented in
+<xref target="RFC8178" format="default" sectionFormat="of"/>.
+However, they do not
 contradict it and there is no need for this document to
 update that one.
 </li>
@@ -1769,8 +1884,8 @@ Normally, changes requiring coordinated work on the
 client and server are signaled using a new minor version.
 In that case, the new minor version is essentially
 treated as a new protocol and there is no need to update
-<xref target="RFC8178" format="default"/> or specifications for existing minor
-versions.
+<xref target="RFC8178" format="default" sectionFormat="of"/>
+or specifications for existing minor versions.
 </li>
 </ul>
 <t>
@@ -1814,8 +1929,9 @@ specifications.
 </t>
 <t>
 Use of these facilities does not raise additional interoperability
-issues since <xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/>, by using
-the opportunistic TLS model, provided for interoperability
+issues since
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>,
+by using the opportunistic TLS model, provided for interoperability
 between those that do and do not support these extensions.
 </t>
 </li>
@@ -1823,11 +1939,12 @@ between those that do and do not support these extensions.
 <t>
 The policies to use these facilities, made the
 responsibility of the ULP by
-<xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/> are significant
-additions to existing minor versions, requiring that the
-new standards-track document dealing  with NFSv4 security
-update <xref target="RFC7530" format="default"/> and
-<xref target="RFC8881" format="default"/>.
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>
+are significant additions to existing minor versions, requiring that the
+new standards-track document dealing  with NFSv4 security update
+<xref target="RFC7530" format="default" sectionFormat="of"/>
+and
+<xref target="RFC8881" format="default" sectionFormat="of"/>.
 </t>
 <t>
 These changes do not raise interoperability issues since the
@@ -1843,8 +1960,9 @@ The new recommendations regarding use of existing features
 (e.g. encryption, AUTH_SYS) often contradict existing guidance
 and so also require that
 new standards-track document dealing  with NFSv4 security
-update <xref target="RFC7530" format="default"/> and
-<xref target="RFC8881" format="default"/>.
+update <xref target="RFC7530" format="default" sectionFormat="of"/>
+and
+<xref target="RFC8881" format="default" sectionFormat="of"/>.
 </t>
 <t>
 These change do potentially raise interoperability issues
@@ -1882,11 +2000,14 @@ be something to be warned against.
  toc="default">
 <name>Background</name>
 <t>
-As discussed in <xref target="PROB-conf" format="default"/>, NFSv4 as currently
-defined, has serious problems
+As discussed in
+<xref target="PROB-conf" format="default" sectionFormat="of"/>,
+NFSv4 as currently defined, has serious problems
 providing the appropriate level of confidentiality for its
 transmissions.  Providing encryption at the transport layer,
-whether as described in <xref target="OPP-enc" format="default"/> or otherwise, can
+whether as described in
+<xref target="OPP-enc" format="default" sectionFormat="of"/>
+or otherwise, can
 be expected to resolve this issue by providing encryption in a
 potentially offloadable way,
 making use of RPC-level privacy
@@ -1943,7 +2064,7 @@ the former.
 </ul>
 <t>
 As we consider how to discuss the need for encryption in
-<xref target="ISSUES-tlse-res" format="default"/>,
+<xref target="ISSUES-tlse-res" format="default" sectionFormat="of"/>,
 we will be mindful of the above.
 Since it not possible to mandate the use of encryption, we will make it
 <bcp14>RECOMMENDED</bcp14>.
@@ -1974,15 +2095,16 @@ Data sent over connections used to connect an NFSv4 client
 and server
 <bcp14>SHOULD</bcp14>
 be encrypted, whether this uses TLS encryption,
-as described in <xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/> (to
-be used for TCP connections) or another form of encryption.
-For example, <xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/> does
-not address encryption for RPC-over-RDMA
-(<xref target="RFC8166" format="default"/>,
-<xref target="I-D.ietf-nfsv4-rpcrdma-version-two" format="default"/>) but
-RNICs used to implement RDMA transports will often implement
-encryption
-to secure inter-RNIC traffic.
+as described in
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>
+(to be used for TCP connections) or another form of encryption.
+For example,
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>
+does not address encryption for RPC-over-RDMA
+(<xref target="RFC8166" format="default" sectionFormat="of"/>,
+<xref target="I-D.ietf-nfsv4-rpcrdma-version-two" format="default" sectionFormat="of"/>)
+but RNICs used to implement RDMA transports will often implement
+encryption to secure inter-RNIC traffic.
 </li>
 <li>
 Valid reasons for not implementing the encryption
@@ -2009,8 +2131,10 @@ consequences of not doing do.
 The lack of encryption for the connection as a whole can
 be addressed by encryption of individual requests using the
 facilities within RPCSEC_GSS specified  in
-<xref target="RFC7530" format="default"/> and
-<xref target="RFC8881" format="default"/> as providing "privacy".  When doing
+<xref target="RFC7530" format="default" sectionFormat="of"/>
+and
+<xref target="RFC8881" format="default" sectionFormat="of"/>
+as providing "privacy".  When doing
 so, the following complicating issues need to be taken
 account of:
 </t>
@@ -2020,13 +2144,15 @@ Such facilities are not likely to be offloadable and often
 will reduce performance dramatically.
 </li>
 <li>
-Support for confidentiality via encryption is not required
-by <xref target="RFC8881" format="default"/> but only recommended, saying it
+Support for confidentiality via encryption is not required by
+<xref target="RFC8881" format="default" sectionFormat="of"/>
+but only recommended, saying it
 "<bcp14>SHOULD</bcp14>
 be supported.
 Unfortunately, the document does not specify what might be
 valid reasons not to provide such support. Also, although
-<xref target="RFC2119" format="default"/> states the one choosing not to
+<xref target="RFC2119" format="default" sectionFormat="of"/>
+states the one choosing not to
 follow such a recommendation should be aware of the
 consequences, given the general reticence of NFSv4
 specification
@@ -2056,7 +2182,8 @@ such network segments or monitor them extensively.
 </li>
 </ul>
 <t>
-Although, as indicated in <xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/>,
+Although, as indicated in
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>,
 that there should be no need to negotiate security flavors to
 be used to provide integrity and confidentiality, the exact
 effect on existing clients and servers needs to be made clearer.
@@ -2076,7 +2203,8 @@ include them.
 <t>
 When TLS is
 used to provide encryption, as specified in
-<xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/>, the client and
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>,
+the client and
 server will, as indicated by that
 document, be aware that
 encryption, is present.  In the case of RPC-over-RDMA,
@@ -2085,8 +2213,8 @@ and client have the opportunity to each make their own
 judgment about the adequacy of the encryption provided and
 communicate this to their peer as a transport property as
 provided for by
-<xref target="I-D.ietf-nfsv4-rpcrdma-version-two" format="default"/>).  In either
-case, the client and server will only act, as described below,
+<xref target="I-D.ietf-nfsv4-rpcrdma-version-two" format="default" sectionFormat="of"/>).
+In either case, the client and server will only act, as described below,
 on knowledge about the existence of encryption shared by both
 parties:
 </t>
@@ -2118,8 +2246,9 @@ unnecessary on an encrypted channel, the server
 still needs to accept such requests.
 </li>
 <li>
-Within NFSv4.1 <xref target="RFC8881" format="default"/>, support for
-SECINFO_NONAME is still
+Within NFSv4.1
+<xref target="RFC8881" format="default" sectionFormat="of"/>,
+support for SECINFO_NONAME is still
 <bcp14>REQUIRED</bcp14>
 when pNFS is
 supported, even if the server only accepts connection
@@ -2148,8 +2277,9 @@ impossible.
  toc="default">
 <name>Historical Background</name>
 <t>
-During the development of NFSv2 <xref target="RFC1094" format="default"/>, little
-attention was directed to network security and no attention
+During the development of NFSv2
+<xref target="RFC1094" format="default" sectionFormat="of"/>,
+little attention was directed to network security and no attention
 was directed to the possibility that a machine on the network
 might represent itself as a client, with the ability to make
 requests on behalf of non-existent client processes
@@ -2169,10 +2299,13 @@ strongly
 focused on UNIX, deriving the necessary
 implementation requirements from shared code and from informal
 inter-developer communications, rather than standards documents.
-As a result, as discussed in <xref target="PROB-authsys" format="default"/>, when
-it was necessary to discuss the security of AUTH_SYS in
+As a result, as discussed in
+<xref target="PROB-authsys" format="default" sectionFormat="of"/>,
+when it was necessary to discuss the security of AUTH_SYS in
 connection
-with RPC (in <xref target="RFC5531" format="default"/>, there was insufficient
+with RPC (in
+<xref target="RFC5531" format="default" sectionFormat="of"/>,
+there was insufficient
 information on which to base a threat analysis, although it was
 correctly concluded that the result of use was a lack of
 security.
@@ -2217,7 +2350,8 @@ obtained and corrupted.
 </li>
 </ul>
 <t>
-Later, with the development of NFSv3 <xref target="RFC1813" format="default"/>,
+Later, with the development of NFSv3
+<xref target="RFC1813" format="default" sectionFormat="of"/>,
 some
 of these assumptions started to seem less justifiable and
 alternate authentication models were developed.
@@ -2237,7 +2371,8 @@ standpoint.
  toc="default">
 <name>Background for Existing AUTH_SYS in NFSv4</name>
 <t>
-When NFSv4 was first defined (in <xref target="RFC3530" format="default"/>),
+When NFSv4 was first defined (in
+<xref target="RFC3530" format="default" sectionFormat="of"/>),
 RPCSEC_GSS was added as a mandatory-to-implement means of
 authentication which was optional to use, presumably under
 the assumption that other optional-to-implement authentication
@@ -2267,8 +2402,8 @@ might have substantially impeded NFSv4 adoption.
 Regardless of why this happened, the important fact is
 that it did happen, despite the serious security problems
 that it gave rise to.   Later subsections of
-<xref target="ISSUES-asys" format="default"/> will discuss ways to address
-the resulting situation.
+<xref target="ISSUES-asys" format="default" sectionFormat="of"/>
+will discuss ways to address the resulting situation.
 </t>
 </section>
 
@@ -2280,7 +2415,8 @@ the resulting situation.
 <name>Core Issue to Resolve for AUTH_SYS</name>
 <t>
 Given the serious security weaknesses described in
-<xref target="PROB-authsys" format="default"/>, there is clearly a need to
+<xref target="PROB-authsys" format="default" sectionFormat="of"/>,
+there is clearly a need to
 discourage its further use in its existing form,
 since the difficulties with it will not be eliminated
 by the adoption of encryption of NFSv4 connections alone
@@ -2308,8 +2444,10 @@ choice is more likely to be successful, and this document
 reflects that view, there is no intention to foreclose the
 first option, should the working group choose it.  If that
 option is chosen, then the material in
-<xref target="ISSUES-asys-resnew" format="default"/> becomes irrelevant and can
-be ignored while much of that in <xref target="ISSUES-asys-rescur" format="default"/>
+<xref target="ISSUES-asys-resnew" format="default" sectionFormat="of"/>
+becomes irrelevant and can
+be ignored while much of that in
+<xref target="ISSUES-asys-rescur" format="default" sectionFormat="of"/>
 can be simply modified to expand its scope, as described below in
 that section.
 </t>
@@ -2322,7 +2460,9 @@ that section.
  toc="default">
 <name>Need to Better Document and Explain Issues with AUTH_SYS</name>
 <t>
-As described in <xref target="ISSUES-tag" format="default"/> there is a need for
+As described in
+<xref target="ISSUES-tag" format="default" sectionFormat="of"/>
+there is a need for
 an appropriate threat analysis for NFSv4.   For a number of reasons,
 issues with AUTH_SYS that would make it difficult to refer to in an
 NFSv4-wide security document without some additional work preparatory
@@ -2354,7 +2494,8 @@ AUTH_SYS is declared "insecure", which might be considered as
 making a further security analysis beside the point.
 </li>
 <li>
-There are a number of statements with <xref target="RFC5531" format="default"/>
+There are a number of statements with
+<xref target="RFC5531" format="default" sectionFormat="of"/>
 limiting the use of AUTH_SYS, which might lead a reader to
 conclude that it was, in essence, a historical artifact.
 </li>
@@ -2375,7 +2516,7 @@ Given that the ongoing security issues with AUTH_SYS might
 give rise to efforts to address them, an accurate understanding
 of these issues is even more important, regardless of how the
 working group chooses to resolve the issue discussed in
-<xref target="ISSUES-asys-rescore" format="default"/>&gt;.
+<xref target="ISSUES-asys-rescore" format="default" sectionFormat="of"/>.
 </t>
 <t>
 If the decision is made to improve the security characteristics
@@ -2386,7 +2527,8 @@ issues and how they might be best addressed.
 If the decision is made to eliminate the use
 of AUTH_SYS, an adequate understanding of the security issues
 that made that decision necessary would seem to be required.
-In that context, the current statement in <xref target="RFC5531" format="default"/>,
+In that context, the current statement in
+<xref target="RFC5531" format="default" sectionFormat="of"/>,
 regarding the insecurity of AUTH_SYS needs to be clarified.
 </t>
 </li>
@@ -2414,8 +2556,9 @@ supported security flavors associated with RPC would seem
 to require treatment within the framework of RPC, its recent
 treatment raises questions about continuing to deal with it
 solely within this framework.   This is not due solely
-because of the attempt (in <xref target="RFC5531" format="default"/>) to
-discourage its use, as was done for AUTH_DH.  In that case
+because of the attempt (in
+<xref target="RFC5531" format="default" sectionFormat="of"/>)
+to discourage its use, as was done for AUTH_DH.  In that case
 it remains appropriate to discuss it as part of RPC, without a
 threat analysis, since there is no continuing use justifying
 another course.
@@ -2430,7 +2573,8 @@ RPC specifications, only as a historical artifact.
 <t>
 The potential continued use of AUTH_SYS with client-host
 authentication strengthens the NFSv4 connection.  Since
-<xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/> assigns the
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>
+assigns the
 specification of policies related to authentication to the
 ULP, it seems that AUTH_SYS needs to be discussed by
 NFSv4 documents in a manner more substantial than simply
@@ -2445,7 +2589,9 @@ appropriate threat analysis.
 </t>
 <t>
 That document could be referenced by a new document updating
-or obsoleting <xref target="RFC5531" format="default"/>.   This would provide
+or obsoleting
+<xref target="RFC5531" format="default" sectionFormat="of"/>.
+This would provide
 an opportunity to address existing text which was essentially
 ignored by NFSv4.
 </t>
@@ -2455,14 +2601,16 @@ document dealing with NFSv4 security.   The threat analysis
 would provide a basis for the whatever approach the working
 group decides to take with regard to the discussion of AUTH_SYS
 with client-host authentication.   See
-<xref target="ISSUES-asys-resnew" format="default"/> for further details.
+<xref target="ISSUES-asys-resnew" format="default" sectionFormat="of"/>
+for further details.
 </t>
 </li>
 </ul>
 <t>
 The last of these is most likely to be adopted regardless of
 how the working group decides the issue described in
-<xref target="ISSUES-asys-rescore" format="default"/>.   However, if the working
+<xref target="ISSUES-asys-rescore" format="default" sectionFormat="of"/>.
+However, if the working
 group decides to strongly discourage the use of AUTH_SYS even
 with client-host authentication, the first is a possibility
 that should be considered.
@@ -2482,10 +2630,14 @@ of AUTH_SYS in its current (insecure) form.
 </t>
 <t>
 While it is sometimes the case that such a task can be accomplished
-by substituting one of the terms defined in <xref target="RFC2119" format="default"/>
+by substituting one of the terms defined in
+<xref target="RFC2119" format="default" sectionFormat="of"/>
 by another, that is not the case here  While the designation of
-AUTH_SYS as optional (to implement) with <xref target="RFC7530" format="default"/>
-and <xref target="RFC8881" format="default"/> using the language
+AUTH_SYS as optional (to implement) with
+<xref target="RFC7530" format="default" sectionFormat="of"/>
+and
+<xref target="RFC8881" format="default" sectionFormat="of"/>
+using the language
 "<bcp14>MAY</bcp14>
 be implemented",
 is wrong and probably needs to be fixed, the situation is more complex
@@ -2498,25 +2650,32 @@ behavior.
 </t>
 <t>
 To summarize the confusing situation with AUTH_SYS and NFS and
-the role of the RPC specification, <xref target="RFC5531" format="default"/>.
+the role of the RPC specification,
+<xref target="RFC5531" format="default" sectionFormat="of"/>.
 </t>
 <ul spacing="normal">
 <li>
-At the time of publication of <xref target="RFC5531" format="default"/>, AUTH_SYS
-was extensively used by NFSv2 <xref target="RFC1094" format="default"/>,
-NFSv3 <xref target="RFC1813" format="default"/>, and
-NFSv2 <xref target="RFC1094" format="default"/>,
-NFSv4.0 <xref target="RFC3530" format="default"/>.
+At the time of publication of
+<xref target="RFC5531" format="default" sectionFormat="of"/>,
+AUTH_SYS was extensively used by NFSv2
+<xref target="RFC1094" format="default" sectionFormat="of"/>,
+NFSv3
+<xref target="RFC1813" format="default" sectionFormat="of"/>,
+and
+NFSv4.0
+<xref target="RFC3530" format="default" sectionFormat="of"/>.
 </li>
 <li>
 The Security Considerations Section of
+<xref target="RFC5531" format="default" sectionFormat="of"/>,
 states "AUTH_SYS
 <bcp14>SHOULD NOT</bcp14>
 be used for services that permit
 clients to modify data", which all versions of NFS clearly are.
 </li>
 <li>
-Section 10 of <xref target="RFC5531" format="default"/> states "Implementors
+<xref target="RFC5531" section="10" format="default" sectionFormat="of"/>
+states "Implementors
 <bcp14>MAY</bcp14>
 include AUTH_SYS in their implementations to support existing
 applications."  Although this statement was probably intended
@@ -2526,15 +2685,20 @@ noted so there is no way to determine how this contradiction is
 to be resolved or precisely what "an application" is.
 </li>
 <li>
-The case of NFsv4.1, later defined in <xref target="RFC5661" format="default"/>,
+The case of NFsv4.1, later defined in
+<xref target="RFC5661" format="default" sectionFormat="of"/>,
 is different since, being a separate protocol, with additional
 vulnerabilities when AUTH_SYS is used, it would
 presumably not be an "existing application".
 </li>
 <li>
-Turning from <xref target="RFC5531" format="default"/> to
-<xref target="RFC8881" format="default"/> and <xref target="RFC7530" format="default"/>, we find
-AUTH_SYS described as an
+Turning from
+<xref target="RFC5531" format="default" sectionFormat="of"/>
+to
+<xref target="RFC8881" format="default" sectionFormat="of"/>
+and
+<xref target="RFC7530" format="default" sectionFormat="of"/>,
+we find AUTH_SYS described as an
 <bcp14>OPTIONAL</bcp14>
 means of authentication, with
 its security weaknesses not being discussed or treated as a
@@ -2543,7 +2707,8 @@ significant concern.
 </ul>
 <t>
 While there may well be sufficient loopholes within
-<xref target="RFC5531" format="default"/> to avoid an outright contradiction
+<xref target="RFC5531" format="default" sectionFormat="of"/>
+to avoid an outright contradiction
 of the rules established there, it is certainly troubling
 that the security implications of implementing and using
 AUTH_SYS are not properly recommended against.
@@ -2556,8 +2721,9 @@ stating the
 consequences of doing what
 "<bcp14>SHOULD NOT</bcp14>"
 (or "should not") be done,
-as is
-suggested by <xref target="RFC2119" format="default"/>, at least for the former case.
+as is suggested by
+<xref target="RFC2119" format="default" sectionFormat="of"/>,
+at least for the former case.
 </t>
 <t>
 The following text is one way to present the situation:
@@ -2565,8 +2731,9 @@ The following text is one way to present the situation:
 <ul spacing="normal">
 <li>
 The use of AUTH_SYS,  as described (incompletely) in
-Appendix A of <xref target="RFC5531" format="default"/> is quite detrimental
-to security and so
+Appendix A of
+<xref target="RFC5531" format="default" sectionFormat="of"/>
+is quite detrimental to security and so
 <bcp14>SHOULD NOT</bcp14> be used.
 </li>
 <li>
@@ -2585,15 +2752,20 @@ access) that the client proper is to be trusted but there
 is no good reason to trust the client kernels in this regard.
 </li>
 <li>
-Although <xref target="RFC8881" format="default"/> and <xref target="RFC7530" format="default"/>
+Although
+<xref target="RFC8881" format="default" sectionFormat="of"/>
+and
+<xref target="RFC7530" format="default" sectionFormat="of"/>
 previously treated implementation of AUTH_SYS as optional,
 it appears that
 this treatment was in error in that it focused on the
 relevant interoperability constraints without attention to
-the security consequences of use (discussed in Section 7
-of <xref target="RFC2119" format="default"/>).  While use of AUTH_SYS was not
+the security consequences of use (discussed in
+<xref target="RFC2119" section="7" format="default" sectionFormat="of"/>).
+While use of AUTH_SYS was not
 characterized using any of the keywords defined in
-<xref target="RFC2119" format="default"/>, it was reasonable for implementers
+<xref target="RFC2119" format="default" sectionFormat="of"/>,
+it was reasonable for implementers
 to assume this was valid given the lack of attention
 to network security issues and the fact that there would
 be no point in implementing support for AUTH_SYS in servers
@@ -2655,7 +2827,8 @@ another machine masquerading as the expected client.
 </t>
 <t>
 The authentication features described in
-<xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/>, would be assure
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>,
+would be assure
 that you could identify trusted client machines, eliminating
 a major security issue with AUTH_SYS.   On the other hand,
 it is not clear whether servers would be wise to trust clients
@@ -2947,7 +3120,9 @@ because of the interloper's requests using the same slots.
 </li>
 </ul>
 <t>
-Facilities were defined in <xref target="RFC5661" format="default"/> to allow
+Facilities were defined in
+<xref target="RFC5661" format="default" sectionFormat="of"/>
+to allow
 such client-based protection to be implemented: SP4_MACHCRED and
 SP4_SSV but implementation has been quite limited.   Client-host
 authentication makes it possible to apply such protection more
@@ -2996,9 +3171,9 @@ is protected from being bound-to or destroyed by an
 unauthenticated client or a different authenticated client,
 then effect is the same as if SP4_MACHCRED or SP4_SSV were
 used by the owning client and a non-matching client was
-found.  Since the new standards-track document will
-update <xref target="RFC8881" format="default"/>, that provides adequate notice
-of this change
+found.  Since the new standards-track document will update
+<xref target="RFC8881" format="default" sectionFormat="of"/>,
+that provides adequate notice of this change
 </li>
 <li>
 Later, when rfc5661bis is ready to be published, there would
@@ -3009,23 +3184,27 @@ authentication of part of use of RPC-TLS and defining the
 circumstances under which one connection can access/modify
 state owned by an authenticated client.   References to abstract
 relationships would replace most current mentions of SP4_NONE,
-SP4_MCHCRED, and SP4_SSV in <xref target="RFC8881" format="default"/>.
+SP4_MCHCRED, and SP4_SSV in
+<xref target="RFC8881" format="default" sectionFormat="of"/>.
 </li>
 </ul>
 <t>
 It should be noted that this use of client-host authentication
 provides applicable protection even when AUTH_SYS is used.
 This is so however the issues discussed in
-<xref target="ISSUES-asys-resnew" format="default"/> are addressed, and
-independent of the decision made regarding the choice discussed
-in <xref target="ISSUES-asys-rescore" format="default"/> unless it is decided that
-AUTH_SYS
+<xref target="ISSUES-asys-resnew" format="default" sectionFormat="of"/>
+are addressed, and
+independent of the decision made regarding the choice discussed in
+<xref target="ISSUES-asys-rescore" format="default" sectionFormat="of"/>
+unless it is decided that AUTH_SYS
 <bcp14>MUST NOT</bcp14>
 be used.   Issues regarding the impersonation
 of a large set of users are not relevant because user ids are
 not referenced.   Furthermore, the possibility of a privileged
 user-level client implementing a denial-of-service attach (if
-issue #2 in <xref target="ISSUES-asys-resnew" format="default"/> is not addressed),
+issue #2 in
+<xref target="ISSUES-asys-resnew" format="default" sectionFormat="of"/>
+is not addressed),
 is not of concern since such a privileged process would find it
 far easier to deny service directly on the client host.
 </t>
@@ -3066,18 +3245,22 @@ address a set of related issues:
 <ul spacing="normal">
 <li>
 A new standards-track document discussing security for all
-NFSv4, updating <xref target="RFC7530" format="default"/> and <xref target="RFC8881" format="default"/>.
+NFSv4, updating
+<xref target="RFC7530" format="default" sectionFormat="of"/>
+and
+<xref target="RFC8881" format="default" sectionFormat="of"/>.
 It is intended that this document be referred to by rfc5661bis
 when it is ready for publication but it should be able to be
 published, on its own, before that, since it would update
-<xref target="RFC8881" format="default"/>.
+<xref target="RFC8881" format="default" sectionFormat="of"/>.
 </li>
 <li>
 A new standards-track document discussing AUTH_SYS, including
 discussion of the potential use of client-host authentication.
 </li>
 <li>
-A new standards-track document updating <xref target="RFC5531" format="default"/>.
+A new standards-track document updating
+<xref target="RFC5531" format="default" sectionFormat="of"/>.
 </li>
 </ul>
 <t>
@@ -3159,9 +3342,11 @@ NFSv4.
 Because there is no threat analysis of AUTH_SYS in existence, one
 needs to be provided, preferably in a new standard-track document
 dealing with AUTH_SYS.   This is despite the designation of
-AUTH_SYS (in <xref target="RFC5531" format="default"/> as "insecure", which was
-never, at least in the case of NFSv4, acted upon.   Such a
-document is needed to clarify the security weaknesses of AUTH_SYS
+AUTH_SYS (in
+<xref target="RFC5531" format="default" sectionFormat="of"/>
+as "insecure", which was never, at least in the case of NFSv4,
+acted upon. Such a document is needed to clarify the
+security weaknesses of AUTH_SYS
 and the degree such weakness could be rectified by the implementation
 of TLS-based encryption and/or client host authentication.
 </li>
@@ -3175,8 +3360,9 @@ of TLS-based encryption and/or client host authentication.
 <name>Security Considerations Section for Eventual NFSv4-wide Standards-track Security Document</name>
 <t>
 Although it is clear that such a document would need to include a
-threat analysis, as provided for by RFC3552/BCP72
-<xref target="RFC3552" format="default"/>.  However, the length of such an analysis
+threat analysis, as provided for by
+<xref target="RFC3552" format="default" sectionFormat="of"/>.
+However, the length of such an analysis
 might well be so large that it cannot be reasonably contained within
 a Security Considerations Section.  In that case, the Security
 Considerations Section will summarize the results of the
@@ -3193,8 +3379,9 @@ document.
  toc="default">
 <name>Security Considerations Section for Revised RPC Specification Document</name>
 <t>
-The general form of this section in <xref target="RFC5531" format="default"/> in which
-references are made to documents for each security flavor, seem
+The general form of this section in
+<xref target="RFC5531" format="default" sectionFormat="of"/>
+in which references are made to documents for each security flavor, seem
 appropriate.   However, the following changes are likely to be
 required:
 </t>
@@ -3256,7 +3443,8 @@ without consideration the possibility that either TLs encryption
 or client host authentication might be available (and potentially
 <bcp14>REQUIRED</bcp14>),
 redrafting it to be more appropriate for the
-environment made possible by <xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/>
+environment made possible by
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>
 is likely.
 </t>
 <t>
@@ -3353,7 +3541,8 @@ conditions for use and the consequences of not enforcing these.
 <name>Acknowledgements</name>
 <t>
 The authors would like to thank all the people contributed to
-rpc-tls RFC-to-be for their important work providing
+<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>
+for their important work providing
 security at the RPC layer, enabling us to break the NFSv4
 security logjam.
 </t>
