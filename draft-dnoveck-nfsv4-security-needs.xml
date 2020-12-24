@@ -98,7 +98,12 @@ Instructions are on that page as well.
 </front>
 
 <middle>
-<section anchor="INTRO" numbered="true" toc="default">
+
+<section
+ anchor="INTRO"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Introduction</name>
 <t>
 This document will discuss the changes that need to be made
@@ -140,7 +145,12 @@ environments and the corresponding security needs are discussed
 in <xref target="SITU-env" format="default"/>.
 </t>
 </section>
-<section anchor="TERM" numbered="true" toc="default">
+
+<section
+ anchor="TERM"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Requirements Language</name>
 <t>
 The key words "<bcp14>MUST</bcp14>", "<bcp14>MUST NOT</bcp14>",
@@ -156,7 +166,12 @@ as described in BCP&nbsp;14
 when, and only when, they appear in all capitals, as shown here.
 </t>
 </section>
-<section anchor="TERM-usage" numbered="true" toc="default">
+
+<section
+ anchor="TERM-usage"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Requirements Language Usage in this Document</name>
 <t>
 Because this is an informational document, it will generally not
@@ -223,9 +238,19 @@ and a later change allows that behavior.
 </li>
 </ul>
 </section>
-<section anchor="SITU" numbered="true" toc="default">
+
+<section
+ anchor="SITU"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Situation to be Addressed</name>
-<section anchor="SITU-env" numbered="true" toc="default">
+
+<section
+ anchor="SITU-env"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>NFSv4 Use Environments to be Addressed</name>
 <t>
 We will consider a range of network environments and how the type of
@@ -336,7 +361,12 @@ major administrative changes or compute-intensive additions to
 the processing path.
 </t>
 </section>
-<section anchor="SITU-emcorr" numbered="true" toc="default">
+
+<section
+ anchor="SITU-emcorr"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Emergence and Correction of Security Issues</name>
 <t>
 The fact that serious security issues exist in many of the
@@ -506,8 +536,14 @@ itself with determining how the needed changes can resolve existing
 security issues without undue disruption.
 </t>
 </section>
+
 </section>
-<section anchor="PROB" numbered="true" toc="default">
+
+<section
+ anchor="PROB"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Major Problems to Address</name>
 <t>
 The problems to be addressed concern the way that security
@@ -530,7 +566,12 @@ security issues receive the proper attention and analysis, both now
 in connection with the changes to be proposed, and also
 going forward, as needs change.
 </t>
-<section anchor="PROB-pres" numbered="true" toc="default">
+
+<section
+ anchor="PROB-pres"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Problems with Security Presentation/Organization</name>
 <t>
 While attention has previously focused on the deficiencies of
@@ -550,7 +591,12 @@ the lack of a threat analysis and the contents of the
 Security considerations sections will be dealt with in
 <xref target="PROB-pres-sc" format="default"/>.
 </t>
-<section anchor="PROB-pres-sa" numbered="true" toc="default">
+
+<section
+ anchor="PROB-pres-sa"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Problems with Presentation of Security Architecture</name>
 <t>
 The presentation of the NFSv4 security architecture (for both
@@ -665,7 +711,12 @@ NFSv4 is quite limited and a new security document will have
 some gaps to fill.
 </t>
 </section>
-<section anchor="PROB-pres-sc" numbered="true" toc="default">
+
+<section
+ anchor="PROB-pres-sc"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Problems with Security Evaluation</name>
 <t>
 The principal difficulty in the overall approach to security taken
@@ -693,8 +744,14 @@ existing security weaknesses and make plans to address them.
 </li>
 </ul>
 </section>
+
 </section>
-<section anchor="PROB-authsys" numbered="true" toc="default">
+
+<section
+ anchor="PROB-authsys"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Problems with treatment of AUTH_SYS</name>
 <t>
 While <xref target="RFC3530" format="default"/>,
@@ -984,7 +1041,12 @@ explains the changes to the eventual standards-track document that
 would be required if different choices were to be made.
 </t>
 </section>
-<section anchor="PROB-conf" numbered="true" toc="default">
+
+<section
+ anchor="PROB-conf"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Problems with Confidentiality</name>
 <t>
 Confidentiality is currently provided within NFSv4 by the use of
@@ -1142,8 +1204,14 @@ necessary to address these issues appears in
 <xref target="OPP-enc" format="default"/>
 </t>
 </section>
+
 </section>
-<section anchor="CORR" numbered="true" toc="default">
+
+<section
+ anchor="CORR"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Framework for Correcting Problems</name>
 <t>
 This section addresses the fundamental issues of the organization and
@@ -1151,7 +1219,12 @@ presentation of a new security framework.  The complementary issues
 involved in making substantive improvements in NFSv4 security will be
 dealt with in <xref target="OPP" format="default"/>.
 </t>
-<section anchor="CORR-threat" numbered="true" toc="default">
+
+<section
+ anchor="CORR-threat"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Correcting Problems with Regard to Threat Analyses</name>
 <t>
 Of prime importance is the inclusion of appropriate threat analyses,
@@ -1214,7 +1287,12 @@ necessary for its inclusion is discussed in
 <xref target="ISSUES-asys-doc" format="default"/>.
 </t>
 </section>
-<section anchor="CORR-norm" numbered="true" toc="default">
+
+<section
+ anchor="CORR-norm"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Correcting Problems with Regard to Use of Normative Terms</name>
 <t>
 Another important issue concerns the potential need for adjustment of
@@ -1272,8 +1350,14 @@ matters explicit, where they are not otherwise clear, as suggested
 by Section 7 of <xref target="RFC2119" format="default"/>.
 </t>
 </section>
+
 </section>
-<section anchor="OPP" numbered="true" toc="default">
+
+<section
+ anchor="OPP"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Opportunities for Improvement Provided by Recent Work within the RPC Layer</name>
 <t>
 The work done to provide TLS support for RPC
@@ -1313,7 +1397,12 @@ support for RDMA transports, parallel services to provide encryption
 and authentication are expected to be available, as discussed in
 <xref target="OPP-rdma" format="default"/>.
 </t>
-<section anchor="OPP-enc" numbered="true" toc="default">
+
+<section
+ anchor="OPP-enc"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Opportunities for Improvement in Encryption</name>
 <t>
 <xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/> provides the ability
@@ -1341,7 +1430,12 @@ the ability to take advantage of whatever confidentiality support
 that might be present for a given client and server.
 </t>
 </section>
-<section anchor="OPP-auth" numbered="true" toc="default">
+
+<section
+ anchor="OPP-auth"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Opportunities for Improvement in Authentication</name>
 <t>
 When establishing a connection, as provided for by
@@ -1389,7 +1483,12 @@ The details of how the authentication material could be
 used are discussed <xref target="ISSUES-asys-resnew" format="default"/>.
 </t>
 </section>
-<section anchor="OPP-rdma" numbered="true" toc="default">
+
+<section
+ anchor="OPP-rdma"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Opportunities for Improvement when Using RDMA Transports</name>
 <t>
 As noted above, <xref target="I-D.ietf-nfsv4-rpc-tls" format="default"/>) is not
@@ -1427,8 +1526,14 @@ Given that the current milestone for requesting publication is
 December 2020, this not expected to pose an obstacle.
 </t>
 </section>
+
 </section>
-<section anchor="ISSUES" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Issues that Need to be Addressed</name>
 <t>
 These sections discuss the issues that need to be addressed by
@@ -1442,9 +1547,19 @@ there is a section providing background followed by information
 suggesting how the issue would be addressed or issues that would need
 to be resolved before the issue could be addressed.
 </t>
-<section anchor="ISSUES-tag" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-tag"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Threat  Analysis Goals</name>
-<section anchor="ISSUES-tag-bg" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-tag-bg"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Background</name>
 <t>
 For reasons that remain unclear, none of the specification
@@ -1556,7 +1671,12 @@ not fully described within RFC (They are described above in
 </li>
 </ul>
 </section>
-<section anchor="ISSUES-tag-res" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-tag-res"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Issues to be Addressed</name>
 <t>
 It is expected that a threat analysis dealing with all NFSv4 minor
@@ -1575,10 +1695,21 @@ where this best be done
 is discussed in <xref target="ISSUES-asys-doc" format="default"/>.
 </t>
 </section>
+
 </section>
-<section anchor="ISSUES-ext" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-ext"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>NFSv4 Extension Policies</name>
-<section anchor="ISSUES-ext-bg" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-ext-bg"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Background</name>
 <t>
 The basic framework for the extension of NFSv4 was
@@ -1611,7 +1742,12 @@ RPC-level facilities.
 </li>
 </ul>
 </section>
-<section anchor="ISSUES-ext-res" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-ext-res"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Addressing Extension Issues</name>
 <t>
 We anticipate that the material would be in a section entitled,
@@ -1729,10 +1865,21 @@ be something to be warned against.
 </li>
 </ul>
 </section>
+
 </section>
-<section anchor="ISSUES-tlse" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-tlse"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>TLS Encryption Policies</name>
-<section anchor="ISSUES-tlse-bg" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-tlse-bg"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Background</name>
 <t>
 As discussed in <xref target="PROB-conf" format="default"/>, NFSv4 as currently
@@ -1809,7 +1956,12 @@ choosing to not provide the
 <bcp14>RECOMMENDED</bcp14> encryption.
 </t>
 </section>
-<section anchor="ISSUES-tlse-res" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-tlse-res"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Issues to Address</name>
 <t>
 There is a need to recommend the implementation and use of
@@ -1979,10 +2131,21 @@ impossible.
 </li>
 </ul>
 </section>
+
 </section>
-<section anchor="ISSUES-asys" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-asys"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Handling of AUTH_SYS</name>
-<section anchor="ISSUES-asys-hbg" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-asys-hbg"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Historical Background</name>
 <t>
 During the development of NFSv2 <xref target="RFC1094" format="default"/>, little
@@ -2066,7 +2229,12 @@ predominant despite its obvious weaknesses from the security
 standpoint.
 </t>
 </section>
-<section anchor="ISSUES-asys-ebg" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-asys-ebg"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Background for Existing AUTH_SYS in NFSv4</name>
 <t>
 When NFSv4 was first defined (in <xref target="RFC3530" format="default"/>),
@@ -2103,7 +2271,12 @@ that it gave rise to.   Later subsections of
 the resulting situation.
 </t>
 </section>
-<section anchor="ISSUES-asys-rescore" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-asys-rescore"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Core Issue to Resolve for AUTH_SYS</name>
 <t>
 Given the serious security weaknesses described in
@@ -2141,7 +2314,12 @@ can be simply modified to expand its scope, as described below in
 that section.
 </t>
 </section>
-<section anchor="ISSUES-asys-doc" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-asys-doc"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Need to Better Document and Explain Issues with AUTH_SYS</name>
 <t>
 As described in <xref target="ISSUES-tag" format="default"/> there is a need for
@@ -2290,7 +2468,12 @@ with client-host authentication, the first is a possibility
 that should be considered.
 </t>
 </section>
-<section anchor="ISSUES-asys-rescur" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-asys-rescur"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Issues to Address for Existing Use of AUTH_SYS</name>
 <t>
 This section presents material that might be included in a
@@ -2452,7 +2635,12 @@ intends to, other than that of root.
 </li>
 </ul>
 </section>
-<section anchor="ISSUES-asys-resnew" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-asys-resnew"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Issues to Resolve for Revised Approach to AUTH_SYS</name>
 <t>
 The availability of client-host authentication makes possible a
@@ -2706,10 +2894,21 @@ masquerading as an NFSv4 server by assuming root privileges.]
 </li>
 </ul>
 </section>
+
 </section>
-<section anchor="ISSUES-stp" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-stp"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Handling of State Protection</name>
-<section anchor="ISSUES-stp-bg" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-stp-bg"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Background</name>
 <t>
 The inclusion of state management within NFSv4 created new
@@ -2755,7 +2954,12 @@ authentication makes it possible to apply such protection more
 generally, as described below.
 </t>
 </section>
-<section anchor="ISSUES-stp-res" numbered="true" toc="default">
+
+<section
+ anchor="ISSUES-stp-res"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Issues to be Addressed</name>
 <t>
 While transport-level encryption would make it harder for
@@ -2826,9 +3030,16 @@ is not of concern since such a privileged process would find it
 far easier to deny service directly on the client host.
 </t>
 </section>
+
 </section>
+
 </section>
-<section anchor="STEPS" numbered="true" toc="default">
+
+<section
+ anchor="STEPS"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Steps Going Forward</name>
 <t>
 This document is expected to facilitate concrete discussion of how
@@ -2876,13 +3087,23 @@ to publish it as an RFC.   If a milestone is to be associated with it,
 the appropriate goal would be completion of WGLC.
 </t>
 </section>
-<section anchor="IANA" numbered="true" toc="default">
+
+<section
+ anchor="IANA"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>IANA Considerations</name>
 <t>
 The current document does not require any actions by IANA.
 </t>
 </section>
-<section anchor="SEC" numbered="true" toc="default">
+
+<section
+ anchor="SEC"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Security Considerations</name>
 <t>
 The convention of requiring a Security Considerations Section
@@ -2945,7 +3166,12 @@ and the degree such weakness could be rectified by the implementation
 of TLS-based encryption and/or client host authentication.
 </li>
 </ul>
-<section anchor="SEC-std" numbered="true" toc="default">
+
+<section
+ anchor="SEC-std"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Security Considerations Section for Eventual NFSv4-wide Standards-track Security Document</name>
 <t>
 Although it is clear that such a document would need to include a
@@ -2959,7 +3185,12 @@ referring to those parts that appear in other sections of the
 document.
 </t>
 </section>
-<section anchor="SEC-rpc" numbered="true" toc="default">
+
+<section
+ anchor="SEC-rpc"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Security Considerations Section for Revised RPC Specification Document</name>
 <t>
 The general form of this section in <xref target="RFC5531" format="default"/> in which
@@ -3059,7 +3290,12 @@ non-repudiation), or encryption to provide data confidentiality.
 </li>
 </ul>
 </section>
-<section anchor="SEC-asys" numbered="true" toc="default">
+
+<section
+ anchor="SEC-asys"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Security Considerations Section for Standard-track Document dealing with AUTH_SYS</name>
 <t>
 As mentioned above, a prime goal of the threat analysis for AUTH_SYS
@@ -3074,11 +3310,16 @@ basis for ULPs that allow AUTH_SYS to specify the appropriate
 conditions for use and the consequences of not enforcing these.
 </t>
 </section>
+
 </section>
+
 </middle>
+
 <back>
+
 <references>
 <name>References</name>
+
 <references>
 <name>Normative References</name>
 <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
@@ -3092,6 +3333,7 @@ conditions for use and the consequences of not enforcing these.
 <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-nfsv4-rpc-tls-11.xml"/>
 <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-nfsv4-rpcrdma-version-two-03.xml"/>
 </references>
+
 <references>
 <name>Informative References</name>
 <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.1094.xml"/>
@@ -3100,8 +3342,14 @@ conditions for use and the consequences of not enforcing these.
 <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5661.xml"/>
 <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.8178.xml"/>
 </references>
+
 </references>
-<section numbered="true" toc="default">
+
+<section
+ anchor="section_472EA7CC-8CA3-4B98-BC1F-629321AB159E"
+ numbered="false"
+ removeInRFC="false"
+ toc="default">
 <name>Acknowledgements</name>
 <t>
 The authors would like to thank all the people contributed to
