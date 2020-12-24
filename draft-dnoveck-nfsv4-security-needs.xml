@@ -4,7 +4,7 @@
 
 <rfc
  category="info"
- docName="draft-dnoveck-nfsv4-security-needs-01"
+ docName="draft-dnoveck-nfsv4-security-needs-latest"
  ipr="trust200902"
  obsoletes=""
  scripts="Common,Latin"
@@ -24,7 +24,7 @@
 Security Needs for the NFSv4 Protocols
 </title>
 
-<seriesInfo name="Internet-Draft" value="draft-dnoveck-nfsv4-security-needs-01"/>
+<seriesInfo name="Internet-Draft" value="draft-dnoveck-nfsv4-security-needs-latest"/>
 
 <author initials="D." surname="Noveck" fullname="David Noveck">
 <organization showOnFrontPage="true">
