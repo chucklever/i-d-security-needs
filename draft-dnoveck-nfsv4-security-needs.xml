@@ -3110,7 +3110,9 @@ security at the RPC layer, enabling us to break the NFSv4
 security logjam.
 </t>
 <t>
-The authors would like to thank Tom Haynes (of Hammerspace) for
+The authors would like to thank
+<contact fullname="Tom Haynes"/>
+(of Hammerspace) for
 introducing the idea of dealing with security for all minor versions
 in a single document.
 </t>
