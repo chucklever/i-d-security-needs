@@ -43,7 +43,7 @@ NetApp
 </address>
 </author>
 
-<author initials="C." surname="Lever" fullname="Charles Lever">
+<author initials="C." surname="Lever" fullname="Charles Lever" role="editor">
 <organization abbrev="Oracle" showOnFrontPage="true">
 Oracle Corporation
 </organization>
