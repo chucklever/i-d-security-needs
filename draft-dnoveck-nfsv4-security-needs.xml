@@ -187,72 +187,71 @@ when, and only when, they appear in all capitals, as shown here.
  numbered="true"
  removeInRFC="false"
  toc="default">
-<name>Requirements Language Usage in this Document</name>
+<name>Requirements Language as Used in This Document</name>
 <t>
-Because this is an informational document, it will generally not
-make normative statements including the keywords discussed in
+The current document is Informational.
+Therefore it cannot make normative statements
+using the keywords defined in
 <xref target="REQLANG" format="default" sectionFormat="of"/>.
-However, in discussing the existing
-treatment of security in the NFSv4 protocols, there will be
-occasions in which we include quotations (most often
-direct but sometimes
-indirect) from existing standards-track documents that use these
-keywords.  In such cases, the definitions
-within BCP&nbsp;14
+</t>
+<t>
+However, in discussing the treatment of security
+within the set of NFSv4 specifications,
+there are occasions in which the current document
+includes quotations from existing standards-track documents
+that use these keywords.
+In such cases, the definitions within BCP&nbsp;14
 <xref target="RFC2119" format="default" sectionFormat="of"/>
 <xref target="RFC8174" format="default" sectionFormat="of"/>
 are to be adhered to when the terms appear in all-capitals.
 </t>
 <t>
-In addition, we will often use these terms in exploring possible
-changes that might be made in possible future standards-track
-documents dealing with NFSv4 and RPC security.  While these terms
-do not
-have a normative effect in this context, the meaning of these
-terms remains the same.  These statements will differ from and
-may contradict corresponding existing normative statements for one
-or more of the following reasons:
+The current document also uses these keywords
+when exploring future standards-track documents.
+Although these terms do not have a normative effect
+in this setting,
+their meaning remains the same.
+These statements can
+differ from
+and
+may contradict
+existing normative statements
+for one or more of the following reasons:
 </t>
-<ul spacing="normal">
+<ul spacing="normal" bare="false" empty="false">
 <li>
-The original statement, currently normative, was ill-advised and
-might have to change to adequately deal with security issues that
-were not previously dealt with appropriately.
+Earlier standards-track documents did not
+handle a security issue appropriately.
 </li>
 <li>
-The original normative statement, while appropriate given the
-security needs known at the time it was written,
-might have to change to adequately deal with security issues that
-were not recognized when it was published.
+The community did not recognize a security issue
+when a standards-track document was initially approved.
 </li>
 <li>
-The proposed normative statement deals with the actual or potential
-implementation
-of features that were not available when the earlier standards-track
-documents were written and approved.
+An actual or potential security feature was not available
+at the time standards-track documents were written and approved.
 </li>
 </ul>
 <t>
-Any such changes in the set of normative statements applying to
-implementations of a particular NFSv4 minor version require special
-care to avoid creating later difficulties.  Problems might arise
-because:
+Changes in normative statements applying to
+implementations of a particular NFSv4 minor version
+require special care to avoid creating later difficulties.
+Problems might arise because:
 </t>
-<ul spacing="normal">
+<ul spacing="normal" bare="false" empty="false">
 <li>
-Some recommended changes might be delayed significantly or
-never implemented
-by some existing
-implementations.
+Implementers might choose to
+leave unimplemented
+changes that are not mandatory-to-implement.
 </li>
 <li>
-There is a possibility of creating interoperability problems
-when a client is written assuming that a particular server
-behavior is foreclosed (e.g. by a
+A client implementation assumes that
+a particular server behavior is foreclosed
+(e.g., by a
 "<bcp14>MUST NOT</bcp14>"
 or
-"<bcp14>SHOULD NOT</bcp14>")
-and a later change allows that behavior.
+"<bcp14>SHOULD NOT</bcp14>"),
+but a future change allows that behavior.
 </li>
 </ul>
 </section>
