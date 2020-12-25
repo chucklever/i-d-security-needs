@@ -554,7 +554,7 @@ be discussed below, the existing situation, in which serious
 security inadequacies need to be addressed, requires that
 significant changes be made.
 It is our expectation that the situation
-will be resolved by the eventual publication of a Standards-track
+will be resolved by the eventual publication of a standards-track
 document updating
 <xref target="RFC7530" format="default" sectionFormat="of"/>
 and
@@ -3411,7 +3411,7 @@ client.  This make its use highly inappropriate for any RPC
 service, particularly those that allow clients to modify data.
 </li>
 <li>
-Similarly, in specifications of Standards track RPC services,
+Similarly, in specifications of standards-track RPC services,
 it is inappropriate to make such use
 <bcp14>REQUIRED</bcp14>
 or
@@ -3453,7 +3453,7 @@ issues:
 </t>
 <ul spacing="normal">
 <li>
-Standards Track RPC services need to mandate server and client
+Standards-track RPC services need to mandate server and client
 support for RPCSEC_GSS when used in the forward direction.
 The treatment of authentication for reverse-direction operation
 needs provide for authentication of the identity of the
