@@ -2148,7 +2148,7 @@ Support for confidentiality via encryption is not required by
 <xref target="RFC8881" format="default" sectionFormat="of"/>
 but only recommended, saying it
 "<bcp14>SHOULD</bcp14>
-be supported.
+be supported".
 Unfortunately, the document does not specify what might be
 valid reasons not to provide such support. Also, although
 <xref target="RFC2119" format="default" sectionFormat="of"/>
