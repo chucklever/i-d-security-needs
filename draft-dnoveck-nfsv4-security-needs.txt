@@ -2,15 +2,15 @@
 
 
 
-NFSv4                                                          D. Noveck
+Network File System Version 4                                  D. Noveck
 Internet-Draft                                                    NetApp
-Intended status: Informational                                  C. Lever
-Expires: 19 June 2021                                             Oracle
-                                                        16 December 2020
+Intended status: Informational                             C. Lever, Ed.
+Expires: 5 July 2021                                              Oracle
+                                                          1 January 2021
 
 
                  Security Needs for the NFSv4 Protocols
-                 draft-dnoveck-nfsv4-security-needs-01
+               draft-dnoveck-nfsv4-security-needs-latest
 
 Abstract
 
@@ -22,6 +22,21 @@ Abstract
    the same for all minor versions, it is expected that the basics of
    security for all the NFSv4 protocols will be addressed together in a
    single NFSv4-wide standards-track document.
+
+Note
+
+   Discussion of this draft takes place on the NFSv4 working group
+   mailing list (nfsv4@ietf.org), which is archived at
+   https://mailarchive.ietf.org/arch/browse/nfsv4/. Working Group
+   information can be found at https://datatracker.ietf.org/wg/nfsv4/
+   about/.
+
+   This note is to be removed before publishing as an RFC.
+
+   The source for this draft is maintained in GitHub.  Suggested changes
+   should be submitted as pull requests at
+   https://github.com/chucklever/i-d-security-needs.  Instructions are
+   on that page as well.
 
 Status of This Memo
 
@@ -38,11 +53,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 June 2021.
+   This Internet-Draft will expire on 5 July 2021.
 
 Copyright Notice
 
-   Copyright (c) 2020 IETF Trust and the persons identified as the
+   Copyright (c) 2021 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,7 +124,7 @@ Table of Contents
    12. References
      12.1.  Normative References
      12.2.  Informative References
-   Appendix A.  Acknowledgements
+   Acknowledgements
    Authors' Addresses
 
 1.  Introduction
@@ -148,9 +163,10 @@ Table of Contents
 2.  Requirements Language
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-   document are to be interpreted as BCP 14 [RFC2119] [RFC8174] when,
-   and only when, they appear in all capitals, as shown here.
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
 
 3.  Requirements Language Usage in this Document
 
@@ -350,7 +366,7 @@ Table of Contents
       [RFC3530] as implying that these two (i.e.  RPCSEC_GSS and
       AUTH_SYS) were equivalent and to find fault with that implication,
       it is not clear how different choices would have led to a better
-      result.  In particular, attempts to deprecate AUTH_SYS (e.g.  by
+      result.  In particular, attempts to deprecate AUTH_SYS (e.g. by
       using the phrase "SHOULD NOT") would have been problematic in that
       they might have retarded adoption of NFSv4 rather than enhancing
       adoption of RPCSEC_GSS.
@@ -392,7 +408,7 @@ Table of Contents
 
    *  We have the option of providing state protection (to prevent
       clients interfering with one another) without the special
-      implementation work specified in [RFC8881]
+      implementation work specified in [RFC8881].
 
    These options have been made available by the work at the RPC layer
    described in Section 7 while the specifics of having NFSv4 take
@@ -404,7 +420,7 @@ Table of Contents
    discussed below, the existing situation, in which serious security
    inadequacies need to be addressed, requires that significant changes
    be made.  It is our expectation that the situation will be resolved
-   by the eventual publication of a Standards-track document updating
+   by the eventual publication of a standards-track document updating
    [RFC7530] and [RFC8881] and much of this document will concern itself
    with determining how the needed changes can resolve existing security
    issues without undue disruption.
@@ -553,8 +569,8 @@ Table of Contents
 
 5.2.  Problems with treatment of AUTH_SYS
 
-   While [RFC3530], [RFC7530], and [RFC8881] provide for the MANDATORY
-   implementation of RPCSEC_GSS, they do not require its use, allowing
+   While [RFC3530], [RFC7530], and [RFC8881] state that implementation
+   of RPCSEC_GSS is REQUIRED, they do not also require its use, allowing
    an opportunity for unauthenticated requests to be issued by attackers
    targeting the many NFSv4 servers in which RPCSEC_GSS is not the only
    form of authentication provided, which appears to be the vast
@@ -600,8 +616,8 @@ Table of Contents
    A number of common practices which servers have typically used in
    determining whether AUTH_SYS requests would be accepted are mentioned
    in associated standards-track documents (i.e. in [RFC5531],
-   [RFC7530], RFC8881 [RFC8881]) often without clear discussion of their
-   obvious security weaknesses.
+   [RFC7530], [RFC8881]) often without clear discussion of their obvious
+   security weaknesses.
 
    As a result of the lack of attention to AUTH_SYS, there is no
    standards-track description of its implementation in connection with
@@ -634,15 +650,15 @@ Table of Contents
 
       Appendix A of [RFC5531] refers to this practice as follows:
 
-      -  It should be noted that use of this flavor of authentication
-         does not guarantee any security for the users or providers of a
-         service, in itself.  The authentication provided by this scheme
-         can be considered legitimate only when applications using this
-         scheme and the network can be secured externally, and
-         privileged transport addresses are used for the communicating
-         end-points (an example of this is the use of privileged TCP/UDP
-         ports in UNIX systems -- note that not all systems enforce
-         privileged transport address mechanisms).
+      |  It should be noted that use of this flavor of authentication
+      |  does not guarantee any security for the users or providers of a
+      |  service, in itself.  The authentication provided by this scheme
+      |  can be considered legitimate only when applications using this
+      |  scheme and the network can be secured externally, and
+      |  privileged transport addresses are used for the communicating
+      |  end-points (an example of this is the use of privileged TCP/UDP
+      |  ports in UNIX systems -- note that not all systems enforce
+      |  privileged transport address mechanisms).
 
    *  Many servers do not execute AUTH_SYS requests specifying a user id
       of zero (i.e. root) under that user id or limit such execution to
@@ -868,7 +884,7 @@ Table of Contents
    for the work done in [I-D.ietf-nfsv4-rpc-tls] that provided the
    opportunity to provide encryption uniformly and potentially with high
    performance.  An overview of steps necessary to address these issues
-   appears in Section 7.1
+   appears in Section 7.1.
 
 6.  Framework for Correcting Problems
 
@@ -880,7 +896,7 @@ Table of Contents
 6.1.  Correcting Problems with Regard to Threat Analyses
 
    Of prime importance is the inclusion of appropriate threat analyses,
-   even apart from the requirement (in BCP72 [RFC3552]) that such
+   even apart from the requirement (in BCP 72 [RFC3552]) that such
    analyses appear in Security Considerations sections.  As we have
    already seen, without such an analysis, there is no way to determine
    whether any security changes adopted are adequate to address NFSv4's
@@ -923,10 +939,10 @@ Table of Contents
 6.2.  Correcting Problems with Regard to Use of Normative Terms
 
    Another important issue concerns the potential need for adjustment of
-   inappropriate use of terms defined by RFC2119 [RFC2119], particularly
-   any suggestion that use of AUTH_SYS may be validly used without
-   important security consequences, as suggested by the current
-   understanding that its use is optional.
+   inappropriate use of terms defined by [RFC2119], particularly any
+   suggestion that use of AUTH_SYS may be validly used without important
+   security consequences, as suggested by the current understanding that
+   its use is optional.
 
    However, as desirable as such clarifications might be, it is
    necessary that we be realistic about what such changes can
@@ -1123,14 +1139,14 @@ Table of Contents
 
    Beyond the lack of NFsv4 threat analyses, there is a further problem
    in that there is no threat analysis dealing with the AUTH_SYS case in
-   the existing RPC specification, RFC5531 [RFC5531].  In this case, the
-   gap is easier to understand since RPC deals with security on a per-
-   flavor basis and declares AUTH_SYS as "insecure".  It may well be
-   that the authors, the working group and the IESG thought this was
-   adequate, and it would have been if this had resulted in its not
-   being used subsequently.  As things happened however, AUTH_SYS
-   continued to be used extensively, including for NFsv4, so that there
-   still remains a gap in this regard.
+   the existing RPC specification [RFC5531].  In this case, the gap is
+   easier to understand since RPC deals with security on a per-flavor
+   basis and declares AUTH_SYS as "insecure".  It may well be that the
+   authors, the working group and the IESG thought this was adequate,
+   and it would have been if this had resulted in its not being used
+   subsequently.  As things happened however, AUTH_SYS continued to be
+   used extensively, including for NFsv4, so that there still remains a
+   gap in this regard.
 
    The following facts are relevant to the continued use of AUTH_SYS
    despite its security problems:
@@ -1162,7 +1178,7 @@ Table of Contents
       potentially acted upon.  The difficulty is further compounded by
       the fact that the client validation checks made by actual
       implementations are not fully described within RFC (They are
-      described above in Section 5.2)
+      described above in Section 5.2).
 
 8.1.2.  Issues to be Addressed
 
@@ -1321,12 +1337,13 @@ Table of Contents
 
    As we consider how to discuss the need for encryption in
    Section 8.3.2, we will be mindful of the above.  Since it not
-   possible to REQUIRE encryption, we will RECOMMEND it.  However, in
-   discussing the valid reasons that encryption might not be provided,
-   we will try to restrict them to the degree we can reasonably do so.
-   Further, we will try to clearly state the security consequences which
-   implementers and those configuring clients and server need to be
-   aware of when choosing to not provide the RECOMMENDED encryption.
+   possible to mandate the use of encryption, we will make it
+   RECOMMENDED.  However, in discussing the valid reasons that
+   encryption might not be provided, we will try to restrict them to the
+   degree we can reasonably do so.  Further, we will try to clearly
+   state the security consequences which implementers and those
+   configuring clients and server need to be aware of when choosing to
+   not provide the RECOMMENDED encryption.
 
 8.3.2.  Issues to Address
 
@@ -1368,10 +1385,10 @@ Table of Contents
          reduce performance dramatically.
 
       -  Support for confidentiality via encryption is not required by
-         [RFC8881] but only recommended, saying it "SHOULD be
-         supported"> Unfortunately, the document does not specify what
-         might be valid reasons not to provide such support.  Also,
-         although [RFC2119] states the one choosing not to follow such a
+         [RFC8881] but only recommended, saying it "SHOULD be supported.
+         Unfortunately, the document does not specify what might be
+         valid reasons not to provide such support.  Also, although
+         [RFC2119] states the one choosing not to follow such a
          recommendation should be aware of the consequences, given the
          general reticence of NFSv4 specification Security
          Considerations sections about such matters, it is not clear
@@ -1508,7 +1525,7 @@ Table of Contents
 8.4.2.  Background for Existing AUTH_SYS in NFSv4
 
    When NFSv4 was first defined (in [RFC3530]), RPCSEC_GSS was added as
-   a MANDATORY to implement means of authentication which was optional
+   a mandatory-to-implement means of authentication which was optional
    to use, presumably under the assumption that other optional-to-
    implement authentication flavors, such as AUTH_SYS would be used by
    some clients
@@ -1594,7 +1611,7 @@ Table of Contents
    *  Given that the ongoing security issues with AUTH_SYS might give
       rise to efforts to address them, an accurate understanding of
       these issues is even more important, regardless of how the working
-      group chooses to resolve the issue discussed in Section 8.4.3>.
+      group chooses to resolve the issue discussed in Section 8.4.3.
 
       If the decision is made to improve the security characteristics of
       AUTH_SYS, it is important to understand existing security issues
@@ -1683,12 +1700,11 @@ Table of Contents
    role of the RPC specification, [RFC5531].
 
    *  At the time of publication of [RFC5531], AUTH_SYS was extensively
-      used by NFSv2 [RFC1094], NFSv3 [RFC1813], and NFSv2 [RFC1094],
-      NFSv4.0 [RFC3530].
+      used by NFSv2 [RFC1094], NFSv3 [RFC1813], and NFSv4.0 [RFC3530].
 
-   *  The Security Considerations Section of states "AUTH_SYS SHOULD NOT
-      be used for services that permit clients to modify data", which
-      all versions of NFS clearly are.
+   *  The Security Considerations Section of [RFC5531], states "AUTH_SYS
+      SHOULD NOT be used for services that permit clients to modify
+      data", which all versions of NFS clearly are.
 
    *  Section 10 of [RFC5531] states "Implementors MAY include AUTH_SYS
       in their implementations to support existing applications."
@@ -2139,12 +2155,12 @@ Table of Contents
        Standards-track Security Document
 
    Although it is clear that such a document would need to include a
-   threat analysis, as provided for by RFC3552/BCP72 [RFC3552].
-   However, the length of such an analysis might well be so large that
-   it cannot be reasonably contained within a Security Considerations
-   Section.  In that case, the Security Considerations Section will
-   summarize the results of the threat analysis, referring to those
-   parts that appear in other sections of the document.
+   threat analysis, as provided for by [RFC3552].  However, the length
+   of such an analysis might well be so large that it cannot be
+   reasonably contained within a Security Considerations Section.  In
+   that case, the Security Considerations Section will summarize the
+   results of the threat analysis, referring to those parts that appear
+   in other sections of the document.
 
 11.2.  Security Considerations Section for Revised RPC Specification
        Document
@@ -2172,7 +2188,7 @@ Table of Contents
          client.  This make its use highly inappropriate for any RPC
          service, particularly those that allow clients to modify data.
 
-      -  Similarly, in specifications of Standards track RPC services,
+      -  Similarly, in specifications of standards-track RPC services,
          it is inappropriate to make such use REQUIRED or RECOMMENDED.
          Where such use is allowed at all (whether by "MAY" or "SHOULD
          NOT" is used), viable non-disruptive alternatives need to
@@ -2197,7 +2213,7 @@ Table of Contents
       The following replacement text is suggested to deal with these
       issues:
 
-      -  Standards Track RPC services need to mandate server and client
+      -  Standards-track RPC services need to mandate server and client
          support for RPCSEC_GSS when used in the forward direction.  The
          treatment of authentication for reverse-direction operation
          needs provide for authentication of the identity of the
@@ -2213,7 +2229,7 @@ Table of Contents
          possible/allowed for RPC services to be used without TLS
          encryption there is also a need to mandate pseudo-flavors with
          additional appropriate levels of security, depending on the
-         need for authentication only, integrity (a.k.a.  non-
+         need for authentication only, integrity (a.k.a. non-
          repudiation), or encryption to provide data confidentiality.
 
 11.3.  Security Considerations Section for Standard-track Document
@@ -2237,15 +2253,14 @@ Table of Contents
               Myklebust, T. and C. Lever, "Towards Remote Procedure Call
               Encryption By Default", Work in Progress, Internet-Draft,
               draft-ietf-nfsv4-rpc-tls-11, 23 November 2020,
-              <http://www.ietf.org/internet-drafts/draft-ietf-nfsv4-rpc-
-              tls-11.txt>.
+              <https://tools.ietf.org/html/draft-ietf-nfsv4-rpc-tls-11>.
 
    [I-D.ietf-nfsv4-rpcrdma-version-two]
               Lever, C. and D. Noveck, "RPC-over-RDMA Version 2
               Protocol", Work in Progress, Internet-Draft, draft-ietf-
               nfsv4-rpcrdma-version-two-03, 10 August 2020,
-              <http://www.ietf.org/internet-drafts/draft-ietf-nfsv4-
-              rpcrdma-version-two-03.txt>.
+              <https://tools.ietf.org/html/draft-ietf-nfsv4-rpcrdma-
+              version-two-03>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -2308,11 +2323,11 @@ Table of Contents
               Versions", RFC 8178, DOI 10.17487/RFC8178, July 2017,
               <https://www.rfc-editor.org/info/rfc8178>.
 
-Appendix A.  Acknowledgements
+Acknowledgements
 
-   The authors would like to thank all the people contributed to rpc-tls
-   RFC-to-be for their important work providing security at the RPC
-   layer, enabling us to break the NFSv4 security logjam.
+   The authors would like to thank all the people contributed to
+   [I-D.ietf-nfsv4-rpc-tls] for their important work providing security
+   at the RPC layer, enabling us to break the NFSv4 security logjam.
 
    The authors would like to thank Tom Haynes (of Hammerspace) for
    introducing the idea of dealing with security for all minor versions
@@ -2330,7 +2345,7 @@ Authors' Addresses
    Email: davenoveck@gmail.com
 
 
-   Charles Lever
+   Charles Lever (editor)
    Oracle Corporation
    United States of America
 
