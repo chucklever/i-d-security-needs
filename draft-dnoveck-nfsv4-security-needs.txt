@@ -1385,10 +1385,10 @@ Table of Contents
          reduce performance dramatically.
 
       -  Support for confidentiality via encryption is not required by
-         [RFC8881] but only recommended, saying it "SHOULD be supported.
-         Unfortunately, the document does not specify what might be
-         valid reasons not to provide such support.  Also, although
-         [RFC2119] states the one choosing not to follow such a
+         [RFC8881] but only recommended, saying it "SHOULD be
+         supported".  Unfortunately, the document does not specify what
+         might be valid reasons not to provide such support.  Also,
+         although [RFC2119] states the one choosing not to follow such a
          recommendation should be aware of the consequences, given the
          general reticence of NFSv4 specification Security
          Considerations sections about such matters, it is not clear
