@@ -158,6 +158,13 @@ environments and the corresponding security needs are discussed in
  numbered="true"
  removeInRFC="false"
  toc="default">
+<name>Terminology</name>
+
+<section
+ anchor="REQLANG"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
 <name>Requirements Language</name>
 <t>
 The key words "<bcp14>MUST</bcp14>", "<bcp14>MUST NOT</bcp14>",
@@ -172,10 +179,11 @@ as described in BCP&nbsp;14
 <xref target="RFC8174" format="default" sectionFormat="of"/>
 when, and only when, they appear in all capitals, as shown here.
 </t>
+
 </section>
 
 <section
- anchor="TERM-usage"
+ anchor="REQLANG-usage"
  numbered="true"
  removeInRFC="false"
  toc="default">
@@ -183,7 +191,7 @@ when, and only when, they appear in all capitals, as shown here.
 <t>
 Because this is an informational document, it will generally not
 make normative statements including the keywords discussed in
-<xref target="TERM" format="default" sectionFormat="of"/>.
+<xref target="REQLANG" format="default" sectionFormat="of"/>.
 However, in discussing the existing
 treatment of security in the NFSv4 protocols, there will be
 occasions in which we include quotations (most often
@@ -247,6 +255,8 @@ or
 and a later change allows that behavior.
 </li>
 </ul>
+</section>
+
 </section>
 
 <section
@@ -1379,7 +1389,7 @@ However, as desirable as such clarifications might be, it is
 necessary
 that we be realistic about what such changes can accomplish, even if
 the particular issues cited in
-<xref target="TERM-usage" format="default" sectionFormat="of"/>
+<xref target="REQLANG-usage" format="default" sectionFormat="of"/>
 are properly
 attended to.  Documents can be written to define certain
 implementations
