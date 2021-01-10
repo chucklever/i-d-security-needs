@@ -106,50 +106,57 @@ Instructions are on that page as well.
  toc="default">
 <name>Introduction</name>
 <t>
-This document will discuss the changes that need to be made
-in the security facilities to be used with NFSv4.  These changes
-are made necessary by the fact that the original goal for NFSv4,
-that of enabling secure use on the internet has not been
-effectively realized and because the current approach to security
-does not address current needs for secure operation in many environments.
+This document proposes specification changes
+that modernize NFSv4 security.
+These changes are necessary because
+the original goal for the NFSv4 protocol,
+to enable secure file exchange on the open internet
+<xref target="RFC2624" format="default" sectionFormat="of"/>,
+has not been effectively realized.
+Moreover, existing approaches to NFSv4 security
+do not meet the security needs
+of many contemporary restricted-access environments.
 </t>
 <t>
-This document is intended to serve as a
-resource for the working group, as it creates new standards-track
-documents to address the security issues that exist within NFSv4.
-For details of the expected use of this document, see
-<xref target="USE" format="default" sectionFormat="of"/>.
+Restricting physical access to the network
+on which a client and server interact
+is a common NFSv4 deployment technique.
+This restriction limits access to users
+associated with a particular organization
+but
+does not eliminate the need for protocol support
+that enables completely secure operation.
+<xref target="SITU-env" format="default" sectionFormat="of"/>
+contains a taxonomy of specific environments
+and
+their corresponding security needs.
 </t>
 <t>
-Needed  changes are expected to involve use of new
-transport-level security facilities provided within the RPC layer
-(See
-<xref target="OPP" format="default" sectionFormat="of"/>).
-These will involve the encryption of
-NFSv4 traffic and the probable use of client host authentication
-to improve
-security when AUTH_SYS is used, replacing the security approach
-specified in
+As an example,
+the use of transport-layer security,
+including the encryption of network traffic
+and
+the use of client host authentication,
+can improve security when AUTH_SYS
+<xref target="RFC5531" format="default" sectionFormat="of"/>
+is in use,
+replacing the security approaches specified in
 <xref target="RFC7530" format="default" sectionFormat="of"/>
 and
 <xref target="RFC8881" format="default" sectionFormat="of"/>.
-For a discussion of issues connected to shifting the security approach
-for existing protocols, see
+For a discussion of issues connected to
+shifting the security approach of mature protocols, see
 <xref target="SITU-emcorr" format="default" sectionFormat="of"/>.
 </t>
 <t>
-Although most use of NFSv4 is not within the internet, but
-in more restricted local area network
-environments, it appears that NFSv4 security, as actually used,
-needs updating to provide security appropriate to the current
-needs of these
-environments as well.  Although
-restricting physical access to the network on which the client
-and server interact can result in limiting access to users associated
-with a particular organization, this step does not eliminate the
-need for protocol support for secure operation.  The specific
-environments and the corresponding security needs are discussed in
-<xref target="SITU-env" format="default" sectionFormat="of"/>.
+The current document serves as a resource
+for the nfsv4 working group as it
+updates current standards-track documents
+and
+proposes new standards-track documents
+to address security issues within the NFSv4 protocol.
+For further details on the expected use of this document, see
+<xref target="USE" format="default" sectionFormat="of"/>.
 </t>
 </section>
 
@@ -3700,6 +3707,7 @@ conditions for use and the consequences of not enforcing these.
  href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-dnoveck-nfsv4-rfc5661bis-00.xml"/>
 <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.1094.xml"/>
 <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.1813.xml"/>
+<xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2624.xml"/>
 <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3530.xml"/>
 <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.4949.xml"/>
 <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5661.xml"/>
