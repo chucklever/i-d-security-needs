@@ -5,8 +5,8 @@
 Network File System Version 4                                  D. Noveck
 Internet-Draft                                                    NetApp
 Intended status: Informational                             C. Lever, Ed.
-Expires: 12 July 2021                                             Oracle
-                                                          8 January 2021
+Expires: 14 July 2021                                             Oracle
+                                                         10 January 2021
 
 
                  Security Needs for the NFSv4 Protocols
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 July 2021.
+   This Internet-Draft will expire on 14 July 2021.
 
 Copyright Notice
 
@@ -73,53 +73,56 @@ Table of Contents
      2.1.  Requirements Language
      2.2.  Requirements Language as Used in This Document
      2.3.  Glossary
-   3.  Situation to be Addressed
-     3.1.  NFSv4 Use Environments to be Addressed
-     3.2.  Emergence and Correction of Security Issues
-   4.  Major Problems to Address
-     4.1.  Problems with Security Presentation/Organization
-       4.1.1.  Problems with Presentation of Security Architecture
-       4.1.2.  Problems with Security Evaluation
-     4.2.  Problems with treatment of AUTH_SYS
-     4.3.  Problems with Confidentiality
-   5.  Framework for Correcting Problems
-     5.1.  Correcting Problems with Regard to Threat Analyses
-     5.2.  Correcting Problems with Regard to Use of Normative Terms
-   6.  Opportunities for Improvement Provided by Recent Work within
+   3.  Use of this Document
+     3.1.  Current Use of this Document
+     3.2.  Future Use of this Document
+   4.  Situation to be Addressed
+     4.1.  NFSv4 Use Environments to be Addressed
+     4.2.  Emergence and Correction of Security Issues
+   5.  Major Problems to Address
+     5.1.  Problems with Security Presentation/Organization
+       5.1.1.  Problems with Presentation of Security Architecture
+       5.1.2.  Problems with Security Evaluation
+     5.2.  Problems with treatment of AUTH_SYS
+     5.3.  Problems with Confidentiality
+   6.  Framework for Correcting Problems
+     6.1.  Correcting Problems with Regard to Threat Analyses
+     6.2.  Correcting Problems with Regard to Use of Normative Terms
+   7.  Opportunities for Improvement Provided by Recent Work within
            the RPC Layer
-     6.1.  Opportunities for Improvement in Encryption
-     6.2.  Opportunities for Improvement in Authentication
-     6.3.  Opportunities for Improvement when Using RDMA Transports
-   7.  Issues that Need to be Addressed
-     7.1.  Threat Analysis Goals
-       7.1.1.  Background
-       7.1.2.  Issues to be Addressed
-     7.2.  NFSv4 Extension Policies
-       7.2.1.  Background
-       7.2.2.  Addressing Extension Issues
-     7.3.  TLS Encryption Policies
-       7.3.1.  Background
-       7.3.2.  Issues to Address
-     7.4.  Handling of AUTH_SYS
-       7.4.1.  Historical Background
-       7.4.2.  Background for Existing AUTH_SYS in NFSv4
-       7.4.3.  Core Issue to Resolve for AUTH_SYS
-       7.4.4.  Need to Better Document and Explain Issues with
+     7.1.  Opportunities for Improvement in Encryption
+     7.2.  Opportunities for Improvement in Authentication
+     7.3.  Opportunities for Improvement when Using RDMA Transports
+   8.  Issues that Need to be Addressed
+     8.1.  Threat Analysis Goals
+       8.1.1.  Background
+       8.1.2.  Issues to be Addressed
+     8.2.  NFSv4 Extension Policies
+       8.2.1.  Background
+       8.2.2.  Addressing Extension Issues
+     8.3.  TLS Encryption Policies
+       8.3.1.  Background
+       8.3.2.  Issues to Address
+     8.4.  Handling of AUTH_SYS
+       8.4.1.  Historical Background
+       8.4.2.  Background for Existing AUTH_SYS in NFSv4
+       8.4.3.  Core Issue to Resolve for AUTH_SYS
+       8.4.4.  Need to Better Document and Explain Issues with
                AUTH_SYS
-       7.4.5.  Issues to Address for Existing Use of AUTH_SYS
-       7.4.6.  Issues to Resolve for Revised Approach to AUTH_SYS
-     7.5.  Handling of State Protection
-       7.5.1.  Background
-       7.5.2.  Issues to be Addressed
-   8.  Steps Going Forward
+       8.4.5.  Issues to Address for Existing Use of AUTH_SYS
+       8.4.6.  Issues to Resolve for Revised Approach to AUTH_SYS
+     8.5.  Handling of State Protection
+       8.5.1.  Background
+       8.5.2.  Issues to be Addressed
    9.  IANA Considerations
    10. Security Considerations
      10.1.  Security Considerations Section for Eventual NFSv4-wide
             Standards-track Security Document
-     10.2.  Security Considerations Section for Revised RPC
+     10.2.  Security Considerations Section for Eventual Rfc5661bis
+     10.3.  Security Considerations Section for Potential Revised RPC
             Specification Document
-     10.3.  Security Considerations Section for Standard-track
-            Document dealing with AUTH_SYS
+     10.4.  Security Considerations Section for Potential
+            Standards-track Document Dealing with AUTH_SYS
    11. References
      11.1.  Normative References
      11.2.  Informative References
@@ -133,20 +136,20 @@ Table of Contents
    necessary by the fact that the original goal for NFSv4, that of
    enabling secure use on the internet has not been effectively realized
    and because the current approach to security does not address current
-   needs for secure operation in many environments.  This document is
-   intended to serve as a resource for the working group, as it creates
-   new standards-track documents to address the security issues that
-   exist within NFSv4.  These potential documents are listed and the
-   likely processes expected to be used in producing them are discussed
-   in Section 8.
+   needs for secure operation in many environments.
+
+   This document is intended to serve as a resource for the working
+   group, as it creates new standards-track documents to address the
+   security issues that exist within NFSv4.  For details of the expected
+   use of this document, see Section 3.
 
    Needed changes are expected to involve use of new transport-level
-   security facilities provided within the RPC layer (See Section 6).
+   security facilities provided within the RPC layer (See Section 7).
    These will involve the encryption of NFSv4 traffic and the probable
    use of client host authentication to improve security when AUTH_SYS
    is used, replacing the security approach specified in [RFC7530] and
    [RFC8881].  For a discussion of issues connected to shifting the
-   security approach for existing protocols, see Section 3.2.
+   security approach for existing protocols, see Section 4.2.
 
    Although most use of NFSv4 is not within the internet, but in more
    restricted local area network environments, it appears that NFSv4
@@ -157,7 +160,7 @@ Table of Contents
    associated with a particular organization, this step does not
    eliminate the need for protocol support for secure operation.  The
    specific environments and the corresponding security needs are
-   discussed in Section 3.1.
+   discussed in Section 4.1.
 
 2.  Terminology
 
@@ -246,9 +249,83 @@ Table of Contents
       Establish the truth that a user is who (s)he claims to be.  As
       discussed in Section 4.1 of [RFC3552].
 
-3.  Situation to be Addressed
+3.  Use of this Document
 
-3.1.  NFSv4 Use Environments to be Addressed
+3.1.  Current Use of this Document
+
+   This document is a means to facilitate discussion of the specific
+   inadequacies that need to be addressed within a new approach to NFSv4
+   security that we believe is required.  For each specfic inadequacy,
+   as discussion proceeds, the treatment is expected evolve downward in
+   the following list to enable the working group to formulate text for
+   new standards-track documents to address the problem:
+
+   *  The statement that a specific inadequacy exists and needs to be
+      dealt with.
+
+   *  A listing of potential ways to deal with a specific inadequacy.
+
+   *  A proposal by the authors that a specfic adequacy is best dealt
+      with a particular way, possibly accompanied by a list of other
+      reasonable aproaches.
+
+   *  A statement that the working is expected to address a specfic
+      inadequacy in a particular way.
+
+   *  A statement that the working is addressing a specfic inadequacy in
+      a particular way.
+
+   While it is expected that, if the working group concurs, this
+   document will be adopted as a working group document, that transition
+   is not expected to affect the document's pattern of use.  When
+   deciding on that issue the working group will not be considering the
+   specific propoals to address inadequacies, which can be addressed
+   later.  The working group will be considering whether there are
+   serous inadequacies requiring new documents and whether such a
+   document will be helpful in addressing them.
+
+   The working group discussion anticipated, expected to be documented
+   in future versions of this document, will guide the writing of a
+   number of expected standards-track documents:
+
+   *  A new standards-track document discussing security for all NFSv4
+      minor versions, updating [RFC7530] and [RFC8881].  It is intended
+      that this document be referred to by rfc5661bis when it is ready
+      for publication but it should be able to be published, on its own,
+      before that, since it would update [RFC8881].
+
+   *  To address NFSv4.1-specific security issues, new text will be
+      needed in an anticipated rfc5661bis, updating [RFC8881].
+
+      draft-dnoveck-nfsv4-rfc5661bis [I-D.dnoveck-nfsv4-rfc5661bis] is
+      anticipated to be a precursor document whose drafting will be
+      affected.
+
+   In addition, the working group discussion anticipated might guide the
+   writing of a number of potential working group documents:
+
+   *  A new standards-track document discussing AUTH_SYS, including
+      discussion of the potential use of client-host authentication.
+
+   *  A new standards-track document updating [RFC5531], focusing on a
+      more complete and accurate treatment of AUTH_SYS.
+
+3.2.  Future Use of this Document
+
+   The pattern of use discussed above is expected to continue until the
+   decisions to be made are finalized.  While the documents whose
+   drafting is to be guided, will be farly far into development, it is
+   not necessary for the working group to wait for publication of those
+   documents (or even WGLC) before scheduling WGLC for this one.
+
+   The question of possible publication of this document as an
+   informational RFC remains open.  It should probably be discussed
+   shortly before WGLC.  Given this uncertainty, if there is to be a
+   milestone associated with this document, the target should be WGLC.
+
+4.  Situation to be Addressed
+
+4.1.  NFSv4 Use Environments to be Addressed
 
    We will consider a range of network environments and how the type of
    environment affects the need for the features being introduced to
@@ -333,7 +410,7 @@ Table of Contents
    requirements for major administrative changes or compute-intensive
    additions to the processing path.
 
-3.2.  Emergence and Correction of Security Issues
+4.2.  Emergence and Correction of Security Issues
 
    The fact that serious security issues exist in many of the
    environment discussed above has made it necessary to consider taking
@@ -368,7 +445,7 @@ Table of Contents
    established with regard to security or changes in security guidance
    occurred.  In understanding this history and the choices of
    RFC2119-defined keywords, the constraints on the working group need
-   to be understood, as described in Section 5.2
+   to be understood, as described in Section 6.2
 
    *  The basic assumptions about security for NFS were established over
       thirty years ago.  At that time, it was generally taken for
@@ -444,8 +521,8 @@ Table of Contents
       implementation work specified in [RFC8881].
 
    These options have been made available by the work at the RPC layer
-   described in Section 6 while the specifics of having NFSv4 take
-   advantage of these options are described in Section 7.
+   described in Section 7 while the specifics of having NFSv4 take
+   advantage of these options are described in Section 8.
 
    Providing a new security approach for multiple existing protocols is
    potentially disruptive and due care will need to be taken to avoid
@@ -458,12 +535,12 @@ Table of Contents
    with determining how the needed changes can resolve existing security
    issues without undue disruption.
 
-4.  Major Problems to Address
+5.  Major Problems to Address
 
    The problems to be addressed concern the way that security
    information has been conveyed in earlier specifications (discussed in
-   Section 4.1) as well as two sets of substantive security weaknesses
-   discussed in Sections 4.2 and 4.3.
+   Section 5.1) as well as two sets of substantive security weaknesses
+   discussed in Sections 5.2 and 5.3.
 
    Although the inadequacies in the presentation of security issues have
    contributed to prolongation of the substantive weaknesses and will be
@@ -476,7 +553,7 @@ Table of Contents
    in connection with the changes to be proposed, and also going
    forward, as needs change.
 
-4.1.  Problems with Security Presentation/Organization
+5.1.  Problems with Security Presentation/Organization
 
    While attention has previously focused on the deficiencies of the
    Security Considerations sections (e.g.  Lack of a threat analysis),
@@ -484,13 +561,13 @@ Table of Contents
 
    Problems with the overall presentation of NFSv4 security,
    particularly the discussion of the security architecture will be
-   dealt with in Section 4.1.1.
+   dealt with in Section 5.1.1.
 
    Problems with the evaluation of NFSv4 security including the lack of
    a threat analysis and the contents of the Security considerations
-   sections will be dealt with in Section 4.1.2.
+   sections will be dealt with in Section 5.1.2.
 
-4.1.1.  Problems with Presentation of Security Architecture
+5.1.1.  Problems with Presentation of Security Architecture
 
    The presentation of the NFSv4 security architecture (for both minor
    versions) focuses on the work done to make RPCSEC_GSS usable in view
@@ -573,13 +650,13 @@ Table of Contents
       undertaken to make this a basic element of NFSv4 security.
       Despite the delay, the issue now seems on its way to effective
       resolution, using the work done in [I-D.ietf-nfsv4-rpc-tls], as
-      described in Section 7.5.
+      described in Section 8.5.
 
    As we have seen, the description of the security architecture of
    NFSv4 is quite limited and a new security document will have some
    gaps to fill.
 
-4.1.2.  Problems with Security Evaluation
+5.1.2.  Problems with Security Evaluation
 
    The principal difficulty in the overall approach to security taken in
    the Security Considerations section of [RFC7530] and [RFC8881]
@@ -600,7 +677,7 @@ Table of Contents
       forthrightly discuss existing security weaknesses and make plans
       to address them.
 
-4.2.  Problems with treatment of AUTH_SYS
+5.2.  Problems with treatment of AUTH_SYS
 
    While [RFC3530], [RFC7530], and [RFC8881] state that implementation
    of RPCSEC_GSS is REQUIRED, they do not also require its use, allowing
@@ -747,10 +824,10 @@ Table of Contents
 
       To do this we would authenticate client hosts issuing AUTH_SYS
       requests taking advantage of the authentication provided by
-      [I-D.ietf-nfsv4-rpc-tls] as described in Section 6.2.  There is
+      [I-D.ietf-nfsv4-rpc-tls] as described in Section 7.2.  There is
       also a more detailed discussion of issues to be addressed in
       establishing the rules for this form of authentication in
-      Section 7.4.6.
+      Section 8.4.6.
 
    Although both of these alternatives should be considered, there is
    reason to believe that the first of these is not feasible, for
@@ -766,7 +843,7 @@ Table of Contents
    Because of the current predominant role of AUTH_SYS in existing NFSv4
    implementations, providing better security while remaining within the
    AUTH_SYS framework will also be difficult because of the issues
-   discussed in Section 5.2.  Nevertheless, we feel it needs to be
+   discussed in Section 6.2.  Nevertheless, we feel it needs to be
    attempted, as a new security framework cannot address AUTH_SYS
    without clearly discussing its security weaknesses.  Once that is
    done, we need to take advantage of the ability to effect client host
@@ -793,15 +870,15 @@ Table of Contents
       effective and would limit adoption of a clearly better, although
       far-from-ideal, alternative
 
-   Despite this summary of the author's views on this matter, this
+   Despite this summary of the authors' views on this matter, this
    question is ultimately a matter for working group decision.  For a
-   further discussion of related issues, see Section 7.4.3.  Although
-   the rest of this document is written assuming that the author's
-   choice will be selected, Section 7.4.3 explains the changes to the
+   further discussion of related issues, see Section 8.4.3.  Although
+   the rest of this document is written assuming that the authors'
+   choice will be selected, Section 8.4.3 explains the changes to the
    eventual standards-track document that would be required if different
    choices were to be made.
 
-4.3.  Problems with Confidentiality
+5.3.  Problems with Confidentiality
 
    Confidentiality is currently provided within NFSv4 by the use of
    RPCSEC_GSS, with the server charged with enforcing any administrator-
@@ -917,16 +994,16 @@ Table of Contents
    for the work done in [I-D.ietf-nfsv4-rpc-tls] that provided the
    opportunity to provide encryption uniformly and potentially with high
    performance.  An overview of steps necessary to address these issues
-   appears in Section 6.1.
+   appears in Section 7.1.
 
-5.  Framework for Correcting Problems
+6.  Framework for Correcting Problems
 
    This section addresses the fundamental issues of the organization and
    presentation of a new security framework.  The complementary issues
    involved in making substantive improvements in NFSv4 security will be
-   dealt with in Section 6.
+   dealt with in Section 7.
 
-5.1.  Correcting Problems with Regard to Threat Analyses
+6.1.  Correcting Problems with Regard to Threat Analyses
 
    Of prime importance is the inclusion of appropriate threat analyses,
    even apart from the requirement (in BCP 72 [RFC3552]) that such
@@ -967,9 +1044,9 @@ Table of Contents
    a revised treatment of AUTH_SYS including client host authentication.
    The possible existence of such a revised treatment, together with
    issues related to a threat analysis necessary for its inclusion is
-   discussed in Section 7.4.4.
+   discussed in Section 8.4.4.
 
-5.2.  Correcting Problems with Regard to Use of Normative Terms
+6.2.  Correcting Problems with Regard to Use of Normative Terms
 
    Another important issue concerns the potential need for adjustment of
    inappropriate use of terms defined by [RFC2119], particularly any
@@ -1009,46 +1086,46 @@ Table of Contents
    matters explicit, where they are not otherwise clear, as suggested by
    Section 7 of [RFC2119].
 
-6.  Opportunities for Improvement Provided by Recent Work within the RPC
+7.  Opportunities for Improvement Provided by Recent Work within the RPC
     Layer
 
    The work done to provide TLS support for RPC (in
    [I-D.ietf-nfsv4-rpc-tls]) presents an important opportunity to
-   address the substantive security problems described in Sections 4.2
-   and 4.3.  While there will be a need to specify appropriate policies
-   for its use by NFSv4 as a ULP (see Sections 7.3.2 and 7.4.6 for
+   address the substantive security problems described in Sections 5.2
+   and 5.3.  While there will be a need to specify appropriate policies
+   for its use by NFSv4 as a ULP (see Sections 8.3.2 and 8.4.6 for
    details), the following opportunities present themselves and are
    likely to be taken advantage of:
 
    *  The use of transport-level encryption is a good way of dealing
-      with the inadequacies discussed in Section 4.3.  The use of a
+      with the inadequacies discussed in Section 5.3.  The use of a
       single key per connection makes offloaded implementations possible
       allowing use for all requests including those currently not
-      encrypted.  This is discussed in more detail in Section 6.1
+      encrypted.  This is discussed in more detail in Section 7.1
 
    *  Authentication of the client host, as provided by the
       authentication material presented at connection initialization
       might be used to authenticate the client host, to avoid acceptance
       of AUTH_SYS requests from unauthenticated clients.  This is
-      discussed in more detail in Section 6.2
+      discussed in more detail in Section 7.2
 
    Although [I-D.ietf-nfsv4-rpc-tls]) does not provide support for RDMA
    transports, parallel services to provide encryption and
    authentication are expected to be available, as discussed in
-   Section 6.3.
+   Section 7.3.
 
-6.1.  Opportunities for Improvement in Encryption
+7.1.  Opportunities for Improvement in Encryption
 
    [I-D.ietf-nfsv4-rpc-tls] provides the ability to encrypt all traffic
    on the connection used between an NFSv4 client and server.  This
    requires that that both the client and server provide support for
    RPC-over-TLS.  Appropriate requirements/recommendations are discussed
-   in Section 7.3.2.
+   in Section 8.3.2.
 
    Because this facility is based on an opportunistic use of TLS, there
    is a need for ULP-defined policies to deal with situations in which
    the server rejected the request for a TLS connection.  These matters
-   are discussed in Section 7.3.2 as well, as is the policy that servers
+   are discussed in Section 8.3.2 as well, as is the policy that servers
    are to adopt when dealing with a connection on which RPC-over-TLS is
    not requested.
 
@@ -1060,7 +1137,7 @@ Table of Contents
    whatever confidentiality support that might be present for a given
    client and server.
 
-6.2.  Opportunities for Improvement in Authentication
+7.2.  Opportunities for Improvement in Authentication
 
    When establishing a connection, as provided for by
    [I-D.ietf-nfsv4-rpc-tls], authentication material is provided by the
@@ -1069,7 +1146,7 @@ Table of Contents
 
    By using this authentication material to authenticate the client
    host, it would be possible to correct some of the issues discussed in
-   Section 4.2.  This would involve clearly specifying how that material
+   Section 5.2.  This would involve clearly specifying how that material
    is to be used, in contrast to the situation for the existing
    AUTH_SYS, for which current documentation (in Appendix A of
    [RFC5531]) is quite limited.  Any such respecification would need to
@@ -1092,9 +1169,9 @@ Table of Contents
       of "root squashing".
 
    The details of how the authentication material could be used are
-   discussed Section 7.4.6.
+   discussed Section 8.4.6.
 
-6.3.  Opportunities for Improvement when Using RDMA Transports
+7.3.  Opportunities for Improvement when Using RDMA Transports
 
    As noted above, [I-D.ietf-nfsv4-rpc-tls]) is not supported on RDMA
    transports, making it necessary to provide appropriate support for
@@ -1111,7 +1188,7 @@ Table of Contents
       [I-D.ietf-nfsv4-rpcrdma-version-two] could allow those configuring
       the client and server to make independent judgments on encryption
       adequacy, with RPCSEC_GSS integrity and encryption only
-      superseded, when both agree.  (See Section 7.3.2 for details).
+      superseded, when both agree.  (See Section 8.3.2 for details).
 
    *  Authentication material to support client host authentication can
       be provided by using the transport properties mechanism provided
@@ -1123,23 +1200,23 @@ Table of Contents
    current milestone for requesting publication is December 2020, this
    not expected to pose an obstacle.
 
-7.  Issues that Need to be Addressed
+8.  Issues that Need to be Addressed
 
    These sections discuss the issues that need to be addressed by new
    standards-track documents including both issues of the presentation/
-   evaluation of NFSv4 (discussed in Section 4.1) and the substantive
-   security weaknesses discussed in Sections 4.2 and 4.3.  For each
+   evaluation of NFSv4 (discussed in Section 5.1) and the substantive
+   security weaknesses discussed in Sections 5.2 and 5.3.  For each
    issue there is a section providing background followed by information
    suggesting how the issue would be addressed or issues that would need
    to be resolved before the issue could be addressed.
 
-7.1.  Threat Analysis Goals
+8.1.  Threat Analysis Goals
 
-7.1.1.  Background
+8.1.1.  Background
 
    For reasons that remain unclear, none of the specification documents
    for the existing NFSv4 minor versions contain a threat analysis.  As
-   a result, for the reasons discussed in Section 4.1, we need to
+   a result, for the reasons discussed in Section 5.1, we need to
    provide an appropriate threat analysis for all NFSv4 minor versions.
    Because of the high degree of overlap between pairs of NFSv4 minor
    versions, most of the analysis will be common to all versions.
@@ -1154,7 +1231,7 @@ Table of Contents
       metadata server).
 
       The use of TLS-based encryption, which we expect to be recommended
-      (see Section 7.3.2, may limit the need for this feature, but it
+      (see Section 8.3.2, may limit the need for this feature, but it
       will remain REQUIRED, when file-based pNFS is implemented.
 
    *  NFSv4.1 [RFC5661] facilities were added to protect locking and
@@ -1163,12 +1240,12 @@ Table of Contents
 
       These features have had very limited implementation work, so it
       would be desirable to provide alternative means to achieve the
-      goal, as described in Section 7.5.
+      goal, as described in Section 8.5.
 
    While the bulk of the threat analysis would be minor-version-
    independent, differences between minor version will have to be noted,
    as will differences that reflect uses of the facilities discussed in
-   Section 6.
+   Section 7.
 
    Beyond the lack of NFsv4 threat analyses, there is a further problem
    in that there is no threat analysis dealing with the AUTH_SYS case in
@@ -1211,9 +1288,9 @@ Table of Contents
       potentially acted upon.  The difficulty is further compounded by
       the fact that the client validation checks made by actual
       implementations are not fully described within RFC (They are
-      described above in Section 4.2).
+      described above in Section 5.2).
 
-7.1.2.  Issues to be Addressed
+8.1.2.  Issues to be Addressed
 
    It is expected that a threat analysis dealing with all NFSv4 minor
    will be dealt with in new standards-track document dealing with NFSv4
@@ -1222,12 +1299,12 @@ Table of Contents
 
    There will, in addition, be a need for a threat analysis dealing with
    AUTH_SYS, which might or might not appear in the NFSv4-wide security
-   document for reasons explained in Section 5.1.  The question of where
-   this best be done is discussed in Section 7.4.4.
+   document for reasons explained in Section 6.1.  The question of where
+   this best be done is discussed in Section 8.4.4.
 
-7.2.  NFSv4 Extension Policies
+8.2.  NFSv4 Extension Policies
 
-7.2.1.  Background
+8.2.1.  Background
 
    The basic framework for the extension of NFSv4 was established by
    [RFC8178].  Given that the anticipated standards-track document
@@ -1247,7 +1324,7 @@ Table of Contents
    *  How further extensions might relate to use of such new RPC-level
       facilities.
 
-7.2.2.  Addressing Extension Issues
+8.2.2.  Addressing Extension Issues
 
    We anticipate that the material would be in a section entitled,
    "NFSv4 Security Changes and the Existing NFSv4 Extension Model"
@@ -1323,14 +1400,14 @@ Table of Contents
          (e.g. transferring data in the clear, use of AUTH_SYS without
          client host authentication) be something to be warned against.
 
-7.3.  TLS Encryption Policies
+8.3.  TLS Encryption Policies
 
-7.3.1.  Background
+8.3.1.  Background
 
-   As discussed in Section 4.3, NFSv4 as currently defined, has serious
+   As discussed in Section 5.3, NFSv4 as currently defined, has serious
    problems providing the appropriate level of confidentiality for its
    transmissions.  Providing encryption at the transport layer, whether
-   as described in Section 6.1 or otherwise, can be expected to resolve
+   as described in Section 7.1 or otherwise, can be expected to resolve
    this issue by providing encryption in a potentially offloadable way,
    making use of RPC-level privacy and integrity services unnecessary.
 
@@ -1369,7 +1446,7 @@ Table of Contents
       the former.
 
    As we consider how to discuss the need for encryption in
-   Section 7.3.2, we will be mindful of the above.  Since it not
+   Section 8.3.2, we will be mindful of the above.  Since it not
    possible to mandate the use of encryption, we will make it
    RECOMMENDED.  However, in discussing the valid reasons that
    encryption might not be provided, we will try to restrict them to the
@@ -1378,7 +1455,7 @@ Table of Contents
    configuring clients and server need to be aware of when choosing to
    not provide the RECOMMENDED encryption.
 
-7.3.2.  Issues to Address
+8.3.2.  Issues to Address
 
    There is a need to recommend the implementation and use of
    appropriate encryption by the server and client, as is done, for
@@ -1493,9 +1570,9 @@ Table of Contents
          generation of NFS4ERR_WRONGSEC on a connection to the metadata
          server impossible.
 
-7.4.  Handling of AUTH_SYS
+8.4.  Handling of AUTH_SYS
 
-7.4.1.  Historical Background
+8.4.1.  Historical Background
 
    During the development of NFSv2 [RFC1094], little attention was
    directed to network security and no attention was directed to the
@@ -1512,7 +1589,7 @@ Table of Contents
    implementations were strongly focused on UNIX, deriving the necessary
    implementation requirements from shared code and from informal inter-
    developer communications, rather than standards documents.  As a
-   result, as discussed in Section 4.2, when it was necessary to discuss
+   result, as discussed in Section 5.2, when it was necessary to discuss
    the security of AUTH_SYS in connection with RPC (in [RFC5531], there
    was insufficient information on which to base a threat analysis,
    although it was correctly concluded that the result of use was a lack
@@ -1555,7 +1632,7 @@ Table of Contents
    predominant despite its obvious weaknesses from the security
    standpoint.
 
-7.4.2.  Background for Existing AUTH_SYS in NFSv4
+8.4.2.  Background for Existing AUTH_SYS in NFSv4
 
    When NFSv4 was first defined (in [RFC3530]), RPCSEC_GSS was added as
    a mandatory-to-implement means of authentication which was optional
@@ -1579,12 +1656,12 @@ Table of Contents
 
    Regardless of why this happened, the important fact is that it did
    happen, despite the serious security problems that it gave rise to.
-   Later subsections of Section 7.4 will discuss ways to address the
+   Later subsections of Section 8.4 will discuss ways to address the
    resulting situation.
 
-7.4.3.  Core Issue to Resolve for AUTH_SYS
+8.4.3.  Core Issue to Resolve for AUTH_SYS
 
-   Given the serious security weaknesses described in Section 4.2, there
+   Given the serious security weaknesses described in Section 5.2, there
    is clearly a need to discourage its further use in its existing form,
    since the difficulties with it will not be eliminated by the adoption
    of encryption of NFSv4 connections alone
@@ -1600,17 +1677,17 @@ Table of Contents
       underlying problem, in favor of a revised approach to AUTH_SYS
       with better security, based on client host authentication.
 
-   While the author is strongly of the opinion that the second choice is
-   more likely to be successful, and this document reflects that view,
-   there is no intention to foreclose the first option, should the
+   While the authors are strongly of the opinion that the second choice
+   is more likely to be successful, and this document reflects that
+   view, there is no intention to foreclose the first option, should the
    working group choose it.  If that option is chosen, then the material
-   in Section 7.4.6 becomes irrelevant and can be ignored while much of
-   that in Section 7.4.5 can be simply modified to expand its scope, as
+   in Section 8.4.6 becomes irrelevant and can be ignored while much of
+   that in Section 8.4.5 can be simply modified to expand its scope, as
    described below in that section.
 
-7.4.4.  Need to Better Document and Explain Issues with AUTH_SYS
+8.4.4.  Need to Better Document and Explain Issues with AUTH_SYS
 
-   As described in Section 7.1 there is a need for an appropriate threat
+   As described in Section 8.1 there is a need for an appropriate threat
    analysis for NFSv4.  For a number of reasons, issues with AUTH_SYS
    that would make it difficult to refer to in an NFSv4-wide security
    document without some additional work preparatory work:
@@ -1644,7 +1721,7 @@ Table of Contents
    *  Given that the ongoing security issues with AUTH_SYS might give
       rise to efforts to address them, an accurate understanding of
       these issues is even more important, regardless of how the working
-      group chooses to resolve the issue discussed in Section 7.4.3.
+      group chooses to resolve the issue discussed in Section 8.4.3.
 
       If the decision is made to improve the security characteristics of
       AUTH_SYS, it is important to understand existing security issues
@@ -1703,16 +1780,16 @@ Table of Contents
       document dealing with NFSv4 security.  The threat analysis would
       provide a basis for the whatever approach the working group
       decides to take with regard to the discussion of AUTH_SYS with
-      client-host authentication.  See Section 7.4.6 for further
+      client-host authentication.  See Section 8.4.6 for further
       details.
 
    The last of these is most likely to be adopted regardless of how the
-   working group decides the issue described in Section 7.4.3.  However,
+   working group decides the issue described in Section 8.4.3.  However,
    if the working group decides to strongly discourage the use of
    AUTH_SYS even with client-host authentication, the first is a
    possibility that should be considered.
 
-7.4.5.  Issues to Address for Existing Use of AUTH_SYS
+8.4.5.  Issues to Address for Existing Use of AUTH_SYS
 
    This section presents material that might be included in a standards-
    track document in an effort to suitably discourage use of AUTH_SYS in
@@ -1820,7 +1897,7 @@ Table of Contents
          squashing" since it can assume any identity it intends to,
          other than that of root.
 
-7.4.6.  Issues to Resolve for Revised Approach to AUTH_SYS
+8.4.6.  Issues to Resolve for Revised Approach to AUTH_SYS
 
    The availability of client-host authentication makes possible a
    revised approach to AUTH_SYS addressing some of its security
@@ -1885,9 +1962,9 @@ Table of Contents
    and #3 could be defined and effectively deployed, as well as the
    results of the threat analysis
 
-   I am assuming that AUTH_SYS with client-host authentication needs to
-   be considered inferior to RPCSEC_GSS but sufficiently superior to
-   AUTH_SYS without client authentication, to make it desirable to
+   We assume that AUTH_SYS with client-host authentication needs to be
+   considered inferior to RPCSEC_GSS but sufficiently superior to
+   AUTH_SYS without client authentication to make it desirable to
    encourage its use, given that it is impossible to eliminate use of
    AUTH_SYS, even with a "MUST NOT".  A number of potential
    introductions to the topic, of varying tone are explored below:
@@ -2006,9 +2083,9 @@ Table of Contents
       authentication [if-not-#2: and capable of excluding untrusted code
       from masquerading as an NFSv4 server by assuming root privileges.]
 
-7.5.  Handling of State Protection
+8.5.  Handling of State Protection
 
-7.5.1.  Background
+8.5.1.  Background
 
    The inclusion of state management within NFSv4 created new security
    issues in which the objects requiring protection were not files
@@ -2041,7 +2118,7 @@ Table of Contents
    makes it possible to apply such protection more generally, as
    described below.
 
-7.5.2.  Issues to be Addressed
+8.5.2.  Issues to be Addressed
 
    While transport-level encryption would make it harder for attackers
    to mount attacks based on these vulnerabilities, the authentication
@@ -2087,51 +2164,15 @@ Table of Contents
 
    It should be noted that this use of client-host authentication
    provides applicable protection even when AUTH_SYS is used.  This is
-   so however the issues discussed in Section 7.4.6 are addressed, and
+   so however the issues discussed in Section 8.4.6 are addressed, and
    independent of the decision made regarding the choice discussed in
-   Section 7.4.3 unless it is decided that AUTH_SYS MUST NOT be used.
+   Section 8.4.3 unless it is decided that AUTH_SYS MUST NOT be used.
    Issues regarding the impersonation of a large set of users are not
    relevant because user ids are not referenced.  Furthermore, the
    possibility of a privileged user-level client implementing a denial-
-   of-service attach (if issue #2 in Section 7.4.6 is not addressed), is
+   of-service attach (if issue #2 in Section 8.4.6 is not addressed), is
    not of concern since such a privileged process would find it far
    easier to deny service directly on the client host.
-
-8.  Steps Going Forward
-
-   This document is expected to facilitate concrete discussion of how to
-   address security in NFSv4.  It is expected to be modified to reflect
-   working group comments.  If the working group is amenable to this
-   approach, at some point a request will be made to adopt it as a
-   working group item.
-
-   A large part of the discussion is expected to concern how AUTH_SYS
-   will be dealt with.  However, it is not expected that the working
-   group needs to reach consensus on this issue immediately.  This
-   document could be adopted as a working group item if it is an
-   appropriate vehicle to organize the discussion of related issues,
-   such as formulating a consensus regarding the treatment of AUTH_SYS.
-
-   It is anticipated that, once the document is adopted as a working
-   group item, this document will be used to discuss the writing of
-   multiple standards-track documents, which may need co-ordination
-   since they address a set of related issues:
-
-   *  A new standards-track document discussing security for all NFSv4,
-      updating [RFC7530] and [RFC8881].  It is intended that this
-      document be referred to by rfc5661bis when it is ready for
-      publication but it should be able to be published, on its own,
-      before that, since it would update [RFC8881].
-
-   *  A new standards-track document discussing AUTH_SYS, including
-      discussion of the potential use of client-host authentication.
-
-   *  A new standards-track document updating [RFC5531].
-
-   This document is being written to guide the working group in
-   preparing future standards-track documents.  There are no plans to
-   publish it as an RFC.  If a milestone is to be associated with it,
-   the appropriate goal would be completion of WGLC.
 
 9.  IANA Considerations
 
@@ -2195,14 +2236,22 @@ Table of Contents
    results of the threat analysis, referring to those parts that appear
    in other sections of the document.
 
-10.2.  Security Considerations Section for Revised RPC Specification
-       Document
+10.2.  Security Considerations Section for Eventual Rfc5661bis
+
+   This section would have to refer to the Security Considerations
+   section of the new NFSv4-wide secrity document.  In addition, to deal
+   with NFSv4.1-specific security issues (i.e. pNFS and state
+   protection), there would be additional material, most likely within
+   the Security Considerations section or a subsection thereof.
+
+10.3.  Security Considerations Section for Potential Revised RPC
+       Specification Document
 
    The general form of this section in [RFC5531] in which references are
    made to documents for each security flavor, seem appropriate.
    However, the following changes are likely to be required:
 
-   *  The treatment of AUTH_SYS needs to reference the new document
+   *  The treatment of AUTH_SYS might need to reference a new document
       describing AUTH_SYS, rather than the incomplete description in
       Appendix A, which needs to be removed.
 
@@ -2249,33 +2298,33 @@ Table of Contents
       -  Standards-track RPC services need to mandate server and client
          support for RPCSEC_GSS when used in the forward direction.  The
          treatment of authentication for reverse-direction operation
-         needs provide for authentication of the identity of the
+         needs to provide for authentication of the identity of the
          requester (i.e. on the server) to the responder (i.e. on the
          client).  When reverse direction requests are not made on
          behalf of a specific user, the mutual authentication provided
          by RPC-TLS can be relied on but authentication of users on
-         reverse-direction will need to use RPCSEC_GSS.
+         reverse-direction requests will need to use RPCSEC_GSS.
 
       -  For either direction of operation, when user identities must be
          authenticated, such services need to mandate support for an
-         authentication pseudo-flavor.  In situation in which it is
+         authentication pseudo-flavor.  In situations in which it is
          possible/allowed for RPC services to be used without TLS
          encryption there is also a need to mandate pseudo-flavors with
          additional appropriate levels of security, depending on the
          need for authentication only, integrity (a.k.a. non-
          repudiation), or encryption to provide data confidentiality.
 
-10.3.  Security Considerations Section for Standard-track Document
-       dealing with AUTH_SYS
+10.4.  Security Considerations Section for Potential Standards-track
+       Document Dealing with AUTH_SYS
 
-   As mentioned above, a prime goal of the threat analysis for AUTH_SYS
-   would be to clarify the degree to which the security weaknesses of
-   AUTH_SYS can be successfully addressed using transport-level security
-   facilities.  Those pieces of the threat analysis might well appear
-   outside the Security Consideration section proper.
+   As mentioned above, a prime goal of a general threat analysis for
+   AUTH_SYS would be to clarify the degree to which the security
+   weaknesses of AUTH_SYS can be successfully addressed using transport-
+   level security facilities.  Those pieces of the threat analysis might
+   well appear outside the Security Consideration section proper.
 
-   The Security Considerations needs to summarize these and provide a
-   basis for ULPs that allow AUTH_SYS to specify the appropriate
+   The Security Considerations would need to summarize these and provide
+   a basis for ULPs that allow AUTH_SYS to specify the appropriate
    conditions for use and the consequences of not enforcing these.
 
 11.  References
@@ -2333,6 +2382,13 @@ Table of Contents
 
 11.2.  Informative References
 
+   [I-D.dnoveck-nfsv4-rfc5661bis]
+              Noveck, D., "Network File System (NFS) Version 4 Minor
+              Version 1 Protocol", Work in Progress, Internet-Draft,
+              draft-dnoveck-nfsv4-rfc5661bis-00, 31 December 2020,
+              <https://tools.ietf.org/html/draft-dnoveck-nfsv4-
+              rfc5661bis-00>.
+
    [RFC1094]  Nowicki, B., "NFS: Network File System Protocol
               specification", RFC 1094, DOI 10.17487/RFC1094, March
               1989, <https://www.rfc-editor.org/info/rfc1094>.
@@ -2362,7 +2418,7 @@ Table of Contents
 
 Acknowledgements
 
-   The authors would like to thank all the people contributed to
+   The authors would like to thank all who contributed to
    [I-D.ietf-nfsv4-rpc-tls] for their important work providing security
    at the RPC layer, enabling us to break the NFSv4 security logjam.
 
