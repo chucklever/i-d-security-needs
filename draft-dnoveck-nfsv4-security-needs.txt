@@ -131,36 +131,33 @@ Table of Contents
 
 1.  Introduction
 
-   This document will discuss the changes that need to be made in the
-   security facilities to be used with NFSv4.  These changes are made
-   necessary by the fact that the original goal for NFSv4, that of
-   enabling secure use on the internet has not been effectively realized
-   and because the current approach to security does not address current
-   needs for secure operation in many environments.
+   This document proposes specification changes that modernize NFSv4
+   security.  These changes are necessary because the original goal for
+   the NFSv4 protocol, to enable secure file exchange on the open
+   internet [RFC2624], has not been effectively realized.  Moreover,
+   existing approaches to NFSv4 security do not meet the security needs
+   of many contemporary restricted-access environments.
 
-   This document is intended to serve as a resource for the working
-   group, as it creates new standards-track documents to address the
-   security issues that exist within NFSv4.  For details of the expected
-   use of this document, see Section 3.
+   Restricting physical access to the network on which a client and
+   server interact is a common NFSv4 deployment technique.  This
+   restriction limits access to users associated with a particular
+   organization but does not eliminate the need for protocol support
+   that enables completely secure operation.  Section 4.1 contains a
+   taxonomy of specific environments and their corresponding security
+   needs.
 
-   Needed changes are expected to involve use of new transport-level
-   security facilities provided within the RPC layer (See Section 7).
-   These will involve the encryption of NFSv4 traffic and the probable
-   use of client host authentication to improve security when AUTH_SYS
-   is used, replacing the security approach specified in [RFC7530] and
+   As an example, the use of transport-layer security, including the
+   encryption of network traffic and the use of client host
+   authentication, can improve security when AUTH_SYS [RFC5531] is in
+   use, replacing the security approaches specified in [RFC7530] and
    [RFC8881].  For a discussion of issues connected to shifting the
-   security approach for existing protocols, see Section 4.2.
+   security approach of mature protocols, see Section 4.2.
 
-   Although most use of NFSv4 is not within the internet, but in more
-   restricted local area network environments, it appears that NFSv4
-   security, as actually used, needs updating to provide security
-   appropriate to the current needs of these environments as well.
-   Although restricting physical access to the network on which the
-   client and server interact can result in limiting access to users
-   associated with a particular organization, this step does not
-   eliminate the need for protocol support for secure operation.  The
-   specific environments and the corresponding security needs are
-   discussed in Section 4.1.
+   The current document serves as a resource for the nfsv4 working group
+   as it updates current standards-track documents and proposes new
+   standards-track documents to address security issues within the NFSv4
+   protocol.  For further details on the expected use of this document,
+   see Section 3.
 
 2.  Terminology
 
@@ -2397,6 +2394,10 @@ Table of Contents
               Version 3 Protocol Specification", RFC 1813,
               DOI 10.17487/RFC1813, June 1995,
               <https://www.rfc-editor.org/info/rfc1813>.
+
+   [RFC2624]  Shepler, S., "NFS Version 4 Design Considerations",
+              RFC 2624, DOI 10.17487/RFC2624, June 1999,
+              <https://www.rfc-editor.org/info/rfc2624>.
 
    [RFC3530]  Shepler, S., Callaghan, B., Robinson, D., Thurlow, R.,
               Beame, C., Eisler, M., and D. Noveck, "Network File System
