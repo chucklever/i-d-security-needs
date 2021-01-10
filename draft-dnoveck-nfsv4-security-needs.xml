@@ -3530,6 +3530,21 @@ document.
 </section>
 
 <section
+ anchor="SEC-bis"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
+<name>Security Considerations Section for Eventual Rfc5661bis</name>
+<t>
+This section would have to refer to the Security Considerations
+section of the new NFSv4-wide secrity document.  In addition, to deal
+with NFSv4.1-specific security issues (i.e. pNFS and state
+protection), there would be additional material, most likely within
+the Security Considerations section or a subsection thereof.
+</t>
+</section>
+
+<section
  anchor="SEC-rpc"
  numbered="true"
  removeInRFC="false"
