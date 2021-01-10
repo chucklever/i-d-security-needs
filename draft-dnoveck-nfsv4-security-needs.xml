@@ -112,13 +112,13 @@ are made necessary by the fact that the original goal for NFSv4,
 that of enabling secure use on the internet has not been
 effectively realized and because the current approach to security
 does not address current needs for secure operation in many environments.
+</t>
+<t>
 This document is intended to serve as a
 resource for the working group, as it creates new standards-track
 documents to address the security issues that exist within NFSv4.
-These potential documents are listed and the likely processes
-expected to be used in producing them are
-discussed in
-<xref target="STEPS" format="default" sectionFormat="of"/>.
+For details of the expected use of this document, see
+<xref target="USE" format="default" sectionFormat="of"/>.
 </t>
 <t>
 Needed  changes are expected to involve use of new
@@ -332,6 +332,133 @@ As discussed in
 
 </dl>
 
+</section>
+
+</section>
+
+<section
+ anchor="USE"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
+<name>Use of this Document</name>
+
+<section
+ anchor="USE-current"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
+<name>Current Use of this Document</name>
+
+<t>
+This document is a means to facilitate discussion
+of the specific inadequacies that need to be addressed
+within a new approach to NFSv4 security
+that we believe is required.
+For each specfic inadequacy, as discussion proceeds,
+the treatment is expected evolve downward in the following list
+to enable the working group to formulate text
+for new standards-track documents to address the problem:
+</t>
+<ul spacing="normal" bare="false" empty="false">
+<li>
+The statement that a specific inadequacy exists and needs to be dealt with.
+</li>
+<li>
+A listing of potential ways to deal with a specific inadequacy.
+</li>
+<li>
+A proposal by the authors that a specfic adequacy is best dealt
+with a particular way, possibly accompanied by a list of other
+reasonable aproaches.
+</li>
+<li>
+A statement that the working is expected to address a specfic
+inadequacy in a particular way.
+</li>
+<li>
+A statement that the working is addressing a specfic inadequacy in
+a particular way.
+</li>
+</ul>
+<t>
+While it is expected that, if the working group concurs, this
+document will be adopted as a working group document, that transition
+is not expected to affect the document's pattern of use.  When
+deciding on that issue the working group will not be considering the
+specific propoals to address inadequacies, which can be addressed
+later.  The working group will be considering whether there are
+serous inadequacies requiring new documents and whether such a
+document will be helpful in addressing them.
+</t>
+<t>
+The working group discussion anticipated, expected to be documented
+in future versions of this document, will guide the writing of a
+number of expected standards-track documents:
+</t>
+<ul spacing="normal" bare="false" empty="false">
+<li>
+A new standards-track document discussing security for all NFSv4
+minor versions, updating
+<xref target="RFC7530" format="default" sectionFormat="of"/>
+and
+<xref target="RFC8881" format="default" sectionFormat="of"/>.
+It is intended that this document be referred to by
+rfc5661bis
+when it is ready for publication
+but it should be able to be published, on its own,
+before that, since it would update
+<xref target="RFC8881" format="default" sectionFormat="of"/>.
+</li>
+<li>
+<t>
+To address NFSv4.1-specific security issues, new text will be
+needed in an anticipated rfc5661bis, updating
+<xref target="RFC8881" format="default" sectionFormat="of"/>.
+</t>
+<t>
+draft-dnoveck-nfsv4-rfc5661bis
+<xref target="I-D.dnoveck-nfsv4-rfc5661bis" format="default" sectionFormat="of"/>
+is anticipated to be a precursor document whose drafting will be
+affected.
+</t>
+</li>
+</ul>
+<t>
+In addition, the working group discussion anticipated might guide the
+writing of a number of potential working group documents:
+</t>
+<ul spacing="normal" bare="false" empty="false">
+<li>
+A new standards-track document discussing AUTH_SYS, including
+discussion of the potential use of client-host authentication.
+</li>
+<li>
+A new standards-track document updating [RFC5531], focusing on a
+more complete and accurate treatment of AUTH_SYS.
+</li>
+</ul>
+</section>
+
+<section
+ anchor="USE-future"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
+<name>Future Use of this Document</name>
+<t>
+The pattern of use discussed above is expected to continue until the
+decisions to be made are finalized.  While the documents whose
+drafting is to be guided, will be farly far into development, it is
+not necessary for the working group to wait for publication of those
+documents (or even WGLC) before scheduling WGLC for this one.
+</t>
+<t>
+The question of possible publication of this document as an
+informational RFC remains open.  It should probably be discussed
+shortly before WGLC.  Given this uncertainty, if there is to be a
+milestone associated with this document, the target should be WGLC.
+</t>
 </section>
 
 </section>
@@ -3302,63 +3429,6 @@ far easier to deny service directly on the client host.
 </section>
 
 <section
- anchor="STEPS"
- numbered="true"
- removeInRFC="false"
- toc="default">
-<name>Steps Going Forward</name>
-<t>
-This document is expected to facilitate concrete discussion of how
-to address security in NFSv4.   It is expected to be modified to
-reflect working group comments.  If the working group is amenable
-to this approach, at some point a request will be
-made to adopt it as a working group item.
-</t>
-<t>
-A large part of the discussion is expected to concern how AUTH_SYS
-will be dealt with.   However, it is not expected that the working
-group needs to reach consensus on this issue immediately.
-This document could be adopted as a working group item if it is an
-appropriate vehicle to organize the discussion of related issues,
-such as formulating a consensus regarding the treatment of AUTH_SYS.
-</t>
-<t>
-It is anticipated that, once the document is adopted as a working
-group item, this document will be used
-to discuss the writing of multiple
-standards-track documents, which may need co-ordination since they
-address a set of related issues:
-</t>
-<ul spacing="normal">
-<li>
-A new standards-track document discussing security for all
-NFSv4, updating
-<xref target="RFC7530" format="default" sectionFormat="of"/>
-and
-<xref target="RFC8881" format="default" sectionFormat="of"/>.
-It is intended that this document be referred to by rfc5661bis
-when it is ready for publication but it should be able to be
-published, on its own, before that, since it would update
-<xref target="RFC8881" format="default" sectionFormat="of"/>.
-</li>
-<li>
-A new standards-track document discussing AUTH_SYS, including
-discussion of the potential use of client-host authentication.
-</li>
-<li>
-A new standards-track document updating
-<xref target="RFC5531" format="default" sectionFormat="of"/>.
-</li>
-</ul>
-<t>
-This document is being written to guide the working group in
-preparing future standards-track documents. There are no plans
-to publish it as an RFC.   If a milestone is to be associated with it,
-the appropriate goal would be completion of WGLC.
-</t>
-</section>
-
-<section
  anchor="IANA"
  numbered="true"
  removeInRFC="false"
@@ -3611,6 +3681,8 @@ conditions for use and the consequences of not enforcing these.
 
 <references>
 <name>Informative References</name>
+<xi:include
+ href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-dnoveck-nfsv4-rfc5661bis-00.xml"/>
 <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.1094.xml"/>
 <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.1813.xml"/>
 <xi:include href="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3530.xml"/>
