@@ -3549,7 +3549,7 @@ the Security Considerations section or a subsection thereof.
  numbered="true"
  removeInRFC="false"
  toc="default">
-<name>Security Considerations Section for Revised RPC Specification Document</name>
+<name>Security Considerations Section for Potential Revised RPC Specification Document</name>
 <t>
 The general form of this section in
 <xref target="RFC5531" format="default" sectionFormat="of"/>
@@ -3560,7 +3560,7 @@ required:
 <ul spacing="normal">
 <li>
 <t>
-The treatment of AUTH_SYS needs to reference the new document
+The treatment of AUTH_SYS might need to reference a new document
 describing AUTH_SYS, rather than the incomplete description in
 Appendix A, which needs to be removed.
 </t>
@@ -3656,7 +3656,7 @@ non-repudiation), or encryption to provide data confidentiality.
  numbered="true"
  removeInRFC="false"
  toc="default">
-<name>Security Considerations Section for Standard-track Document dealing with AUTH_SYS</name>
+<name>Security Considerations Section for Potential Standards-track Document Dealing with AUTH_SYS</name>
 <t>
 As mentioned above, a prime goal of the threat analysis for AUTH_SYS
 would be to clarify the degree to which the security weaknesses of
