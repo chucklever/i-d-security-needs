@@ -3628,18 +3628,18 @@ issues:
 Standards-track RPC services need to mandate server and client
 support for RPCSEC_GSS when used in the forward direction.
 The treatment of authentication for reverse-direction operation
-needs provide for authentication of the identity of the
+needs to provide for authentication of the identity of the
 requester (i.e. on the server) to the responder (i.e. on the
 client).  When reverse direction requests are not made on behalf
 of a specific user, the mutual authentication provided by RPC-TLS
 can be relied on but authentication of users on reverse-direction
-will need to use RPCSEC_GSS.
+requests will need to use RPCSEC_GSS.
 </li>
 <li>
 For either direction of operation, when user identities
 must be authenticated, such services need to
 mandate support for an authentication pseudo-flavor.
-In situation in which it is
+In situations in which it is
 possible/allowed for RPC services to be used without
 TLS encryption there is also a need to mandate pseudo-flavors
 with additional appropriate levels of security, depending on
@@ -3658,14 +3658,14 @@ non-repudiation), or encryption to provide data confidentiality.
  toc="default">
 <name>Security Considerations Section for Potential Standards-track Document Dealing with AUTH_SYS</name>
 <t>
-As mentioned above, a prime goal of the threat analysis for AUTH_SYS
+As mentioned above, a prime goal of a general threat analysis for AUTH_SYS
 would be to clarify the degree to which the security weaknesses of
 AUTH_SYS can be successfully addressed using transport-level  security
 facilities.  Those pieces of the threat analysis might well appear
 outside the Security Consideration section proper.
 </t>
 <t>
-The Security Considerations needs to summarize these and provide a
+The Security Considerations would need to summarize these and provide a
 basis for ULPs that allow AUTH_SYS to specify the appropriate
 conditions for use and the consequences of not enforcing these.
 </t>
