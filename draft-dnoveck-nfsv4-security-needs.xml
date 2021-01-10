@@ -1303,13 +1303,13 @@ far-from-ideal, alternative
 </li>
 </ul>
 <t>
-Despite this summary of the author's views on this matter, this
+Despite this summary of the authors' views on this matter, this
 question is ultimately a matter for working group decision.
 For a further
 discussion of related issues, see
 <xref target="ISSUES-asys-rescore" format="default" sectionFormat="of"/>.
 Although the rest of this document is written assuming that the
-author's choice will be selected,
+authors' choice will be selected,
 <xref target="ISSUES-asys-rescore" format="default" sectionFormat="of"/>
 explains the changes to the eventual standards-track document that
 would be required if different choices were to be made.
@@ -2653,7 +2653,7 @@ client host authentication.
 </li>
 </ul>
 <t>
-While the author is strongly of the opinion that the second
+While the authors are strongly of the opinion that the second
 choice is more likely to be successful, and this document
 reflects that view, there is no intention to foreclose the
 first option, should the working group choose it.  If that
@@ -3114,9 +3114,9 @@ solutions for #2 and #3 could be defined and effectively deployed,
 as well as the results of the threat analysis
 </t>
 <t>
-I am assuming that AUTH_SYS with client-host authentication needs
+We assume that AUTH_SYS with client-host authentication needs
 to be considered inferior to RPCSEC_GSS but sufficiently superior
-to AUTH_SYS without client authentication, to make it desirable
+to AUTH_SYS without client authentication to make it desirable
 to encourage its use, given that it is impossible to eliminate
 use of AUTH_SYS, even with a
 "<bcp14>MUST NOT</bcp14>".
@@ -3715,7 +3715,7 @@ conditions for use and the consequences of not enforcing these.
  toc="default">
 <name>Acknowledgements</name>
 <t>
-The authors would like to thank all the people contributed to
+The authors would like to thank all who contributed to
 <xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>
 for their important work providing
 security at the RPC layer, enabling us to break the NFSv4
