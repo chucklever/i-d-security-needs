@@ -1012,141 +1012,181 @@ existing security weaknesses and make plans to address them.
  numbered="true"
  removeInRFC="false"
  toc="default">
-<name>Problems with treatment of AUTH_SYS</name>
+<name>The Treatment of AUTH_SYS</name>
 <t>
-While
+Sections 7 and 8.2 of
+<xref target="RFC5531" format="default" sectionFormat="of"/>
+introduce the RPC auth_flavor enumerator
+and
+a pair of opaque fields (the credential and the verifier fields).
+These fields
+carry material in each RPC message that can
+identify
+and
+authenticate the RPC client
+and
+the user who initiated the RPC transaction.
+The enumerator field determines the structure and content of the credential and verifier.
+</t>
+<t>
+The simpler auth_flavors
+(e.g., AUTH_NONE and AUTH_SYS)
+merely identify the requesting user and sending host.
+These flavors do not provide any cryptographic proof of identity.
+Therefore they do not provide true authentication
+of the conveyed user and host identities.
+</t>
+<t>
+The RPCSEC_GSS credential and verifier can both
+identify
+and
+authenticate
+the requesting user and host.
+They can additionally provide message integrity and confidentiality.
+</t>
+<t>
 <xref target="RFC3530" format="default" sectionFormat="of"/>,
 <xref target="RFC7530" format="default" sectionFormat="of"/>,
 and
 <xref target="RFC8881" format="default" sectionFormat="of"/>
 state that implementation of RPCSEC_GSS is
-<bcp14>REQUIRED</bcp14>,
-they do not also require its use, allowing an opportunity for unauthenticated
-requests to be issued by attackers targeting the many NFSv4 servers
-in which RPCSEC_GSS is not the only form of authentication provided,
-which appears to
-be the vast majority in operation.
+<bcp14>REQUIRED</bcp14>.
+However, they do not also mandate its use,
+exposing an opportunity for attackers to issue unauthenticated requests
+targeting NFSv4 servers in which RPCSEC_GSS is not the only form of
+authentication available.
 </t>
 <t>
-Although there are a number of nominal authentication flavors
-that allow unauthenticated requests to be presented in
-circumstances in which they will typically be executed by the
-server, AUTH_SYS is of greatest importance for a number of
-reasons:
+Among the RPC auth_flavors that can present unauthenticated
+requests to a server,
+AUTH_SYS is the most significant of these for many reasons:
 </t>
-<ul spacing="normal">
+<ul spacing="normal" bare="false" empty="false">
 <li>
-It is almost universally implemented by existing NFSv4
-servers and clients.
+Because the AUTH_SYS flavor is simple to implement and administer,
+existing NFSv4 servers and client implementations
+make it almost universally available.
 </li>
 <li>
-Unlike AUTH_NONE, whose name gives fair warning
-that requests are not, in fact, authenticated, AUTH_SYS is
-described as a means of authentication, without clearly
-addressing
-the question of what is being authenticated, and by whom.
+Unlike the AUTH_NONE flavor, whose name gives a fair warning
+that requests are unauthenticated,
+<xref target="RFC5531" format="default" sectionFormat="of"/>
+describes AUTH_SYS as a means of authentication
+without addressing the question of what is being authenticated
+and by whom.
 </li>
 <li>
-The substance of the server and client implementations
-are not clearly described in standards-track documents,
-although there is some
-incomplete information on the topic in
-<xref target="RFC5531" format="default" sectionFormat="of"/>.
+The substance of server and client implementations
+is not described in standards-track documents,
+leaving much to implementers' choice.
 </li>
 <li>
-There is no clear and complete description of the security
-consequences of implementing it and using it.
+There is no clear and complete description
+of the security consequences of deploying AUTH_SYS RPC services.
 </li>
 <li>
-Despite the fact that it was designated "insecure" in
-<xref target="RFC5531" format="default" sectionFormat="of"/>,
-it continued to be used heavily
-by implementations of all NFSv4 minor versions.
+Even
+<xref target="RFC5531" format="default" sectionFormat="of"/>
+designates AUTH_SYS as "insecure,
+all NFSv4 minor versions continue to allow its use.
 </li>
 </ul>
 <t>
-The common use of AUTH_SYS, which has continued until now, arose
-from the early history
-of NFS and its development, as part of the RPC authentication
-function, together with NFSv2
+The everyday use of AUTH_SYS arises from NFS's early history
+and development as part of the RPC authentication function and NFSv2
 <xref target="RFC1094" format="default" sectionFormat="of"/>
 and NFSv3
 <xref target="RFC1813" format="default" sectionFormat="of"/>.
-That approach, in which security was
-made the responsibility of large multi-user clients trusted by the
-servers, might have made sense when it was developed, but, as things
-changed, became less relevant to NFSv4 security needs.
+That approach,
+in which security was made the responsibility
+of large multi-user clients trusted by servers,
+might have made sense when it was initially developed,
+but has become less relevant to NFSv4 security needs over time.
 </t>
 <t>
-In the shift to NFSv4, RPCSEC_GSS was added on a
-mandatory-to-implement basis, while AUTH_SYS was
-left in place as an alternative without any effective
-consideration of
-the corresponding consequences for security.
-</t>
-<t>
-A number of common practices which servers have typically used in
-determining whether AUTH_SYS requests would be accepted are
-mentioned
-in associated standards-track documents (i.e. in
+The designers of the NFSv4 protocol made RPCSEC_GSS
+mandatory-to-implement.
+AUTH_SYS was left in place as an alternative
+without considering the corresponding consequences for security.
 <xref target="RFC5531" format="default" sectionFormat="of"/>,
 <xref target="RFC7530" format="default" sectionFormat="of"/>,
-<xref target="RFC8881" format="default" sectionFormat="of"/>)
-often without clear discussion of their obvious security weaknesses.
+and
+<xref target="RFC8881" format="default" sectionFormat="of"/>
+mention several common practices that servers have typically
+used to determine whether AUTH_SYS requests should be accepted,
+but without explicit dicussion of their obvious security weaknesses.
+</t>
+
+<section
+ anchor="Current-Authsys-Security-Policies"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
+<name>Current AUTH_SYS Security Policies</name>
+<t>
+Current NFSv4 client and server implementations
+commonly provide the following security policies.
+These policies attempt to improve the security
+offered by AUTH_SYS.
+Because these policies are not specified or discussed
+within standards-track documents,
+they have not been subject to threat analysis.
+There is an opportunity to describe and analyze
+security policies for AUTH_SYS
+and
+other authentication flavors used with NFSv4
+in an NFSv4-wide standards-track security document.
+</t>
+
+<dl newline="true" spacing="normal">
+
+<dt>Network Address-based Access Control</dt>
+<dd>
+<t>
+A typical server policy,
+which first appeared with implementations
+of earlier versions of NFS,
+is to limit the acceptance of AUTH_SYS requests
+to requests from known clients,
+as determined by the client's network address.
 </t>
 <t>
-As a result of the lack of attention to AUTH_SYS, there is no
-standards-track description of its implementation in connection
-with NFSv4.  Nevertheless,
-the following practices seem to have been adhered to in providing
-whatever security does exist.
-</t>
-<ul spacing="normal">
-<li>
-<t>
-A common server practice, deriving from use with earlier
-versions of
-NFS, has been to limit acceptance of such requests to requests
-from particular known clients, as determined by the source
-address
-of the request.
-</t>
-<t>
-The possibility of address spoofing is not discussed, although
-the Security Considerations section of
+The Security Considerations section of
 <xref target="RFC7530" format="default" sectionFormat="of"/>
-does state that this is "certainly not a
-safe model", most likely alluding to this possibility.  This
-recognition is not followed up on to call into question the
-use of AUTH_SYS as an optional security flavor (stated earlier in
-the form
+does not address the possibility of address spoofing,
+although it does state that
+this is "certainly not a safe model",
+most likely alluding to this possibility.
+The text does not follow up
+to call into question the use of AUTH_SYS as an
+<bcp14>OPTIONAL</bcp14>
+security flavor (stated earlier in the form
 "<bcp14>MAY</bcp14>
-be implemented").  Instead, it is used as
-justification for the mandatory nature of RPCSEC_GSS
-implementation,
-with the lack of security when AUTH_SYS is used
-not further mentioned.
+be implemented").
+Instead, it is used as justification
+for the mandatory nature of RPCSEC_GSS implementation;
+the lack of security when only AUTH_SYS is in use
+is not mentioned further.
 </t>
-</li>
-<li>
+</dd>
+
+<dt>Network Port-based Access Control</dt>
+<dd>
 <t>
-Another common server practice is to restrict use of AUTH_SYS
-based on the associated client source port, assuming that this
-assures that the kernel is making the request and that the kernel
-can be trusted.  That assumption has, over time, become more and
-more dubious, undercutting the underlying logic of AUTH_SYS,
-without any recognition of the consequent effect on the
-reasonableness of continued use of
-AUTH_SYS or other effective action to address the issue.
+Another frequently-used server-side security policy is
+to restrict the use of AUTH_SYS
+based on the associated client source port,
+assuming that this ensures that the client's kernel
+(or a privileged user space agent) has vetted the request.
+That assumption has, over time, become dubious.
 </t>
 <t>
 Appendix A of
 <xref target="RFC5531" format="default" sectionFormat="of"/>
-refers to this
-practice as follows:
+refers to this practice as follows:
 </t>
-<blockquote>
-It should be noted that use of this flavor of authentication
+<t>
+"It should be noted that use of this flavor of authentication
 does not
 guarantee any security for the users or providers of a service,
 in itself.  The authentication provided by this scheme can be
@@ -1155,172 +1195,190 @@ and the network can be secured externally, and privileged
 transport addresses are used for the communicating end-points
 (an example of this is the use of privileged TCP/UDP ports
 in UNIX systems -- note that not all
-systems enforce privileged transport address mechanisms).
-</blockquote>
-</li>
-<li>
+systems enforce privileged transport address mechanisms)."
+</t>
+</dd>
+
+<dt>Identity Squashing</dt>
+<dd>
 <t>
-Many servers do not execute AUTH_SYS requests specifying a
-user id of
-zero (i.e. root) under that user id or limit such
-execution to a small set of
-known clients using the source address checking referred to above.
+NFS servers can implement a security policy that
+executes all AUTH_SYS requests
+as a suitably unprivileged user ID,
+such as the anonymous user.
+An alternate policy treats
+only requests from privileged user IDs this way.
 </t>
 <t>
-No mention of this practice (generally called "root squashing")
-has been found so far in IETF documents.  Nevertheless,
-it continues to be implemented in connection with IETF-defined
-protocols such as NFSv4, despite this fact.   While it might
-make an attacker's
-task more complicated, there is little reason to assume that an
-attacker able to assume any identity he chooses other than
-that of root
-will be effectively prevented from taking advantage of the
-ability
-to get unauthenticated requests executed, when AUTH_SYS is
-implemented by a target server.
+Squashing does not prevent an attacker from
+masquerading as another user
+but only limits the range of user identities
+that can be assumed without difficulty.
 </t>
-</li>
-</ul>
-<t>
-As can be seen from the above, important elements of AUTH_SYS
-implementations are not specified within current
-standards-track documents
-in sufficient detail that interoperable implementations
-could be developed using these documents or subjected to a threat
-analysis, even if one were to be attempted.
-</t>
+</dd>
+
+</dl>
+
+</section>
+
+<section
+ anchor="Authsys-Working-Group-Actions"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
+<name>Working Group Actions</name>
 <t>
 The Security Considerations section of
 <xref target="RFC5531" format="default" sectionFormat="of"/>
-states that AUTH_SYS is "known to be insecure" and further states
+states that AUTH_SYS is "known to be insecure"
+and further states
 "AUTH_SYS
-<bcp14>SHOULD NOT</bcp14> be used for services that permit clients to
-modify data.   Nevertheless, AUTH_SYS has been commonly used by
-NFSv4
-clients modifying data since NFSv4 was first implemented, while
-the consequences for security have never been addressed.
+<bcp14>SHOULD NOT</bcp14>
+be used for services that permit clients to modify data."
+Nevertheless, AUTH_SYS has been commonly used
+by NFSv4 clients modifying data
+since NFSv4 was first implemented,
+while the security consequences have never been addressed.
 </t>
 <t>
-Given the security difficulties that use of AUTH_SYS gives rise
-to, we face a choice between two alternatives:
+Given the security difficulties that use of AUTH_SYS gives rise to,
+the NFS community faces a choice between a few alternatives:
 </t>
-<ul spacing="normal">
+<ul spacing="normal" bare="false" empty="false">
 <li>
 <t>
-Take steps to eliminate or otherwise minimize
-use of AUTH_SYS as a valid
-authentication flavor, either for NFSv4 as a whole or
-for minor versions based on NFSv4.1, whose description was
-published as a Proposed Standard after
+Take steps to
+eliminate
+or
+otherwise minimize
+the use of AUTH_SYS as a valid authentication flavor,
+either for NFSv4 as a whole
+or
+for minor versions based on NFSv4.1,
+whose description was published as a Proposed Standard
+after the publication of
 <xref target="RFC5531" format="default" sectionFormat="of"/>,
 which stated that AUTH_SYS was "known to be insecure".
 </t>
 <t>
-Given the many clients using AUTH_SYS, such steps might need to
-take the form of recommendations, with the difficulty of
-switching authentication models considered a valid reason
-to continue to use AUTH_SYS, as long as one is aware of
-the security
-consequences.
+Given the many clients using AUTH_SYS,
+such steps might take the form of recommendations,
+with the difficulty of switching authentication models
+considered a valid reason
+to continue to use AUTH_SYS
+as long as one is aware of the security consequences.
 </t>
 <t>
-Other alternatives are possible and will be discussed later.
-However, regardless of the working group's choice of normative
-terms, it is important that the security consequences of
-using AUTH_SYS are clearly explained.
+Regardless of the working group's choice of normative terms,
+it is crucial that new NFSv4 standards clearly explain
+the security consequences of using AUTH_SYS.
 </t>
 </li>
 <li>
 <t>
 Revise AUTH_SYS to enable secure implementation of an
 authentication model in which authenticated client hosts
-are assigned
-the responsibility to determine, within appropriate limits,
-the user ids to be used for each request sent.
+determine, within appropriate limits,
+the user IDs used for each request sent.
 </t>
 <t>
-To do this we would authenticate client hosts issuing
-AUTH_SYS requests taking advantage of the authentication
+To do this, servers would authenticate client hosts issuing
+AUTH_SYS requests, taking advantage of the authentication
 provided by
 <xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>
 as described in
 <xref target="OPP-auth" format="default" sectionFormat="of"/>.
-There is also a
-more detailed discussion of issues to be addressed
+A more detailed discussion of issues to be addressed
 in establishing
-the rules for this form of authentication in
+the rules for this form of authentication appears in
 <xref target="ISSUES-asys-resnew" format="default" sectionFormat="of"/>.
 </t>
 </li>
+<li>
+Continue to pursue alternative RPC security mechanisms
+that are simple to deploy and not costly to run.
+One such mechanism is RPC-over-TLS, but we can easily imagine
+mechanisms based on other open federated authentication standards.
+</li>
 </ul>
 <t>
-Although both of these alternatives should be considered, there
-is reason to believe that the first of these is not feasible,
-for reasons similar to those that have prevented such a step
-being attempted earlier, either as part of the transition to
-NFSv4 or to NFSv4.1.  The use of AUTH_SYS has continued despite
-the fact that alternatives were made available, and there is
-no reason to expect that the use of the words
+The nfsv4 working group should consider all of these alternatives.
+</t>
+<t>
+The first of these is unlikely to be feasible;
+otherwise, the NFS community might have already attempted such a step.
+The use of AUTH_SYS has continued even though
+alternatives are available,
+and there is no reason to expect that the use of the words
 "<bcp14>SHOULD NOT</bcp14>"
 or
 "<bcp14>MUST NOT</bcp14>"
-would prevent implementers from continuing to support it, or
-administrators depending on such support, despite
-the negative effect on the security of NFSv4 implementations
+would prevent implementers from continuing to support it or
+administrators depending on such support,
+despite the negative effect on the security of NFSv4 implementations
 </t>
 <t>
 Because of the current predominant role of AUTH_SYS in existing
 NFSv4 implementations, providing better security while remaining
 within the AUTH_SYS framework will also be difficult because of
-the issues discussed in
+the issues discussed earlier in
 <xref target="CORR-norm" format="default" sectionFormat="of"/>.
 Nevertheless,
-we feel it needs to be attempted, as a new security framework
+we feel it needs to be attempted as a new security framework
 cannot address AUTH_SYS without clearly discussing its security
-weaknesses.  Once that is done, we need to take advantage of the
-ability to effect client host authentication provided by
-<xref target="I-D.ietf-nfsv4-rpc-tls" format="default" sectionFormat="of"/>
-to provide a modicum
-of security while allowing administrators to delegate credential
-checking to trusted clients as they are now accustomed to doing.
+weaknesses.
+Once that is done, we need to take advantage of
+strong client host authentication
+to provide a modicum of security
+while allowing administrators to
+delegate credential-checking to trusted clients,
+as they are now accustomed to doing.
 </t>
 <t>
-While this approach is far from ideal, in that it requires a
-trust relationship between client and servers, adopting it
-provides a reasonable approach to support NFSv4 in the near-term
-while allowing development of a better alternative (e.g. a new
-authentication flavor) to proceed in parallel.
-With regard to our immediate need for
-better NFSv4 security, the obvious alternatives might not be
-realizable:
+This approach is far from ideal.
+It requires a trust relationship between clients and servers.
+Adopting it provides a reasonable approach to support NFSv4
+in the near-term while allowing the development
+of a better alternative
+(e.g., a new authentication flavor)
+to proceed in parallel.
+Concerning our immediate need for better NFSv4 security,
+the obvious alternatives might not be realizable:
 </t>
-<ul spacing="normal">
+<ul spacing="normal" bare="false" empty="false">
 <li>
-Given the security weaknesses of AUTH_SYS and the need to present
-a threat analysis, we cannot present AUTH_SYS without client host
-authentication as optional to use, either explicitly or by
-implication.
+Given the weaknesses of AUTH_SYS
+and
+the need to present a threat analysis,
+we cannot commend AUTH_SYS without client host authentication as
+<bcp14>OPTIONAL</bcp14>
+to use, either explicitly or by implication.
 </li>
 <li>
-Recommending that AUTH_SYS without host authentication not
-be used, with RPCSEC_GSS as the only alternative will not be
-effective and would limit adoption of a clearly better, although
-far-from-ideal, alternative
+Recommending that AUTH_SYS without client host authentication
+not be used, with RPCSEC_GSS as the only alternative,
+will not be effective and would limit adoption
+of a better, although far-from-ideal, alternative.
 </li>
 </ul>
 <t>
-Despite this summary of the authors' views on this matter, this
-question is ultimately a matter for working group decision.
-For a further
-discussion of related issues, see
-<xref target="ISSUES-asys-rescore" format="default" sectionFormat="of"/>.
-Although the rest of this document is written assuming that the
-authors' choice will be selected,
-<xref target="ISSUES-asys-rescore" format="default" sectionFormat="of"/>
-explains the changes to the eventual standards-track document that
-would be required if different choices were to be made.
+Therefore, the better alternative is to mandate or recommend that,
+when AUTH_SYS is in use, a form of strong host authentication
+is always deployed along with it.
 </t>
+<t>
+Despite this summary of the authors' views on this matter,
+this question is ultimately a matter for working group decision.
+For a further discussion of related issues, see
+<xref target="ISSUES-asys-rescore" format="default" sectionFormat="of"/>.
+Although the rest of this document assumes the
+authors' preference is selected,
+<xref target="ISSUES-asys-rescore" format="default" sectionFormat="of"/>
+explains the changes to an eventual standards-track document
+required if the working group concludes that different choices are necessary.
+</t>
+</section>
+
 </section>
 
 <section
