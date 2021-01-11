@@ -833,7 +833,7 @@ address div.right {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Noveck &amp; Lever</td>
-<td class="center">Expires 14 July 2021</td>
+<td class="center">Expires 15 July 2021</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -846,12 +846,12 @@ address div.right {
 <dd class="internet-draft">draft-dnoveck-nfsv4-security-needs-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-01-10" class="published">10 January 2021</time>
+<time datetime="2021-01-11" class="published">11 January 2021</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2021-07-14">14 July 2021</time></dd>
+<dd class="expires"><time datetime="2021-07-15">15 July 2021</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -914,7 +914,7 @@ Instructions are on that page as well.<a href="#section-note.1-3" class="pilcrow
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 14 July 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 15 July 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -997,7 +997,15 @@ Instructions are on that page as well.<a href="#section-note.1-3" class="pilcrow
                 </ul>
 </li>
               <li class="toc ulEmpty compact" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-problems-with-treatment-of-" class="xref">Problems with treatment of AUTH_SYS</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-the-treatment-of-auth_sys" class="xref">The Treatment of AUTH_SYS</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.5.2.2.2.1">
+                    <p id="section-toc.1-1.5.2.2.2.1.1"><a href="#section-5.2.1" class="xref">5.2.1</a>.  <a href="#name-current-auth_sys-security-p" class="xref">Current AUTH_SYS Security Policies</a><a href="#section-toc.1-1.5.2.2.2.1.1" class="pilcrow">¶</a></p>
+</li>
+                  <li class="toc ulEmpty compact" id="section-toc.1-1.5.2.2.2.2">
+                    <p id="section-toc.1-1.5.2.2.2.2.1"><a href="#section-5.2.2" class="xref">5.2.2</a>.  <a href="#name-working-group-actions" class="xref">Working Group Actions</a><a href="#section-toc.1-1.5.2.2.2.2.1" class="pilcrow">¶</a></p>
+</li>
+                </ul>
 </li>
               <li class="toc ulEmpty compact" id="section-toc.1-1.5.2.3">
                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-problems-with-confidentiali" class="xref">Problems with Confidentiality</a><a href="#section-toc.1-1.5.2.3.1" class="pilcrow">¶</a></p>
@@ -1969,133 +1977,167 @@ existing security weaknesses and make plans to address them.<a href="#section-5.
 </div>
 <div id="PROB-authsys">
 <section id="section-5.2">
-        <h3 id="name-problems-with-treatment-of-">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-problems-with-treatment-of-" class="section-name selfRef">Problems with treatment of AUTH_SYS</a>
+        <h3 id="name-the-treatment-of-auth_sys">
+<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-the-treatment-of-auth_sys" class="section-name selfRef">The Treatment of AUTH_SYS</a>
         </h3>
 <p id="section-5.2-1">
-While
+Sections 7 and 8.2 of
+<span>[<a href="#RFC5531" class="xref">RFC5531</a>]</span>
+introduce the RPC auth_flavor enumerator
+and
+a pair of opaque fields (the credential and the verifier fields).
+These fields
+carry material in each RPC message that can
+identify
+and
+authenticate the RPC client
+and
+the user who initiated the RPC transaction.
+The enumerator field determines the structure and content of the credential and verifier.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2-2">
+The simpler auth_flavors
+(e.g., AUTH_NONE and AUTH_SYS)
+merely identify the requesting user and sending host.
+These flavors do not provide any cryptographic proof of identity.
+Therefore they do not provide true authentication
+of the conveyed user and host identities.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
+<p id="section-5.2-3">
+The RPCSEC_GSS credential and verifier can both
+identify
+and
+authenticate
+the requesting user and host.
+They can additionally provide message integrity and confidentiality.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
+<p id="section-5.2-4">
 <span>[<a href="#RFC3530" class="xref">RFC3530</a>]</span>,
 <span>[<a href="#RFC7530" class="xref">RFC7530</a>]</span>,
 and
 <span>[<a href="#RFC8881" class="xref">RFC8881</a>]</span>
 state that implementation of RPCSEC_GSS is
-<span class="bcp14">REQUIRED</span>,
-they do not also require its use, allowing an opportunity for unauthenticated
-requests to be issued by attackers targeting the many NFSv4 servers
-in which RPCSEC_GSS is not the only form of authentication provided,
-which appears to
-be the vast majority in operation.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
-<p id="section-5.2-2">
-Although there are a number of nominal authentication flavors
-that allow unauthenticated requests to be presented in
-circumstances in which they will typically be executed by the
-server, AUTH_SYS is of greatest importance for a number of
-reasons:<a href="#section-5.2-2" class="pilcrow">¶</a></p>
+<span class="bcp14">REQUIRED</span>.
+However, they do not also mandate its use,
+exposing an opportunity for attackers to issue unauthenticated requests
+targeting NFSv4 servers in which RPCSEC_GSS is not the only form of
+authentication available.<a href="#section-5.2-4" class="pilcrow">¶</a></p>
+<p id="section-5.2-5">
+Among the RPC auth_flavors that can present unauthenticated
+requests to a server,
+AUTH_SYS is the most significant of these for many reasons:<a href="#section-5.2-5" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.2-3.1">
-It is almost universally implemented by existing NFSv4
-servers and clients.<a href="#section-5.2-3.1" class="pilcrow">¶</a>
+<li class="normal" id="section-5.2-6.1">
+Because the AUTH_SYS flavor is simple to implement and administer,
+existing NFSv4 servers and client implementations
+make it almost universally available.<a href="#section-5.2-6.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-5.2-3.2">
-Unlike AUTH_NONE, whose name gives fair warning
-that requests are not, in fact, authenticated, AUTH_SYS is
-described as a means of authentication, without clearly
-addressing
-the question of what is being authenticated, and by whom.<a href="#section-5.2-3.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-5.2-6.2">
+Unlike the AUTH_NONE flavor, whose name gives a fair warning
+that requests are unauthenticated,
+<span>[<a href="#RFC5531" class="xref">RFC5531</a>]</span>
+describes AUTH_SYS as a means of authentication
+without addressing the question of what is being authenticated
+and by whom.<a href="#section-5.2-6.2" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-5.2-3.3">
-The substance of the server and client implementations
-are not clearly described in standards-track documents,
-although there is some
-incomplete information on the topic in
-<span>[<a href="#RFC5531" class="xref">RFC5531</a>]</span>.<a href="#section-5.2-3.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-5.2-6.3">
+The substance of server and client implementations
+is not described in standards-track documents,
+leaving much to implementers' choice.<a href="#section-5.2-6.3" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-5.2-3.4">
-There is no clear and complete description of the security
-consequences of implementing it and using it.<a href="#section-5.2-3.4" class="pilcrow">¶</a>
+          <li class="normal" id="section-5.2-6.4">
+There is no clear and complete description
+of the security consequences of deploying AUTH_SYS RPC services.<a href="#section-5.2-6.4" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-5.2-3.5">
-Despite the fact that it was designated "insecure" in
-<span>[<a href="#RFC5531" class="xref">RFC5531</a>]</span>,
-it continued to be used heavily
-by implementations of all NFSv4 minor versions.<a href="#section-5.2-3.5" class="pilcrow">¶</a>
+          <li class="normal" id="section-5.2-6.5">
+Even
+<span>[<a href="#RFC5531" class="xref">RFC5531</a>]</span>
+designates AUTH_SYS as "insecure,
+all NFSv4 minor versions continue to allow its use.<a href="#section-5.2-6.5" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="section-5.2-4">
-The common use of AUTH_SYS, which has continued until now, arose
-from the early history
-of NFS and its development, as part of the RPC authentication
-function, together with NFSv2
+<p id="section-5.2-7">
+The everyday use of AUTH_SYS arises from NFS's early history
+and development as part of the RPC authentication function and NFSv2
 <span>[<a href="#RFC1094" class="xref">RFC1094</a>]</span>
 and NFSv3
 <span>[<a href="#RFC1813" class="xref">RFC1813</a>]</span>.
-That approach, in which security was
-made the responsibility of large multi-user clients trusted by the
-servers, might have made sense when it was developed, but, as things
-changed, became less relevant to NFSv4 security needs.<a href="#section-5.2-4" class="pilcrow">¶</a></p>
-<p id="section-5.2-5">
-In the shift to NFSv4, RPCSEC_GSS was added on a
-mandatory-to-implement basis, while AUTH_SYS was
-left in place as an alternative without any effective
-consideration of
-the corresponding consequences for security.<a href="#section-5.2-5" class="pilcrow">¶</a></p>
-<p id="section-5.2-6">
-A number of common practices which servers have typically used in
-determining whether AUTH_SYS requests would be accepted are
-mentioned
-in associated standards-track documents (i.e. in
+That approach,
+in which security was made the responsibility
+of large multi-user clients trusted by servers,
+might have made sense when it was initially developed,
+but has become less relevant to NFSv4 security needs over time.<a href="#section-5.2-7" class="pilcrow">¶</a></p>
+<p id="section-5.2-8">
+The designers of the NFSv4 protocol made RPCSEC_GSS
+mandatory-to-implement.
+AUTH_SYS was left in place as an alternative
+without considering the corresponding consequences for security.
 <span>[<a href="#RFC5531" class="xref">RFC5531</a>]</span>,
 <span>[<a href="#RFC7530" class="xref">RFC7530</a>]</span>,
-<span>[<a href="#RFC8881" class="xref">RFC8881</a>]</span>)
-often without clear discussion of their obvious security weaknesses.<a href="#section-5.2-6" class="pilcrow">¶</a></p>
-<p id="section-5.2-7">
-As a result of the lack of attention to AUTH_SYS, there is no
-standards-track description of its implementation in connection
-with NFSv4.  Nevertheless,
-the following practices seem to have been adhered to in providing
-whatever security does exist.<a href="#section-5.2-7" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-5.2-8.1">
-            <p id="section-5.2-8.1.1">
-A common server practice, deriving from use with earlier
-versions of
-NFS, has been to limit acceptance of such requests to requests
-from particular known clients, as determined by the source
-address
-of the request.<a href="#section-5.2-8.1.1" class="pilcrow">¶</a></p>
-<p id="section-5.2-8.1.2">
-The possibility of address spoofing is not discussed, although
-the Security Considerations section of
+and
+<span>[<a href="#RFC8881" class="xref">RFC8881</a>]</span>
+mention several common practices that servers have typically
+used to determine whether AUTH_SYS requests should be accepted,
+but without explicit dicussion of their obvious security weaknesses.<a href="#section-5.2-8" class="pilcrow">¶</a></p>
+<div id="Current-Authsys-Security-Policies">
+<section id="section-5.2.1">
+          <h4 id="name-current-auth_sys-security-p">
+<a href="#section-5.2.1" class="section-number selfRef">5.2.1. </a><a href="#name-current-auth_sys-security-p" class="section-name selfRef">Current AUTH_SYS Security Policies</a>
+          </h4>
+<p id="section-5.2.1-1">
+Current NFSv4 client and server implementations
+commonly provide the following security policies.
+These policies attempt to improve the security
+offered by AUTH_SYS.
+Because these policies are not specified or discussed
+within standards-track documents,
+they have not been subject to threat analysis.
+There is an opportunity to describe and analyze
+security policies for AUTH_SYS
+and
+other authentication flavors used with NFSv4
+in an NFSv4-wide standards-track security document.<a href="#section-5.2.1-1" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-5.2.1-2">
+            <dt id="section-5.2.1-2.1">Network Address-based Access Control</dt>
+            <dd style="margin-left: 1.5em" id="section-5.2.1-2.2">
+              <p id="section-5.2.1-2.2.1">
+A typical server policy,
+which first appeared with implementations
+of earlier versions of NFS,
+is to limit the acceptance of AUTH_SYS requests
+to requests from known clients,
+as determined by the client's network address.<a href="#section-5.2.1-2.2.1" class="pilcrow">¶</a></p>
+<p id="section-5.2.1-2.2.2">
+The Security Considerations section of
 <span>[<a href="#RFC7530" class="xref">RFC7530</a>]</span>
-does state that this is "certainly not a
-safe model", most likely alluding to this possibility.  This
-recognition is not followed up on to call into question the
-use of AUTH_SYS as an optional security flavor (stated earlier in
-the form
+does not address the possibility of address spoofing,
+although it does state that
+this is "certainly not a safe model",
+most likely alluding to this possibility.
+The text does not follow up
+to call into question the use of AUTH_SYS as an
+<span class="bcp14">OPTIONAL</span>
+security flavor (stated earlier in the form
 "<span class="bcp14">MAY</span>
-be implemented").  Instead, it is used as
-justification for the mandatory nature of RPCSEC_GSS
-implementation,
-with the lack of security when AUTH_SYS is used
-not further mentioned.<a href="#section-5.2-8.1.2" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="section-5.2-8.2">
-            <p id="section-5.2-8.2.1">
-Another common server practice is to restrict use of AUTH_SYS
-based on the associated client source port, assuming that this
-assures that the kernel is making the request and that the kernel
-can be trusted.  That assumption has, over time, become more and
-more dubious, undercutting the underlying logic of AUTH_SYS,
-without any recognition of the consequent effect on the
-reasonableness of continued use of
-AUTH_SYS or other effective action to address the issue.<a href="#section-5.2-8.2.1" class="pilcrow">¶</a></p>
-<p id="section-5.2-8.2.2">
+be implemented").
+Instead, it is used as justification
+for the mandatory nature of RPCSEC_GSS implementation;
+the lack of security when only AUTH_SYS is in use
+is not mentioned further.<a href="#section-5.2.1-2.2.2" class="pilcrow">¶</a></p>
+</dd>
+            <dd class="break"></dd>
+<dt id="section-5.2.1-2.3">Network Port-based Access Control</dt>
+            <dd style="margin-left: 1.5em" id="section-5.2.1-2.4">
+              <p id="section-5.2.1-2.4.1">
+Another frequently-used server-side security policy is
+to restrict the use of AUTH_SYS
+based on the associated client source port,
+assuming that this ensures that the client's kernel
+(or a privileged user space agent) has vetted the request.
+That assumption has, over time, become dubious.<a href="#section-5.2.1-2.4.1" class="pilcrow">¶</a></p>
+<p id="section-5.2.1-2.4.2">
 Appendix A of
 <span>[<a href="#RFC5531" class="xref">RFC5531</a>]</span>
-refers to this
-practice as follows:<a href="#section-5.2-8.2.2" class="pilcrow">¶</a></p>
-<blockquote id="section-5.2-8.2.3">
-It should be noted that use of this flavor of authentication
+refers to this practice as follows:<a href="#section-5.2.1-2.4.2" class="pilcrow">¶</a></p>
+<p id="section-5.2.1-2.4.3">
+"It should be noted that use of this flavor of authentication
 does not
 guarantee any security for the users or providers of a service,
 in itself.  The authentication provided by this scheme can be
@@ -2104,158 +2146,172 @@ and the network can be secured externally, and privileged
 transport addresses are used for the communicating end-points
 (an example of this is the use of privileged TCP/UDP ports
 in UNIX systems -- note that not all
-systems enforce privileged transport address mechanisms).<a href="#section-5.2-8.2.3" class="pilcrow">¶</a>
-</blockquote>
-</li>
-          <li class="normal" id="section-5.2-8.3">
-            <p id="section-5.2-8.3.1">
-Many servers do not execute AUTH_SYS requests specifying a
-user id of
-zero (i.e. root) under that user id or limit such
-execution to a small set of
-known clients using the source address checking referred to above.<a href="#section-5.2-8.3.1" class="pilcrow">¶</a></p>
-<p id="section-5.2-8.3.2">
-No mention of this practice (generally called "root squashing")
-has been found so far in IETF documents.  Nevertheless,
-it continues to be implemented in connection with IETF-defined
-protocols such as NFSv4, despite this fact.   While it might
-make an attacker's
-task more complicated, there is little reason to assume that an
-attacker able to assume any identity he chooses other than
-that of root
-will be effectively prevented from taking advantage of the
-ability
-to get unauthenticated requests executed, when AUTH_SYS is
-implemented by a target server.<a href="#section-5.2-8.3.2" class="pilcrow">¶</a></p>
-</li>
-        </ul>
-<p id="section-5.2-9">
-As can be seen from the above, important elements of AUTH_SYS
-implementations are not specified within current
-standards-track documents
-in sufficient detail that interoperable implementations
-could be developed using these documents or subjected to a threat
-analysis, even if one were to be attempted.<a href="#section-5.2-9" class="pilcrow">¶</a></p>
-<p id="section-5.2-10">
+systems enforce privileged transport address mechanisms)."<a href="#section-5.2.1-2.4.3" class="pilcrow">¶</a></p>
+</dd>
+            <dd class="break"></dd>
+<dt id="section-5.2.1-2.5">Identity Squashing</dt>
+            <dd style="margin-left: 1.5em" id="section-5.2.1-2.6">
+              <p id="section-5.2.1-2.6.1">
+NFS servers can implement a security policy that
+executes all AUTH_SYS requests
+as a suitably unprivileged user ID,
+such as the anonymous user.
+An alternate policy treats
+only requests from privileged user IDs this way.<a href="#section-5.2.1-2.6.1" class="pilcrow">¶</a></p>
+<p id="section-5.2.1-2.6.2">
+Squashing does not prevent an attacker from
+masquerading as another user
+but only limits the range of user identities
+that can be assumed without difficulty.<a href="#section-5.2.1-2.6.2" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+</dl>
+</section>
+</div>
+<div id="Authsys-Working-Group-Actions">
+<section id="section-5.2.2">
+          <h4 id="name-working-group-actions">
+<a href="#section-5.2.2" class="section-number selfRef">5.2.2. </a><a href="#name-working-group-actions" class="section-name selfRef">Working Group Actions</a>
+          </h4>
+<p id="section-5.2.2-1">
 The Security Considerations section of
 <span>[<a href="#RFC5531" class="xref">RFC5531</a>]</span>
-states that AUTH_SYS is "known to be insecure" and further states
+states that AUTH_SYS is "known to be insecure"
+and further states
 "AUTH_SYS
-<span class="bcp14">SHOULD NOT</span> be used for services that permit clients to
-modify data.   Nevertheless, AUTH_SYS has been commonly used by
-NFSv4
-clients modifying data since NFSv4 was first implemented, while
-the consequences for security have never been addressed.<a href="#section-5.2-10" class="pilcrow">¶</a></p>
-<p id="section-5.2-11">
-Given the security difficulties that use of AUTH_SYS gives rise
-to, we face a choice between two alternatives:<a href="#section-5.2-11" class="pilcrow">¶</a></p>
+<span class="bcp14">SHOULD NOT</span>
+be used for services that permit clients to modify data."
+Nevertheless, AUTH_SYS has been commonly used
+by NFSv4 clients modifying data
+since NFSv4 was first implemented,
+while the security consequences have never been addressed.<a href="#section-5.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-2">
+Given the security difficulties that use of AUTH_SYS gives rise to,
+the NFS community faces a choice between a few alternatives:<a href="#section-5.2.2-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.2-12.1">
-            <p id="section-5.2-12.1.1">
-Take steps to eliminate or otherwise minimize
-use of AUTH_SYS as a valid
-authentication flavor, either for NFSv4 as a whole or
-for minor versions based on NFSv4.1, whose description was
-published as a Proposed Standard after
+<li class="normal" id="section-5.2.2-3.1">
+              <p id="section-5.2.2-3.1.1">
+Take steps to
+eliminate
+or
+otherwise minimize
+the use of AUTH_SYS as a valid authentication flavor,
+either for NFSv4 as a whole
+or
+for minor versions based on NFSv4.1,
+whose description was published as a Proposed Standard
+after the publication of
 <span>[<a href="#RFC5531" class="xref">RFC5531</a>]</span>,
-which stated that AUTH_SYS was "known to be insecure".<a href="#section-5.2-12.1.1" class="pilcrow">¶</a></p>
-<p id="section-5.2-12.1.2">
-Given the many clients using AUTH_SYS, such steps might need to
-take the form of recommendations, with the difficulty of
-switching authentication models considered a valid reason
-to continue to use AUTH_SYS, as long as one is aware of
-the security
-consequences.<a href="#section-5.2-12.1.2" class="pilcrow">¶</a></p>
-<p id="section-5.2-12.1.3">
-Other alternatives are possible and will be discussed later.
-However, regardless of the working group's choice of normative
-terms, it is important that the security consequences of
-using AUTH_SYS are clearly explained.<a href="#section-5.2-12.1.3" class="pilcrow">¶</a></p>
+which stated that AUTH_SYS was "known to be insecure".<a href="#section-5.2.2-3.1.1" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-3.1.2">
+Given the many clients using AUTH_SYS,
+such steps might take the form of recommendations,
+with the difficulty of switching authentication models
+considered a valid reason
+to continue to use AUTH_SYS
+as long as one is aware of the security consequences.<a href="#section-5.2.2-3.1.2" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-3.1.3">
+Regardless of the working group's choice of normative terms,
+it is crucial that new NFSv4 standards clearly explain
+the security consequences of using AUTH_SYS.<a href="#section-5.2.2-3.1.3" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.2-12.2">
-            <p id="section-5.2-12.2.1">
+            <li class="normal" id="section-5.2.2-3.2">
+              <p id="section-5.2.2-3.2.1">
 Revise AUTH_SYS to enable secure implementation of an
 authentication model in which authenticated client hosts
-are assigned
-the responsibility to determine, within appropriate limits,
-the user ids to be used for each request sent.<a href="#section-5.2-12.2.1" class="pilcrow">¶</a></p>
-<p id="section-5.2-12.2.2">
-To do this we would authenticate client hosts issuing
-AUTH_SYS requests taking advantage of the authentication
+determine, within appropriate limits,
+the user IDs used for each request sent.<a href="#section-5.2.2-3.2.1" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-3.2.2">
+To do this, servers would authenticate client hosts issuing
+AUTH_SYS requests, taking advantage of the authentication
 provided by
 <span>[<a href="#I-D.ietf-nfsv4-rpc-tls" class="xref">I-D.ietf-nfsv4-rpc-tls</a>]</span>
 as described in
 <a href="#OPP-auth" class="xref">Section 7.2</a>.
-There is also a
-more detailed discussion of issues to be addressed
+A more detailed discussion of issues to be addressed
 in establishing
-the rules for this form of authentication in
-<a href="#ISSUES-asys-resnew" class="xref">Section 8.4.6</a>.<a href="#section-5.2-12.2.2" class="pilcrow">¶</a></p>
+the rules for this form of authentication appears in
+<a href="#ISSUES-asys-resnew" class="xref">Section 8.4.6</a>.<a href="#section-5.2.2-3.2.2" class="pilcrow">¶</a></p>
 </li>
-        </ul>
-<p id="section-5.2-13">
-Although both of these alternatives should be considered, there
-is reason to believe that the first of these is not feasible,
-for reasons similar to those that have prevented such a step
-being attempted earlier, either as part of the transition to
-NFSv4 or to NFSv4.1.  The use of AUTH_SYS has continued despite
-the fact that alternatives were made available, and there is
-no reason to expect that the use of the words
+            <li class="normal" id="section-5.2.2-3.3">
+Continue to pursue alternative RPC security mechanisms
+that are simple to deploy and not costly to run.
+One such mechanism is RPC-over-TLS, but we can easily imagine
+mechanisms based on other open federated authentication standards.<a href="#section-5.2.2-3.3" class="pilcrow">¶</a>
+</li>
+          </ul>
+<p id="section-5.2.2-4">
+The nfsv4 working group should consider all of these alternatives.<a href="#section-5.2.2-4" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-5">
+The first of these is unlikely to be feasible;
+otherwise, the NFS community might have already attempted such a step.
+The use of AUTH_SYS has continued even though
+alternatives are available,
+and there is no reason to expect that the use of the words
 "<span class="bcp14">SHOULD NOT</span>"
 or
 "<span class="bcp14">MUST NOT</span>"
-would prevent implementers from continuing to support it, or
-administrators depending on such support, despite
-the negative effect on the security of NFSv4 implementations<a href="#section-5.2-13" class="pilcrow">¶</a></p>
-<p id="section-5.2-14">
+would prevent implementers from continuing to support it or
+administrators depending on such support,
+despite the negative effect on the security of NFSv4 implementations<a href="#section-5.2.2-5" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-6">
 Because of the current predominant role of AUTH_SYS in existing
 NFSv4 implementations, providing better security while remaining
 within the AUTH_SYS framework will also be difficult because of
-the issues discussed in
+the issues discussed earlier in
 <a href="#CORR-norm" class="xref">Section 6.2</a>.
 Nevertheless,
-we feel it needs to be attempted, as a new security framework
+we feel it needs to be attempted as a new security framework
 cannot address AUTH_SYS without clearly discussing its security
-weaknesses.  Once that is done, we need to take advantage of the
-ability to effect client host authentication provided by
-<span>[<a href="#I-D.ietf-nfsv4-rpc-tls" class="xref">I-D.ietf-nfsv4-rpc-tls</a>]</span>
-to provide a modicum
-of security while allowing administrators to delegate credential
-checking to trusted clients as they are now accustomed to doing.<a href="#section-5.2-14" class="pilcrow">¶</a></p>
-<p id="section-5.2-15">
-While this approach is far from ideal, in that it requires a
-trust relationship between client and servers, adopting it
-provides a reasonable approach to support NFSv4 in the near-term
-while allowing development of a better alternative (e.g. a new
-authentication flavor) to proceed in parallel.
-With regard to our immediate need for
-better NFSv4 security, the obvious alternatives might not be
-realizable:<a href="#section-5.2-15" class="pilcrow">¶</a></p>
+weaknesses.
+Once that is done, we need to take advantage of
+strong client host authentication
+to provide a modicum of security
+while allowing administrators to
+delegate credential-checking to trusted clients,
+as they are now accustomed to doing.<a href="#section-5.2.2-6" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-7">
+This approach is far from ideal.
+It requires a trust relationship between clients and servers.
+Adopting it provides a reasonable approach to support NFSv4
+in the near-term while allowing the development
+of a better alternative
+(e.g., a new authentication flavor)
+to proceed in parallel.
+Concerning our immediate need for better NFSv4 security,
+the obvious alternatives might not be realizable:<a href="#section-5.2.2-7" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5.2-16.1">
-Given the security weaknesses of AUTH_SYS and the need to present
-a threat analysis, we cannot present AUTH_SYS without client host
-authentication as optional to use, either explicitly or by
-implication.<a href="#section-5.2-16.1" class="pilcrow">¶</a>
+<li class="normal" id="section-5.2.2-8.1">
+Given the weaknesses of AUTH_SYS
+and
+the need to present a threat analysis,
+we cannot commend AUTH_SYS without client host authentication as
+<span class="bcp14">OPTIONAL</span>
+to use, either explicitly or by implication.<a href="#section-5.2.2-8.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-5.2-16.2">
-Recommending that AUTH_SYS without host authentication not
-be used, with RPCSEC_GSS as the only alternative will not be
-effective and would limit adoption of a clearly better, although
-far-from-ideal, alternative<a href="#section-5.2-16.2" class="pilcrow">¶</a>
+            <li class="normal" id="section-5.2.2-8.2">
+Recommending that AUTH_SYS without client host authentication
+not be used, with RPCSEC_GSS as the only alternative,
+will not be effective and would limit adoption
+of a better, although far-from-ideal, alternative.<a href="#section-5.2.2-8.2" class="pilcrow">¶</a>
 </li>
-        </ul>
-<p id="section-5.2-17">
-Despite this summary of the authors' views on this matter, this
-question is ultimately a matter for working group decision.
-For a further
-discussion of related issues, see
+          </ul>
+<p id="section-5.2.2-9">
+Therefore, the better alternative is to mandate or recommend that,
+when AUTH_SYS is in use, a form of strong host authentication
+is always deployed along with it.<a href="#section-5.2.2-9" class="pilcrow">¶</a></p>
+<p id="section-5.2.2-10">
+Despite this summary of the authors' views on this matter,
+this question is ultimately a matter for working group decision.
+For a further discussion of related issues, see
 <a href="#ISSUES-asys-rescore" class="xref">Section 8.4.3</a>.
-Although the rest of this document is written assuming that the
-authors' choice will be selected,
+Although the rest of this document assumes the
+authors' preference is selected,
 <a href="#ISSUES-asys-rescore" class="xref">Section 8.4.3</a>
-explains the changes to the eventual standards-track document that
-would be required if different choices were to be made.<a href="#section-5.2-17" class="pilcrow">¶</a></p>
+explains the changes to an eventual standards-track document
+required if the working group concludes that different choices are necessary.<a href="#section-5.2.2-10" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="PROB-conf">
