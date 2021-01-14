@@ -5,8 +5,8 @@
 Network File System Version 4                                  D. Noveck
 Internet-Draft                                                    NetApp
 Intended status: Informational                             C. Lever, Ed.
-Expires: 15 July 2021                                             Oracle
-                                                         11 January 2021
+Expires: 18 July 2021                                             Oracle
+                                                         14 January 2021
 
 
                  Security Needs for the NFSv4 Protocols
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 July 2021.
+   This Internet-Draft will expire on 18 July 2021.
 
 Copyright Notice
 
@@ -87,6 +87,9 @@ Table of Contents
        5.2.1.  Current AUTH_SYS Security Policies
        5.2.2.  Working Group Actions
      5.3.  Problems with Confidentiality
+     5.4.  Additional Matters Arising
+       5.4.1.  File Access Control
+       5.4.2.  File Content Integrity and Provenance
    6.  Framework for Correcting Problems
      6.1.  Correcting Problems with Regard to Threat Analyses
      6.2.  Correcting Problems with Regard to Use of Normative Terms
@@ -685,14 +688,14 @@ Table of Contents
    initiated the RPC transaction.  The enumerator field determines the
    structure and content of the credential and verifier.
 
-   The simpler auth_flavors (e.g., AUTH_NONE and AUTH_SYS) merely
-   identify the requesting user and sending host.  These flavors do not
-   provide any cryptographic proof of identity.  Therefore they do not
-   provide true authentication of the conveyed user and host identities.
+   The simpler auth_flavors (e.g., AUTH_SYS) merely identify the
+   requesting user and sending host.  These flavors do not provide any
+   cryptographic proof of identity.  Therefore they do not provide true
+   authentication of the conveyed user and host identities.
 
    The RPCSEC_GSS credential and verifier can both identify and
-   authenticate the requesting user and host.  They can additionally
-   provide message integrity and confidentiality.
+   authenticate the requesting user.  They can additionally provide
+   message integrity and confidentiality.
 
    [RFC3530], [RFC7530], and [RFC8881] state that implementation of
    RPCSEC_GSS is REQUIRED.  However, they do not also mandate its use,
@@ -787,8 +790,8 @@ Table of Contents
    Identity Squashing
       NFS servers can implement a security policy that executes all
       AUTH_SYS requests as a suitably unprivileged user ID, such as the
-      anonymous user.  An alternate policy treats only requests from
-      privileged user IDs this way.
+      anonymous user.  An alternate policy treats only requests from a
+      privileged user ID this way.
 
       Squashing does not prevent an attacker from masquerading as
       another user but only limits the range of user identities that can
@@ -876,13 +879,11 @@ Table of Contents
       effective and would limit adoption of a better, although far-from-
       ideal, alternative.
 
-   Therefore, the better alternative is to mandate or recommend that,
-   when AUTH_SYS is in use, a form of strong host authentication is
-   always deployed along with it.
-
-   Despite this summary of the authors' views on this matter, this
-   question is ultimately a matter for working group decision.  For a
-   further discussion of related issues, see Section 8.4.3.  Although
+   Therefore, the authors propose that upcoming NFSv4 standards-track
+   documents mandate or recommend that, when AUTH_SYS is in use, a form
+   of strong host authentication is always deployed along with it.
+   Ultimately this is a matter for working group decision, however.  For
+   a further discussion of related issues, see Section 8.4.3.  Although
    the rest of this document assumes the authors' preference is
    selected, Section 8.4.3 explains the changes to an eventual
    standards-track document required if the working group concludes that
@@ -1005,6 +1006,63 @@ Table of Contents
    opportunity to provide encryption uniformly and potentially with high
    performance.  An overview of steps necessary to address these issues
    appears in Section 7.1.
+
+5.4.  Additional Matters Arising
+
+5.4.1.  File Access Control
+
+   Originally, the NFS protocol provided only a basic form of access
+   control in the form of permission bits (also known as mode bits).
+
+   NFSv4 introduced a rich access control list mechanism which supplants
+   mode bit-based access control [RFC7530].  This is a Discretionary
+   Access Control mechanism that is based on the ownership of the file
+   being accessed.  File owners in NFSv4 are structured strings
+   containing a user name and a security domain.
+
+   The NFSv4.2 protocol provides the basis for supporting Mandatory
+   Access Control in the form of Security Labels, as described in
+   Section 9 of [RFC7862].  After several years of implementation
+   experience, NFSv4.2 Security Labels are considered problematic and
+   have therefore not been widely implemented.
+
+   There exist other types of access control not supported by any NFS
+   protocol.  A few of these exist in file systems commonly found in
+   operating systems that include NFS implementations, including
+   capability-based security [citation needed] and policy-based access
+   control [citation needed].  NFS user communities have requested
+   support for these mechanisms in NFS implementations.
+
+   One challenge to including these in NFS is the standards environment.
+   The implementations of capabilities-based security in Linux and
+   Solaris, for instance, are based on two different pre-standards,
+   neither of which were ever ratified.  That makes it difficult to
+   construct an interoperable standard that both operating systems can
+   implement.
+
+5.4.2.  File Content Integrity and Provenance
+
+   Ever since RPC has supported an integrity-protected mode of transport
+   (via RPCSEC_GSS integrity pseudoflavors), NFS has been able to
+   provide a strong guarantee that NFS messages in transit on a network
+   are immutable.
+
+   Recent work in block storage has extended the immutability of file
+   content from application to storage and back [cite DIF/DIX standard].
+   This provides a guarantee that what an application reads at time T+1
+   is what an application wrote at time T.  The NFS protocol can and
+   should enable this stronger form of integrity guarantee.
+
+   Provenance is a deeper guarantee.  It additionally identifies the
+   author of a file's content, and guarantees that content is exactly
+   what the author originally provided.  An NFS client might use
+   verifiable provenance to gate access to a critical executable or
+   other resources contained in files stored on an NFS server.
+
+   Both of these capabilities require the storage and transit of
+   additional metadata associated with each file.  Security
+   Considerations sections should explain how data is put risk when
+   these capabilities are not present.
 
 6.  Framework for Correcting Problems
 
