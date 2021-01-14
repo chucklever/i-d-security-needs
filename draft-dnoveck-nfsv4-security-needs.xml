@@ -1546,6 +1546,107 @@ necessary to address these issues appears in
 </t>
 </section>
 
+<section
+ anchor="MISC"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
+<name>Additional Matters Arising</name>
+
+<section
+ anchor="MISC-access-control"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
+<name>File Access Control</name>
+<t>
+Originally, the NFS protocol provided only a
+basic form of access control in the form of
+permission bits (also known as mode bits).
+</t>
+<t>
+NFSv4 introduced a rich access control list mechanism
+which supplants mode bit-based access control
+<xref target="RFC7530" format="default" sectionFormat="of"/>.
+This is a Discretionary Access Control mechanism that is
+based on the ownership of the file being accessed.
+File owners in NFSv4 are structured strings containing
+a user name and a security domain.
+</t>
+<t>
+The NFSv4.2 protocol provides the basis for supporting
+Mandatory Access Control in the form of Security Labels,
+as described in
+<xref target="RFC7862" section="9" format="default" sectionFormat="of"/>.
+After several years of implementation experience,
+NFSv4.2 Security Labels are considered problematic
+and have therefore not been widely implemented.
+</t>
+<t>
+There exist other types of access control not supported
+by any NFS protocol.
+A few of these exist in file systems commonly found in
+operating systems that include NFS implementations,
+including capability-based security
+[citation needed]
+and
+policy-based access control
+[citation needed].
+NFS user communities have requested support for these
+mechanisms in NFS implementations.
+</t>
+<t>
+One challenge to including these in NFS
+is the standards environment.
+The implementations of capabilities-based security in Linux
+and Solaris, for instance, are based on two different
+pre-standards, neither of which were ever ratified.
+That makes it difficult to construct an interoperable
+standard that both operating systems can implement.
+</t>
+</section>
+
+<section
+ anchor="MISC-integrity"
+ numbered="true"
+ removeInRFC="false"
+ toc="default">
+<name>File Content Integrity and Provenance</name>
+<t>
+Ever since RPC has supported an integrity-protected mode of
+transport (via RPCSEC_GSS integrity pseudoflavors),
+NFS has been able to provide a strong guarantee
+that NFS messages in transit on a network are immutable.
+</t>
+<t>
+Recent work in block storage has extended the immutability
+of file content from application to storage and back
+[cite DIF/DIX standard].
+This provides a guarantee that what an application reads
+at time T+1 is what an application wrote at time T.
+The NFS protocol can and should enable this stronger
+form of integrity guarantee.
+</t>
+<t>
+Provenance is a deeper guarantee.
+It additionally identifies the author of a file's content,
+and guarantees that content is exactly what the author
+originally provided.
+An NFS client might use verifiable provenance to gate access
+to a critical executable or other resources contained
+in files stored on an NFS server.
+</t>
+<t>
+Both of these capabilities require the storage and transit
+of additional metadata associated with each file.
+Security Considerations sections should explain
+how data is put risk
+when these capabilities are not present.
+</t>
+</section>
+
+</section>
+
 </section>
 
 <section
