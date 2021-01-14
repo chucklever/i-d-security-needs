@@ -1030,7 +1030,7 @@ The enumerator field determines the structure and content of the credential and 
 </t>
 <t>
 The simpler auth_flavors
-(e.g., AUTH_NONE and AUTH_SYS)
+(e.g., AUTH_SYS)
 merely identify the requesting user and sending host.
 These flavors do not provide any cryptographic proof of identity.
 Therefore they do not provide true authentication
@@ -1041,7 +1041,7 @@ The RPCSEC_GSS credential and verifier can both
 identify
 and
 authenticate
-the requesting user and host.
+the requesting user.
 They can additionally provide message integrity and confidentiality.
 </t>
 <t>
@@ -1207,7 +1207,7 @@ executes all AUTH_SYS requests
 as a suitably unprivileged user ID,
 such as the anonymous user.
 An alternate policy treats
-only requests from privileged user IDs this way.
+only requests from a privileged user ID this way.
 </t>
 <t>
 Squashing does not prevent an attacker from
@@ -1362,13 +1362,11 @@ of a better, although far-from-ideal, alternative.
 </li>
 </ul>
 <t>
-Therefore, the better alternative is to mandate or recommend that,
-when AUTH_SYS is in use, a form of strong host authentication
-is always deployed along with it.
-</t>
-<t>
-Despite this summary of the authors' views on this matter,
-this question is ultimately a matter for working group decision.
+Therefore, the authors propose that
+upcoming NFSv4 standards-track documents mandate or recommend
+that, when AUTH_SYS is in use,
+a form of strong host authentication is always deployed along with it.
+Ultimately this is a matter for working group decision, however.
 For a further discussion of related issues, see
 <xref target="ISSUES-asys-rescore" format="default" sectionFormat="of"/>.
 Although the rest of this document assumes the
