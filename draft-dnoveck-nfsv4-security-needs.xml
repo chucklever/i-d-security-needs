@@ -3527,16 +3527,17 @@ client is using AUTH_SYS or RPCSEC_GSS.
 If one has a TLS connection including suitable authentication
 material, then the server is in a position to reject attempts
 to bind to sessions established under this connection by other
-connections that are not TLS connections or are not established
-by the same client, unless SP4_MACHCRED or SP4_SSV is in effect.
+connections that are not TLS connections with client-host authentication
+or are not established by the same client, unless SP4_MACHCRED
+or SP4_SSV is in effect.
 This would make state protection available to those using SP4_NONE,
 i.e. the vast majority, whether they used RPCSEC_GSS or AUTH_SYS
 with client-host authentication.
 </t>
 <t>
-The fact that this is an NFSv4.1-only security feature make it
+The fact that this is an NFSv4.1-only security feature would make it
 difficult to fully it address solely in the NFSv4-wide security
-document which we writing.  The following plan is intended to
+document which will be written.  The following proposal is intended to
 allow the security document to be published before proceeding
 to publish the anticipated rfc5661bis:
 </t>
@@ -3547,22 +3548,23 @@ it can be stated that when SP4_NONE is specified and the
 client owning the session is authenticated, then the session
 is protected from being bound-to or destroyed by an
 unauthenticated client or a different authenticated client,
-then effect is the same as if SP4_MACHCRED or SP4_SSV were
+then the effect is the same as if SP4_MACHCRED or SP4_SSV were
 used by the owning client and a non-matching client was
-found.  Since the new standards-track document will update
+found.  Since the new standards-track document would update
 <xref target="RFC8881" format="default" sectionFormat="of"/>,
 that provides adequate notice of this change
 </li>
 <li>
 Later, when rfc5661bis is ready to be published, there would
-opportunity to provide introductory material explaining
+an opportunity to provide introductory material explaining
 the various ways clients can be authenticated for the purpose
-of state protection, including use of SP4-MCHCRED, SP4_SSV and
-authentication of part of use of RPC-TLS and defining the
-circumstances under which one connection can access/modify
-state owned by an authenticated client.   References to abstract
+of state protection, including use of SP4_MACHCRED or SP4_SSV and
+authentication as part of use of RPC-TLS.  This would allow
+defining the circumstances under which one connection can access/modify
+state owned by an another client in terms of whether the connections
+involved are part of the same client. References to such abstract
 relationships would replace most current mentions of SP4_NONE,
-SP4_MCHCRED, and SP4_SSV in
+SP4_MACHCRED, and SP4_SSV in
 <xref target="RFC8881" format="default" sectionFormat="of"/>.
 </li>
 </ul>
