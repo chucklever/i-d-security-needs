@@ -5,8 +5,8 @@
 Network File System Version 4                                  D. Noveck
 Internet-Draft                                                    NetApp
 Intended status: Informational                             C. Lever, Ed.
-Expires: 23 July 2021                                             Oracle
-                                                         19 January 2021
+Expires: 25 July 2021                                             Oracle
+                                                         21 January 2021
 
 
                  Security Needs for the NFSv4 Protocols
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 July 2021.
+   This Internet-Draft will expire on 25 July 2021.
 
 Copyright Notice
 
@@ -792,7 +792,7 @@ Table of Contents
       NFS servers can implement a security policy that executes all
       AUTH_SYS requests as a suitably unprivileged user ID, such as the
       anonymous user.  An alternate policy treats only requests from a
-      privileged user ID this way.
+      particular privileged user ID (e.g., root) this way.
 
       Squashing does not prevent an attacker from masquerading as
       another user but only limits the range of user identities that can
@@ -838,8 +838,11 @@ Table of Contents
 
    *  Continue to pursue alternative RPC security mechanisms that are
       simple to deploy and not costly to run.  One such mechanism is
-      RPC-over-TLS, but we can easily imagine mechanisms based on other
-      open federated authentication standards.
+      RPC-over-TLS, which should be available in time to include in
+      security documents published together with rfc5661bis.  However,
+      we can easily imagine mechanisms based on other open federated
+      authentication standards that can be made available within NFSv4
+      via subsequent extensions.
 
    The nfsv4 working group should consider all of these alternatives.
 
@@ -1014,24 +1017,27 @@ Table of Contents
    control in the form of permission bits (also known as mode bits).
 
    NFSv4 introduced a rich access control list mechanism which
-   supplements mode bit-based access control [RFC7530].  This is a
-   Discretionary Access Control (DAC) mechanism, where access to the
-   file's content is at the discretion of the file's owner and is based
-   on identity of the requesting user.  A more complete definition of
-   DAC is available in Section 4 of [RFC4949].
+   supplements mode bit-based access control [RFC7530].  This is
+   referred to as a Discretionary Access Control (DAC) mechanism, where
+   access to the file's content is at the discretion of the file's owner
+   and is based on identity of the requesting user.  A more complete
+   definition of DAC is available in Section 4 of [RFC4949].
 
-   The NFSv4.2 protocol provides the basis for supporting Mandatory
-   Access Control (MAC) in the form of Security Labels, as described in
+   The NFSv4.2 protocol provides a basis for supporting Mandatory Access
+   Control (MAC) in the form of Security Labels, as described in
    Section 9 of [RFC7862].  Mandatory Access Control is generally
    mandated from a central authority that constrains access to file
-   content based on broad trust categories.  Note that this usage
+   content based on broad trust categories.  Because this usage
    overloads the abbreviation MAC, which can also refer to Message
-   Authentication Codes and Media Access Control.  A more detailed
-   definition of MAC is available in Section 4 of [RFC4949].
+   Authentication Codes and Media Access Control, we avoid using the
+   abbreviation unless the meaning is clear.  A more detailed definition
+   of MAC is available in Section 4 of [RFC4949].
 
    Both of these file access authorization mechanisms need a threat
    analysis and a discussion of exposures due to missing access control
-   facilities.
+   facilities.  However, without documentation of access semantics in
+   the case of Security Labels, any threat analysis might not be
+   complete.
 
 5.4.1.  File Content Integrity and Provenance
 
@@ -1389,6 +1395,9 @@ Table of Contents
 
    *  How further extensions might relate to use of such new RPC-level
       facilities.
+
+   *  How to deal with and document extensions that provide new
+      security-related features.
 
 8.2.2.  Addressing Extension Issues
 
